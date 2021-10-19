@@ -1,4 +1,5 @@
 from room import Room
+from character import Character
 from player import Player
 
 
@@ -13,6 +14,10 @@ class Main:
 
         self.testroom.link_room("south", self.testroom2)
         self.testroom2.link_room("north", self.testroom)
+
+        self.elliot = Character(character_name="Elliot")
+        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
+        self.testroom2.add_character(self.elliot)
 
         self.player_name = input("Who are you? ")
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
