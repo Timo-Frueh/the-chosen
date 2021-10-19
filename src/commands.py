@@ -26,10 +26,18 @@ class Commands:
 
     @staticmethod
     def talk(player):
-        talk_to = input("Talk to whom? ").lower().replace(" ", "")
-        for character in player.get_current_room().get_characters():
-            if character.get_name().lower().replace(" ", "") == talk_to:
-                character.talk()
+        if player.get_current_room().get_characters():
+            talk_to = input("Talk to whom? ").lower().replace(" ", "")
+            found = False
+            for character in player.get_current_room().get_characters():
+                if character.get_name().lower().replace(" ", "") == talk_to:
+                    character.talk()
+                    found = True
+            if not found:
+                print(f"There is no {talk_to} here.")
+
+        else:
+            print("There is no one here to listen to your beautiful voice.")
 
     @staticmethod
     def show_inventory(player):
