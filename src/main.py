@@ -49,16 +49,16 @@ class Main:
                 self.player.move(command)
                 self.player.get_current_room().describe()
 
+            elif command in ["look", "l"]:
+                self.player.get_current_room().describe()
+
             elif command in ["quit", "exit"]:
                 confirm = input("Do you really want to quit? [y|n] ")
                 if confirm == "y":
                     dead = True
 
-            elif command in ["look", "l"]:
-                self.player.get_current_room().describe()
-
             else:
-                print(f"I do not know what you mean by {command}.")
+                print(f"I do not know what you meant by {command}.")
 
         print("")
 
