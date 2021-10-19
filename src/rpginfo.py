@@ -11,6 +11,6 @@ class RPGInfo:
 
     @classmethod
     def credits(cls):
-        print(f"This was {cls.title}")
+        print(f"This was {cls.title}.")
         print("Thank you for playing!")
-        print(f"\nMade by {cls.author}")
+        print(f"\nMade by {cls.author}.")
