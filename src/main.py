@@ -1,3 +1,4 @@
+from rpginfo import RPGInfo
 from room import Room
 from character import Character
 from player import Player
@@ -5,6 +6,15 @@ from player import Player
 
 class Main:
     def __init__(self):
+
+        RPGInfo.author = "Timo Früh"
+        RPGInfo.title = "Title"
+        RPGInfo.subtitle = "Subtitle"
+        RPGInfo.welcome_message = "Welcome message"
+
+        RPGInfo.welcome()
+
+        print("")
 
         self.testroom = Room(room_name="Testroom")
         self.testroom.set_desc("This is a testroom")
@@ -27,8 +37,10 @@ class Main:
         self.player.get_current_room().describe()
 
     def mainloop(self):
+
         dead = False
         victory = False
+
         while not dead or victory:
             print("")
             command = input("> ").lower().replace(" ", "")
@@ -47,6 +59,10 @@ class Main:
 
             else:
                 print(f"I do not know what you mean by {command}")
+
+        print("")
+
+        RPGInfo.credits()
 
 
 if __name__ == "__main__":
