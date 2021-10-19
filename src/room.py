@@ -42,6 +42,11 @@ class Room:
     def get_characters(self):
         return self.characters
 
+    def get_character(self, name):
+        for character in self.characters:
+            if character.name.lower().replace(" ", "") == name:
+                return character
+
     def add_character(self, character):
         self.characters.append(character)
 
@@ -50,6 +55,11 @@ class Room:
 
     def get_items(self):
         return self.items
+
+    def get_item(self, name):
+        for item in self.items:
+            if item.name.lower().replace(" ", "") == name:
+                return item
 
     def add_item(self, item):
         self.items.append(item)

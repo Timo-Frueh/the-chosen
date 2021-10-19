@@ -28,12 +28,11 @@ class Commands:
     def talk(player):
         if player.get_current_room().get_characters():
             talk_to = input("Talk to whom? ").lower().replace(" ", "")
-            found = False
-            for character in player.get_current_room().get_characters():
-                if character.get_name().lower().replace(" ", "") == talk_to:
-                    character.talk()
-                    found = True
-            if not found:
+
+            if player.get_current_room().get_character(talk_to):
+                player.get_current_room().get_character(talk_to).talk()
+
+            else:
                 print(f"There is no {talk_to} here.")
 
         else:
@@ -47,6 +46,10 @@ class Commands:
                 print(item)
         else:
             print("You are empty-handed.")
+
+    @staticmethod
+    def fight(player):
+        pass
 
     @staticmethod
     def quit():

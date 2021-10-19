@@ -68,6 +68,9 @@ class Main:
             elif command in ["inventory", "i", "backpack"]:
                 Cmd.show_inventory(self.player)
 
+            elif command == "fight":
+                Cmd.fight(self.player)
+
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
                 if confirm == "y":
