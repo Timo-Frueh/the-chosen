@@ -4,7 +4,7 @@ class Item:
         self.description = None
 
     def describe(self):
-        print(f"There is a {self.name} here.")
+        print(f"There is a {self.name} here, {self.description}")
 
     def get_name(self):
         return self.name
