@@ -2,7 +2,7 @@ from rpginfo import RPGInfo
 from room import Room
 from character import Character
 from player import Player
-from commands import Commands as cmd
+from commands import Commands as Cmd
 
 
 class Main:
@@ -26,12 +26,13 @@ class Main:
         self.testroom.link_room("south", self.testroom2)
         self.testroom2.link_room("north", self.testroom)
 
-        self.elliot = Character(character_name="Elliot")
-        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
-        self.testroom2.add_character(self.elliot)
-
         self.player_name = input("Who are you? ")
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
+
+        self.elliot = Character(character_name="Elliot")
+        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
+        self.elliot.set_conversation(f"Hey, {self.player.get_name()}! Long time no see!")
+        self.testroom2.add_character(self.elliot)
 
         print("")
 
@@ -47,13 +48,16 @@ class Main:
             command = input("> ").lower().replace(" ", "")
 
             if command in ["north", "east", "south", "west"]:
-                cmd.movement(self.player, command)
+                Cmd.movement(self.player, command)
 
             elif command in ["look", "l"]:
-                cmd.look(self.player)
+                Cmd.look(self.player)
+
+            elif command == "talk":
+                Cmd.talk(self.player)
 
             elif command in ["quit", "exit"]:
-                confirm = cmd.quit()
+                confirm = Cmd.quit()
                 if confirm == "y":
                     dead = True
 
