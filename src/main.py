@@ -50,10 +50,10 @@ class Main:
 
     def mainloop(self):
 
-        dead = False
+        alive = True
         victory = False
 
-        while not dead or victory:
+        while alive and not victory:
             print("")
             command = input("> ").lower().replace(" ", "")
 
@@ -73,12 +73,12 @@ class Main:
                 Cmd.show_inventory(self.player)
 
             elif command == "fight":
-                dead = Cmd.fight(self.player)
+                alive = Cmd.fight(self.player)
 
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
                 if confirm == "y":
-                    dead = True
+                    alive = False
 
             else:
                 print(f"I do not know what you meant by {command}.")

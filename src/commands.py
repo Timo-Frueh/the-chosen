@@ -7,6 +7,7 @@ class Commands:
                 "look": "look at your surroundings",
                 "talk": "talk to someone in the room",
                 "inventory": "\bshow what you are carrying",
+                "fight": "fight someone",
                 "quit": "quit the game -> NOTE: you will not be able to restore the game later",
                 "help": "show this list"}
     
@@ -49,7 +50,7 @@ class Commands:
 
     @staticmethod
     def fight(player):
-        survive = True
+        alive = True
         if player.get_current_room().get_characters():
             fight = input("Fight whom? ").lower().replace(" ", "")
 
@@ -57,14 +58,14 @@ class Commands:
                 weapon = input("What do you want to fight with? ").lower().replace(" ", "")
 
                 if player.get_inventory_item(weapon):
-                    survive = player.get_current_room().get_character(fight).fight(weapon)
+                    alive = player.get_current_room().get_character(fight).fight(weapon)
                 else:
                     print(f"You do not have a {weapon}.")
 
             else:
                 print("There is no one here to fight.")
 
-        return survive
+        return alive
 
     @staticmethod
     def quit():
