@@ -29,9 +29,10 @@ class Commands:
     def talk(player):
         if player.get_current_room().get_characters():
             talk_to = input("Talk to whom? ").lower().replace(" ", "")
+            character = player.get_current_room().get_character(talk_to)
 
-            if player.get_current_room().get_character(talk_to):
-                player.get_current_room().get_character(talk_to).talk()
+            if character:
+                character.talk()
 
             else:
                 print(f"There is no {talk_to} here.")
@@ -51,13 +52,16 @@ class Commands:
     @staticmethod
     def fight(player):
         alive = True
+
         if player.get_current_room().get_characters():
             fight = input("Fight whom? ").lower().replace(" ", "")
+            enemy = player.get_current_room().get_character(fight)
 
-            if player.get_current_room().get_character(fight):
-                weapon = input("What do you want to fight with? ").lower().replace(" ", "")
+            if enemy:
+                fight_with = input("What do you want to fight with? ").lower().replace(" ", "")
+                weapon = player.get_inventory_item(fight_with)
 
-                if player.get_inventory_item(weapon):
+                if weapon:
                     alive = player.get_current_room().get_character(fight).fight(weapon)
                 else:
                     print(f"You do not have a {weapon}.")

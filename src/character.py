@@ -48,7 +48,7 @@ class Enemy(Character):
 
     def fight(self, weapon):
         if weapon in self.weaknesses:
-            print(f"You kill {self.name} with the {weapon}!")
+            print(f"You kill {self.name} with the {weapon.get_name()}!")
             return True
         else:
             print(f"{self.name} lands a fatal blow. You die ...")
@@ -57,5 +57,8 @@ class Enemy(Character):
     def get_weakness(self):
         return self.weaknesses
 
-    def set_weakness(self, new_weakness):
-        self.weaknesses = new_weakness
+    def add_weakness(self, new_weakness):
+        self.weaknesses.append(new_weakness)
+
+    def remove_weakness(self, weakness):
+        self.weaknesses.remove(weakness)

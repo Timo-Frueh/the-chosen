@@ -1,6 +1,6 @@
 from rpginfo import RPGInfo
 from room import Room
-from character import Character
+from character import Character, Friend, Enemy
 from player import Player
 from commands import Commands as Cmd
 from item import Item
@@ -39,10 +39,15 @@ class Main:
         self.sword = Item("sword")
         self.player.add_to_inventory(self.sword)
 
-        self.elliot = Character(character_name="Elliot")
+        self.elliot = Friend(character_name="Elliot")
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
         self.elliot.set_conversation(f"Hey, {self.player.get_name()}! Long time no see!")
         self.testroom.add_character(self.elliot)
+
+        self.derek = Enemy(character_name="Derek")
+        self.derek.set_desc("a nasty smelling werewolf.")
+        self.derek.add_weakness(self.sword)
+        self.testroom2.add_character(self.derek)
 
         print("")
 
