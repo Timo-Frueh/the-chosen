@@ -30,6 +30,14 @@ class Character:
         self.conversation = new_conversation
 
 
+class Friend(Character):
+    def __init__(self, character_name):
+        super().__init__(character_name)
+
+    def hug(self):
+        print(f"{self.name} hugs you back")
+
+
 class Enemy(Character):
     def __init__(self, character_name):
         super().__init__(character_name)
