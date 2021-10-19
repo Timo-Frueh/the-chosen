@@ -66,7 +66,7 @@ class Commands:
                 if weapon:
                     alive = player.get_current_room().get_character(fight).fight(weapon)
                 else:
-                    print(f"You do not have a {weapon}.")
+                    print(f"You do not have a {fight_with}.")
 
             else:
                 print("There is no one here to fight.")
@@ -76,7 +76,7 @@ class Commands:
     @staticmethod
     def take(player):
         if player.get_current_room().get_items():
-            take = input("What do you want to take? ")
+            take = input("What do you want to take? ").lower().replace(" ", "")
             item = player.get_current_room().get_item(take)
 
             if item:
@@ -84,7 +84,7 @@ class Commands:
                 player.add_to_inventory(item)
                 print("Taken.")
             else:
-                print(f"There is no {item.get_name()} here.")
+                print(f"There is no {take} here.")
 
         else:
             print("There is nothing here to take.")
@@ -100,7 +100,7 @@ class Commands:
                 player.get_current_room().add_item(item)
                 print("Dropped.")
             else:
-                print(f"You do not have a {item.get_name()}.")
+                print(f"You do not have a {drop}.")
 
         else:
             print("You do not have anything to drop.")
