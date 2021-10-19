@@ -16,11 +16,11 @@ class Main:
         RPGInfo.author = "Timo Früh"
         RPGInfo.title = "Title"
         RPGInfo.subtitle = "Subtitle"
-        RPGInfo.welcome_message = "Welcome message"
+
+        self.welcome_file = open("./resources/welcome_message.txt", "r")
+        RPGInfo.welcome_message = self.welcome_file.read()
 
         RPGInfo.welcome()
-
-        print("")
 
         self.testroom = Room(room_name="Testroom")
         self.testroom.set_desc("This is a testroom")
@@ -31,10 +31,12 @@ class Main:
         self.testroom.link_room("south", self.testroom2)
         self.testroom2.link_room("north", self.testroom)
 
-        self.player_name = input("Who are you? ")
+        self.player_name = input("What is your name? ")
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
+
+        print("\nYou look around.")
 
         self.sword = Item("sword")
         self.sword.set_description("a normal longsword about the length of your arm.")

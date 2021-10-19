@@ -7,6 +7,7 @@ class RPGInfo:
     @classmethod
     def welcome(cls):
         print(f"Welcome to {cls.title}: {cls.subtitle}")
+        print("")
         print(cls.welcome_message)
 
     @classmethod
