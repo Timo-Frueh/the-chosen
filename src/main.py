@@ -14,8 +14,8 @@ class Main:
         clear()
 
         RPGInfo.author = "Timo Früh"
-        RPGInfo.title = "Title"
-        RPGInfo.subtitle = "Subtitle"
+        RPGInfo.title = "The Chosen"
+        RPGInfo.subtitle = "At Nights End"
 
         self.welcome_file = open("./resources/welcome_message.txt", "r")
         RPGInfo.welcome_message = self.welcome_file.read()
