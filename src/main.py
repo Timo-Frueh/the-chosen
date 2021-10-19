@@ -3,6 +3,7 @@ from room import Room
 from character import Character
 from player import Player
 from commands import Commands as Cmd
+from item import Item
 
 from clear_screen import clear
 
@@ -34,6 +35,9 @@ class Main:
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
+
+        self.sword = Item("sword")
+        self.player.add_to_inventory(self.sword)
 
         self.elliot = Character(character_name="Elliot")
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
@@ -69,7 +73,7 @@ class Main:
                 Cmd.show_inventory(self.player)
 
             elif command == "fight":
-                Cmd.fight(self.player)
+                dead = Cmd.fight(self.player)
 
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()

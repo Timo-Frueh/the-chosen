@@ -43,13 +43,28 @@ class Commands:
         if player.get_inventory():
             print("You are carrying:")
             for item in player.get_inventory():
-                print(item)
+                print(f"- A {item.get_name()}")
         else:
             print("You are empty-handed.")
 
     @staticmethod
     def fight(player):
-        pass
+        survive = True
+        if player.get_current_room().get_characters():
+            fight = input("Fight whom? ").lower().replace(" ", "")
+
+            if player.get_current_room().get_character(fight):
+                weapon = input("What do you want to fight with? ").lower().replace(" ", "")
+
+                if player.get_inventory_item(weapon):
+                    survive = player.get_current_room().get_character(fight).fight(weapon)
+                else:
+                    print(f"You do not have a {weapon}.")
+
+            else:
+                print("There is no one here to fight.")
+
+        return survive
 
     @staticmethod
     def quit():

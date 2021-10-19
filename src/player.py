@@ -14,6 +14,11 @@ class Player:
     def get_inventory(self):
         return self.inventory
 
+    def get_inventory_item(self, name):
+        for item in self.inventory:
+            if item.get_name().lower().replace(" ", "") == name:
+                return item
+
     def add_to_inventory(self, item):
         self.inventory.append(item)
 
