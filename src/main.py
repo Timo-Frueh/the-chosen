@@ -42,7 +42,7 @@ class Main:
         self.elliot = Character(character_name="Elliot")
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
         self.elliot.set_conversation(f"Hey, {self.player.get_name()}! Long time no see!")
-        self.testroom2.add_character(self.elliot)
+        self.testroom.add_character(self.elliot)
 
         print("")
 
