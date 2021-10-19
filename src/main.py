@@ -2,6 +2,7 @@ from rpginfo import RPGInfo
 from room import Room
 from character import Character
 from player import Player
+from commands import Commands as cmd
 
 
 class Main:
@@ -46,14 +47,13 @@ class Main:
             command = input("> ").lower().replace(" ", "")
 
             if command in ["north", "east", "south", "west"]:
-                self.player.move(command)
-                self.player.get_current_room().describe()
+                cmd.movement(self.player, command)
 
             elif command in ["look", "l"]:
-                self.player.get_current_room().describe()
+                cmd.look(self.player)
 
             elif command in ["quit", "exit"]:
-                confirm = input("Do you really want to quit? [y|n] ")
+                confirm = cmd.quit()
                 if confirm == "y":
                     dead = True
 
