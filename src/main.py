@@ -5,6 +5,7 @@ from character import Character, Friend, Enemy
 from commands import Commands as Cmd
 from item import Item
 
+import os
 from clear_screen import clear
 
 
@@ -13,17 +14,20 @@ class Main:
 
         clear()
 
+        self.file_path = os.path.dirname(os.path.abspath(__file__))
+        self.welcome_file = open(os.path.join(self.file_path, "resources", "welcome_message.txt"), "r")
+        self.cellar_desc_file = open(os.path.join(self.file_path, "resources", "cellar_description.txt"), "r")
+
         RPGInfo.author = "Timo Früh"
         RPGInfo.title = "The Chosen"
         RPGInfo.subtitle = "At Nights End"
 
-        self.welcome_file = open("./resources/welcome_message.txt", "r")
         RPGInfo.welcome_message = self.welcome_file.read()
 
         RPGInfo.welcome()
 
         self.cellar = Room(room_name="Cellar")
-        self.cellar.set_desc(open("./resources/cellar_description.txt", "r").read())
+        self.cellar.set_desc(self.cellar_desc_file.read())
 
         self.stairwell = Room(room_name="Stairwell to the Cellar")
         self.stairwell.set_desc("Stairwell description")
