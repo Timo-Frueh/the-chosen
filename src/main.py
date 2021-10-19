@@ -47,7 +47,10 @@ class Main:
             print("")
             command = input("> ").lower().replace(" ", "")
 
-            if command in ["north", "east", "south", "west"]:
+            if command in ["commands", "help", "?"]:
+                Cmd.print_commands()
+
+            elif command in ["north", "east", "south", "west"]:
                 Cmd.movement(self.player, command)
 
             elif command in ["look", "l"]:
