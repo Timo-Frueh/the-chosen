@@ -8,7 +8,10 @@ class Character:
         print(f"You see {self.name}, {self.description}")
 
     def talk(self):
-        print(f"[{self.name}]: {self.conversation}")
+        if self.conversation:
+            print(f"[{self.name}]: {self.conversation}")
+        else:
+            print(f"{self.name} doesn't want to talk to you.")
 
     def fight(self, weapon):
         print(f"{self.name} does not want to fight you.")
