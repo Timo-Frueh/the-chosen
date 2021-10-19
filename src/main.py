@@ -58,7 +58,7 @@ class Main:
                 self.player.get_current_room().describe()
 
             else:
-                print(f"I do not know what you mean by {command}")
+                print(f"I do not know what you mean by {command}.")
 
         print("")
 

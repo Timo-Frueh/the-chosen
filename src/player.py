@@ -8,7 +8,7 @@ class Player:
         if direction in self.current_room.get_linked_rooms():
             self.current_room = self.current_room.get_linked_rooms()[direction]
         else:
-            print("You can't go that way")
+            print("You can't go that way.")
             print("")
 
     def get_name(self):

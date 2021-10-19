@@ -22,7 +22,7 @@ class Room:
             item.describe()
 
         for direction in self.linked_rooms:
-            print(f"There is a door to the {direction}")
+            print(f"There is a door to the {direction}.")
 
     def get_desc(self):
         return self.description

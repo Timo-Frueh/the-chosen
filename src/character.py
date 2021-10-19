@@ -11,7 +11,7 @@ class Character:
         print(f"[{self.name}]: {self.conversation}")
 
     def fight(self, weapon):
-        print(f"{self.name} does not want to fight you")
+        print(f"{self.name} does not want to fight you.")
         return True
 
     def get_name(self):
@@ -35,7 +35,7 @@ class Friend(Character):
         super().__init__(character_name)
 
     def hug(self):
-        print(f"{self.name} hugs you back")
+        print(f"{self.name} hugs you back.")
 
 
 class Enemy(Character):
