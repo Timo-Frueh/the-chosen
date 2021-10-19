@@ -23,7 +23,7 @@ class Main:
         RPGInfo.welcome()
 
         self.cellar = Room(room_name="Cellar")
-        self.cellar.set_desc("Cellar description")
+        self.cellar.set_desc(open("./resources/cellar_description.txt", "r").read())
 
         self.stairwell = Room(room_name="Stairwell to the Cellar")
         self.stairwell.set_desc("Stairwell description")
@@ -98,6 +98,10 @@ class Main:
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
+
+        self.longsword = Item(item_name="sword")
+        self.longsword.set_description("a typical European longsword of a length a bit longer than your arm")
+        self.cellar.add_item(self.longsword)
 
         print("\nYou look around.")
 
