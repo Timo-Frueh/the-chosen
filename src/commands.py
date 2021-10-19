@@ -1,22 +1,22 @@
 class Commands:
     
-    commands = {"north": "move north",
-                "east": "move east",
-                "south": "move south",
-                "west": "move west",
-                "look": "look at your surroundings",
-                "talk": "talk to someone in the room",
-                "inventory": "\bshow what you are carrying",
-                "fight": "fight someone",
-                "take": "put something into your inventory",
-                "drop": "drop something in your inventory",
-                "quit": "quit the game -> NOTE: you will not be able to restore the game later",
-                "help": "show this list"}
+    commands = {"north     ": "  move north",
+                "east      ": "  move east",
+                "south     ": "  move south",
+                "west      ": "  move west",
+                "look      ": "  look at your surroundings",
+                "talk      ": "  talk to someone in the room",
+                "inventory ": "  show what you are carrying",
+                "fight     ": "  fight someone",
+                "take      ": "  put something into your inventory",
+                "drop      ": "  drop something in your inventory",
+                "quit      ": "  quit the game -> NOTE: you will not be able to restore the game later",
+                "help      ": "  show this list"}
     
     @classmethod
     def print_commands(cls):
         for command in cls.commands:
-            print(f"{command}:\t\t{cls.commands[command]}")
+            print(f"{command}:{cls.commands[command]}")
 
     @staticmethod
     def movement(player, direction):
