@@ -50,5 +50,5 @@ class Commands:
 
     @staticmethod
     def quit():
-        confirm = input("Do you really want to quit? [y|n] ")
+        confirm = input("Do you really whish to leave the game? [y|n] ")
         return confirm

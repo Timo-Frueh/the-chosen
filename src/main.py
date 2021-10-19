@@ -4,9 +4,13 @@ from character import Character
 from player import Player
 from commands import Commands as Cmd
 
+from clear_screen import clear
+
 
 class Main:
     def __init__(self):
+
+        clear()
 
         RPGInfo.author = "Timo Früh"
         RPGInfo.title = "Title"
@@ -73,8 +77,11 @@ class Main:
                 print(f"I do not know what you meant by {command}.")
 
         print("")
-
         RPGInfo.credits()
+        print("")
+
+        input("[Hit any key to exit.]")
+        clear()
 
 
 if __name__ == "__main__":
