@@ -37,6 +37,7 @@ class Main:
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
 
         self.sword = Item("sword")
+        self.sword.set_description("a normal longsword about the length of your arm.")
         self.player.add_to_inventory(self.sword)
 
         self.elliot = Friend(character_name="Elliot")
@@ -79,6 +80,12 @@ class Main:
 
             elif command == "fight":
                 alive = Cmd.fight(self.player)
+
+            elif command == "take":
+                Cmd.take(self.player)
+
+            elif command == "drop":
+                Cmd.drop(self.player)
 
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
