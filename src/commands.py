@@ -6,13 +6,14 @@ class Commands:
                 "west": "move west",
                 "look": "look at your surroundings",
                 "talk": "talk to someone in the room",
+                "inventory": "\bshow what you are carrying",
                 "quit": "quit the game -> NOTE: you will not be able to restore the game later",
                 "help": "show this list"}
     
     @classmethod
     def print_commands(cls):
         for command in cls.commands:
-            print(f"{command}:\t {cls.commands[command]}")
+            print(f"{command}:\t\t{cls.commands[command]}")
 
     @staticmethod
     def movement(player, direction):
@@ -29,6 +30,15 @@ class Commands:
         for character in player.get_current_room().get_characters():
             if character.get_name().lower().replace(" ", "") == talk_to:
                 character.talk()
+
+    @staticmethod
+    def show_inventory(player):
+        if player.get_inventory():
+            print("You are carrying:")
+            for item in player.get_inventory():
+                print(item)
+        else:
+            print("You are empty-handed.")
 
     @staticmethod
     def quit():

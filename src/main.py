@@ -59,6 +59,9 @@ class Main:
             elif command == "talk":
                 Cmd.talk(self.player)
 
+            elif command in ["inventory", "i", "backpack"]:
+                Cmd.show_inventory(self.player)
+
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
                 if confirm == "y":

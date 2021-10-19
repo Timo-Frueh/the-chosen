@@ -11,6 +11,15 @@ class Player:
             print("You can't go that way.")
             print("")
 
+    def get_inventory(self):
+        return self.inventory
+
+    def add_to_inventory(self, item):
+        self.inventory.append(item)
+
+    def remove_from_inventory(self, item):
+        self.inventory.remove(item)
+
     def get_name(self):
         return self.name
 
