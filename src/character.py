@@ -10,8 +10,9 @@ class Character:
     def talk(self):
         print(f"[{self.name}]: {self.conversation}")
 
-    def fight(self):
+    def fight(self, weapon):
         print(f"{self.name} does not want to fight you")
+        return True
 
     def get_name(self):
         return self.name
@@ -27,3 +28,23 @@ class Character:
 
     def set_conversation(self, new_conversation):
         self.conversation = new_conversation
+
+
+class Enemy(Character):
+    def __init__(self, character_name):
+        super().__init__(character_name)
+        self.weaknesses = []
+
+    def fight(self, weapon):
+        if weapon in self.weaknesses:
+            print(f"You kill {self.name} with the {weapon}!")
+            return True
+        else:
+            print(f"{self.name} lands a fatal blow. You die ...")
+            return False
+
+    def get_weakness(self):
+        return self.weaknesses
+
+    def set_weakness(self, new_weakness):
+        self.weaknesses = new_weakness
