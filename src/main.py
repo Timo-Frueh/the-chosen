@@ -1,7 +1,7 @@
 from rpginfo import RPGInfo
 from room import Room
-from character import Character, Friend, Enemy
 from player import Player
+from character import Character, Friend, Enemy
 from commands import Commands as Cmd
 from item import Item
 
@@ -22,35 +22,84 @@ class Main:
 
         RPGInfo.welcome()
 
-        self.testroom = Room(room_name="Testroom")
-        self.testroom.set_desc("This is a testroom")
+        self.cellar = Room(room_name="Cellar")
+        self.cellar.set_desc("Cellar description")
 
-        self.testroom2 = Room(room_name="Testroom 2")
-        self.testroom2.set_desc("This is another testroom")
+        self.stairwell = Room(room_name="Stairwell to the Cellar")
+        self.stairwell.set_desc("Stairwell description")
 
-        self.testroom.link_room("south", self.testroom2)
-        self.testroom2.link_room("north", self.testroom)
+        self.hall = Room(room_name="The Hall")
+        self.hall.set_desc("Hall description")
+
+        self.west_room = Room(room_name="Room West to the Hall")
+        self.west_room.set_desc("West Room description")
+
+        self.trophy_room = Room(room_name="Trophy Room")
+        self.trophy_room.set_desc("Trophy Room description")
+
+        self.ns_passageway = Room(room_name="N/S Passageway")
+        self.ns_passageway.set_desc("N/S Passageway description")
+
+        self.staff_room = Room(room_name="Library Staff Room")
+        self.staff_room.set_desc("Staff Room description")
+
+        self.library = Room(room_name="The Library")
+        self.library.set_desc("Library description")
+
+        self.library_entrance = Room(room_name="Library Entrance")
+        self.library_entrance.set_desc("Library Entrance description")
+
+        self.east_room = Room(room_name="Room East to the Hall")
+        self.east_room.set_desc("East Room description")
+
+        self.throne_entrance = Room(room_name="Entrance to the Throne Room")
+        self.throne_entrance.set_desc("Throne Room Entrance description")
+
+        self.hidden_room = Room(room_name="Hidden Room")
+        self.hidden_room.set_desc("Hidden Room description")
+
+        self.throne_room = Room(room_name="The Throne Room")
+        self.throne_room.set_desc("Throne Room description")
+
+        self.cellar.link_room(direction="west", room=self.stairwell)
+        self.stairwell.link_room(direction="east", room=self.cellar)
+
+        self.stairwell.link_room(direction="north", room=self.hall)
+        self.hall.link_room(direction="south", room=self.stairwell)
+
+        self.hall.link_room(direction="west", room=self.west_room)
+        self.west_room.link_room(direction="east", room=self.hall)
+
+        self.west_room.link_room(direction="west", room=self.trophy_room)
+        self.trophy_room.link_room(direction="east", room=self.west_room)
+
+        self.trophy_room.link_room(direction="north", room=self.ns_passageway)
+        self.ns_passageway.link_room(direction="south", room=self.trophy_room)
+
+        self.ns_passageway.link_room(direction="north", room=self.staff_room)
+        self.staff_room.link_room(direction="south", room=self.ns_passageway)
+
+        self.staff_room.link_room(direction="east", room=self.library)
+        self.library.link_room(direction="west", room=self.staff_room)
+
+        self.library.link_room(direction="south", room=self.library_entrance)
+        self.library_entrance.link_room(direction="north", room=self.library)
+
+        self.library_entrance.link_room(direction="south", room=self.hall)
+        self.hall.link_room(direction="north", room=self.library_entrance)
+
+        self.hall.link_room(direction="east", room=self.throne_entrance)
+        self.throne_entrance.link_room(direction="west", room=self.hall)
+
+        self.throne_entrance.link_room(direction="north", room=self.throne_room)
+        self.throne_room.link_room(direction="south", room=self.throne_entrance)
 
         self.player_name = input("What is your name? ")
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"
-        self.player = Player(player_name=self.player_name, starting_room=self.testroom)
+        self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
         print("\nYou look around.")
-
-        self.sword = Item("sword")
-        self.sword.set_description("a normal longsword about the length of your arm.")
-        self.player.add_to_inventory(self.sword)
-
-        self.elliot = Friend(character_name="Elliot")
-        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
-        self.elliot.set_conversation(f"Hey, {self.player.get_name()}! Long time no see!")
-        self.testroom.add_character(self.elliot)
-
-        self.derek = Enemy(character_name="Derek")
-        self.derek.set_desc("a nasty smelling werewolf.")
-        self.derek.add_weakness(self.sword)
-        self.testroom2.add_character(self.derek)
 
         print("")
 
