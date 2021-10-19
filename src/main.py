@@ -27,6 +27,8 @@ class Main:
         self.testroom2.link_room("north", self.testroom)
 
         self.player_name = input("Who are you? ")
+        if self.player_name.replace(" ", "") == "":
+            self.player_name = "Stranger"
         self.player = Player(player_name=self.player_name, starting_room=self.testroom)
 
         self.elliot = Character(character_name="Elliot")
