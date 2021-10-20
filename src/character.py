@@ -33,6 +33,20 @@ class Character:
         self.conversation = new_conversation
 
 
+class Stranger(Character):
+    def __init__(self, character_name):
+        super().__init__(character_name)
+
+    def describe(self):
+        print(f"You see a {self.name}, {self.description}")
+
+    def talk(self):
+        if self.conversation:
+            print(f"[The {self.name}]: {self.conversation}")
+        else:
+            print(f"{self.name} doesn't want to talk to you.")
+
+
 class Friend(Character):
     def __init__(self, character_name):
         super().__init__(character_name)
