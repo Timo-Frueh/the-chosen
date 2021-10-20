@@ -45,7 +45,7 @@ class Stranger(Character):
         if self.conversation:
             print(f"[The {self.name}]: {self.conversation}")
         else:
-            print(f"{self.name} doesn't want to talk to you.")
+            print(f"The {self.name} doesn't want to talk to you.")
 
     def fight(self, weapon, player):
         if self.deadly:
