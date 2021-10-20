@@ -76,6 +76,7 @@ class Enemy(Character):
         if weapon in self.weaknesses:
             print(f"You kill {self.name} with the {weapon.get_name()}!")
             player.get_current_room().remove_character(self)
+            player.add_kill()
             return True
         else:
             print(f"{self.name} lands a fatal blow.\nYou die ...")

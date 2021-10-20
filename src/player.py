@@ -3,6 +3,7 @@ class Player:
         self.name = player_name
         self.inventory = []
         self.current_room = starting_room
+        self.kills = 0
 
     def move(self, direction):
         if direction in self.current_room.get_linked_rooms():
@@ -33,3 +34,9 @@ class Player:
 
     def get_current_room(self):
         return self.current_room
+
+    def get_kills(self):
+        return self.kills
+
+    def add_kill(self):
+        self.kills += 1
