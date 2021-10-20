@@ -132,23 +132,23 @@ class Main:
 
         self.elliot = Friend(character_name="Elliot")
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name ..")
-        self.elliot.set_conversation(f"Hey, {self.player_name}! Long time no see! Don't mind me, I'm just doing my"
+        self.elliot.set_conversation(f"Hey, {self.player_name}! Long time no see! Don't mind me, I'm just doing my "
                                      "work around here.")
         self.west_room.add_character(self.elliot)
 
         self.scholar = Stranger(class_name="scholar")
         self.scholar.set_desc("who's currently searching for a book somewhere in the shelves")
         self.scholar.set_conversation("Hello my son. Are you in need of a book?\n"
-                                      "        I'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
+                                      "               I'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
         self.library.add_character(self.scholar)
 
         self.hag = Stranger(class_name="old hag")
         self.hag.set_desc("sitting on the bed")
         self.hag.set_conversation("Oooh ... what a fine surprise ... the Chosen is finally here. You know\n"
-                                  "        your task already, I suppose? Quick, quick, let me tell you something then:\n"
-                                  "        To discover the swords you must find the three burning suns, then turn\n"
-                                  "        to ice and take the daring step.\n"
-                                  "        That doesn't help you? Well, this is all I know.")
+                                  "               your task already, I suppose? Quick, quick, let me tell you something then:\n"
+                                  "               To discover the swords you must find the three burning suns, then turn\n"
+                                  "               to ice and take the daring step.\n"
+                                  "               That doesn't help you? Well, this is all I know.")
         self.staff_room.add_character(self.hag)
 
         print("\nYou look around.")
