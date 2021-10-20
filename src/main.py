@@ -134,7 +134,7 @@ class Main:
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
         self.elliot.set_conversation(f"\tHey, {self.player_name}! Long time no see! Have you heard the latest gossip?\n"
                                      "\t\tWe all know that the Demon King can be killed with the legendary Swords, right?\n"
-                                     "\t\tRumour has it that even with those you'd have to kill a certain amount of\n"
+                                     "\t\tRumour has it that even with those you'd have to kill seven of\n"
                                      "\t\this demons first, to weaken him.\n"
                                      "\t\tBut what do I know!")
         self.west_room.add_character(self.elliot)
