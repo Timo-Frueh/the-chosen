@@ -92,6 +92,21 @@ class Enemy(Character):
         self.weaknesses.remove(weakness)
 
 
+class Boss(Enemy):
+    def __init__(self, character_name, kills_needed):
+        super().__init__(character_name)
+        self.kills_needed = kills_needed
+
+    def fight(self, weapon, player):
+        if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
+            print(f"You kill the {self.name} with the {weapon.get_name()}!")
+            player.get_current_room().remove_character(self)
+            return True
+
+        else:
+            print(f"The {self.name} lands a fatal blow. You die ...")
+
+
 class Mob(Enemy):
     def __init__(self, class_name):
         super().__init__(class_name)
