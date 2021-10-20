@@ -1,7 +1,7 @@
 from rpginfo import RPGInfo
 from room import Room
 from player import Player
-from character import Stranger, Friend, Enemy, Mob
+from character import Stranger, Friend, Enemy, Boss, Mob
 from commands import Commands as Cmd
 from item import Item, Artifact, Artifacts
 
@@ -164,6 +164,13 @@ class Main:
         self.warrioress = Stranger(class_name="warrioress", deadly=True)
         self.warrioress.set_desc("seeming a bit lost but eying you with obvious distrust.")
         self.ns_passageway.add_character(self.warrioress)
+
+        self.gatekeeper = Enemy(character_name="The Gatekeeper")
+        self.gatekeeper.set_desc("standing firm in front of the Throne Room, holding his lance close.")
+        self.gatekeeper.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will"
+                                         "\t\tkill you if you try to take his throne."
+                                         "\t\tLong live the Demon King!")
+        self.throne_entrance.add_character(self.gatekeeper)
 
         print("\nYou look around.")
 
