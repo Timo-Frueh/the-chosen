@@ -1,4 +1,4 @@
 You are now standing in a big, decorated room. There is a sign on the north wall,
 upon which is written in big, golden letters:
 "Entrance to the Throne Room of His Majesty"
-There is also one torch on every other wall.
+Light comes from three torches, one on each wall.
