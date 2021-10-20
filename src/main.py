@@ -169,6 +169,9 @@ class Main:
             elif command == "drop":
                 Cmd.drop(self.player)
 
+            elif command == "hug":
+                Cmd.hug(self.player)
+
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
                 if confirm == "y":

@@ -1,3 +1,6 @@
+from character import Character, Enemy, Friend
+
+
 class Commands:
     
     commands = {"north     ": "  move north",
@@ -107,6 +110,26 @@ class Commands:
 
         else:
             print("You do not have anything to drop.")
+
+    @staticmethod
+    def hug(player):
+        if player.get_current_room().get_characters():
+            hug = input("Hug whom? ").lower().replace(" ", "")
+            character = player.get_current_room().get_character(hug)
+
+            if character:
+                if isinstance(character, Friend):
+                    character.hug()
+                elif isinstance(character, Enemy):
+                    print("You wouldn't want to do that.")
+                elif isinstance(character, Character):
+                    print("I don't think they'd appreciate that.")
+
+            else:
+                print(f"There is no {hug} here.")
+
+        else:
+            print("There is no one here to receive your warm embrace.")
 
     @staticmethod
     def quit():
