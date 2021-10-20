@@ -3,7 +3,7 @@ from room import Room
 from player import Player
 from character import Character, Friend, Enemy
 from commands import Commands as Cmd
-from item import Item
+from item import Item, Artifact, Artifacts
 
 import os
 from clear_screen import clear
@@ -111,8 +111,9 @@ class Main:
         self.throne_entrance.link_room(direction="north", room=self.throne_room)
         self.throne_room.link_room(direction="south", room=self.throne_entrance)
 
-        self.longsword = Item(item_name="sword")
-        self.longsword.set_description("a typical European longsword of a length a bit longer than your arm")
+        self.longsword = Artifact(art="the", item_name="Excalibur", initial_room=self.cellar)
+        self.longsword.set_description("a longsword about the length of your arm. It's glowing slightly")
+        self.longsword.set_initial_description("thrust into the ground before you and glowing")
         self.cellar.add_item(self.longsword)
 
         RPGInfo.welcome()

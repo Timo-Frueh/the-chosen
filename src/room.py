@@ -1,3 +1,6 @@
+from item import Item, Artifact, Artifacts
+
+
 class Room:
     def __init__(self, room_name):
         self.name = room_name
@@ -19,7 +22,10 @@ class Room:
             character.describe()
 
         for item in self.items:
-            item.describe()
+            if isinstance(item, Artifact) and item.get_initial_room() == self:
+                item.describe_initial()
+            else:
+                item.describe()
 
         for direction in self.linked_rooms:
             print(f"There is a door to the {direction}.")
@@ -44,7 +50,7 @@ class Room:
 
     def get_character(self, name):
         for character in self.characters:
-            if character.name.lower().replace(" ", "") == name:
+            if character.name.lower().replace(" ", "") == name.lower().replace(" ", ""):
                 return character
 
     def add_character(self, character):
@@ -58,7 +64,7 @@ class Room:
 
     def get_item(self, name):
         for item in self.items:
-            if item.name.lower().replace(" ", "") == name:
+            if item.name.lower().replace(" ", "") == name.lower().replace(" ", ""):
                 return item
 
     def add_item(self, item):
