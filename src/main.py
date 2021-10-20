@@ -158,6 +158,10 @@ class Main:
                                        "\t\tThis is all pointless!")
         self.hall.add_character(self.stranger)
 
+        self.warrioress = Stranger(class_name="warrioress", deadly=True)
+        self.warrioress.set_desc("seeming a bit lost but eying you with obvious distrust.")
+        self.ns_passageway.add_character(self.warrioress)
+
         print("\nYou look around.")
 
         print("")
