@@ -5,7 +5,7 @@ class Item:
         self.description = None
 
     def describe(self):
-        print(f"{self.name_w_art.capitalize()} is here, {self.description}")
+        print(f"{self.name_w_art.capitalize()} is here, {self.description}.")
 
     def get_name(self, art):
         if art:
@@ -28,7 +28,7 @@ class Artifact(Item):
         self.initial_description = None
 
     def describe_initial(self):
-        print(f"{self.name_w_art} is here, {self.initial_description}")
+        print(f"{self.name_w_art} is here, {self.initial_description}.")
 
     def get_initial_description(self):
         return self.initial_description
@@ -48,7 +48,7 @@ class Artifacts(Artifact):
         super().__init__(item_name, initial_room)
 
     def describe(self):
-        print(f"{self.name_w_art.capitalize()} are here, {self.description}")
+        print(f"{self.name_w_art.capitalize()} are here, {self.description}.")
 
     def describe_initial(self):
-        print(f"{self.name_w_art.capitalize()} are here, {self.initial_description}")
+        print(f"{self.name_w_art.capitalize()} are here, {self.initial_description}.")
