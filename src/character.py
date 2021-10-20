@@ -5,7 +5,7 @@ class Character:
         self.conversation = None
 
     def describe(self):
-        print(f"You see {self.name}, {self.description}")
+        print(f"You see {self.name}, {self.description}.")
 
     def talk(self):
         if self.conversation:
@@ -46,9 +46,10 @@ class Enemy(Character):
         super().__init__(character_name)
         self.weaknesses = []
 
-    def fight(self, weapon):
+    def fight(self, weapon, player):
         if weapon in self.weaknesses:
             print(f"You kill {self.name} with the {weapon.get_name()}!")
+            player.get_current_room().remove_character(self)
             return True
         else:
             print(f"{self.name} lands a fatal blow. You die ...")

@@ -116,6 +116,11 @@ class Main:
         self.longsword.set_initial_description("thrust into the ground before you and glowing")
         self.cellar.add_item(self.longsword)
 
+        self.dummy = Enemy(character_name="Dummy")
+        self.dummy.set_desc("just standing around")
+        self.dummy.add_weakness(self.longsword)
+        self.cellar.add_character(self.dummy)
+
         RPGInfo.welcome()
 
         self.player_name = input("What is your name? ")

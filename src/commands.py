@@ -64,7 +64,7 @@ class Commands:
                 weapon = player.get_inventory_item(fight_with)
 
                 if weapon:
-                    alive = player.get_current_room().get_character(fight).fight(weapon)
+                    alive = player.get_current_room().get_character(fight).fight(weapon, player)
                 else:
                     print(f"You do not have a {fight_with}.")
 
