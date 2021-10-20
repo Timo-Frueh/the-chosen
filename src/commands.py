@@ -47,7 +47,7 @@ class Commands:
         if player.get_inventory():
             print("You are carrying:")
             for item in player.get_inventory():
-                print(f"- A {item.get_name()}")
+                print(f"- {item.get_name(art=True).capitalize()}")
         else:
             print("You are empty-handed.")
 
