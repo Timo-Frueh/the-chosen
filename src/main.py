@@ -158,8 +158,6 @@ class Main:
                                        "\t\tThis is all pointless!")
         self.hall.add_character(self.stranger)
 
-
-
         print("\nYou look around.")
 
         print("")

@@ -11,7 +11,7 @@ class Player:
             print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
             self.current_room = self.current_room.get_hidden_links()[direction]
         else:
-            print("You can't go that way.")
+            print("You walk head first into a wall and realize: You can't go that way.")
             print("")
 
     def get_inventory(self):
