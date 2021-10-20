@@ -54,7 +54,7 @@ class Main:
         self.ns_passageway = Room(room_name="N/S Passageway")
         self.ns_passageway.set_desc(self.ns_passageway_f.read())
 
-        self.staff_room = Room(room_name="Library Staff Room")
+        self.staff_room = Room(room_name="Staff Room")
         self.staff_room.set_desc(self.staff_room_f.read())
 
         self.library = Room(room_name="The Library")
