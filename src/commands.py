@@ -122,7 +122,7 @@ class Commands:
                 if isinstance(character, Friend):
                     character.hug()
                 elif isinstance(character, Enemy):
-                    print("You wouldn't want to do that.")
+                    print("You wouldn't want to hug this malicious creature.")
                 elif isinstance(character, Character):
                     print("I doubt they'd appreciate that.")
 
@@ -130,7 +130,7 @@ class Commands:
                 print(f"There is no {hug} here.")
 
         else:
-            print("There is no one here to receive your warm embrace.")
+            print("There is no one here to receive your comforting embrace.")
 
     @staticmethod
     def quit():
