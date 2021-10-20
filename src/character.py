@@ -49,7 +49,7 @@ class Stranger(Character):
 
     def fight(self, weapon, player):
         if self.deadly:
-            print(f"The {self.name} lands a fatal blow. You die ...")
+            print(f"The {self.name} didn't wish you harm. But you already started the fight. And lose ... You die ...")
             return False
         else:
             print(f"You kill the {self.name}.\n That wasn't just ... You feel sorry for the {self.name}.")
