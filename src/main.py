@@ -173,7 +173,7 @@ class Main:
         self.throne_entrance.add_character(self.gatekeeper)
 
         self.demon_king = Boss(character_name="An-Harat", kills_needed=20)
-        self.demon_king.set_desc(", the Demon King, sitting on his magnificent throne and looking incredibly menacing.")
+        self.demon_king.set_desc("the Demon King, sitting on his magnificent throne and looking incredibly menacing.")
         self.demon_king.set_conversation("\tI know you're here to kill me.\n"
                                          "\t\t\t\tSo let's just skip the talking part and start to FIGHT!")
         self.demon_king.add_weakness(self.swords_odd)
@@ -229,6 +229,7 @@ class Main:
             else:
                 print(f"I do not know what you meant by {command}.")
 
+        print(f"You vanquished {self.player.get_kills()} enemies during the game.")
         print("")
         RPGInfo.credits()
         print("")
