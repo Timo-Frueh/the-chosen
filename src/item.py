@@ -44,9 +44,6 @@ class Artifact(Item):
     def get_initial_room(self):
         return self.initial_room
 
-    def set_initial_room(self, initial_room):
-        self.initial_room = initial_room
-
 
 class Artifacts(Artifact):
     def __init__(self, art, item_name, initial_room):

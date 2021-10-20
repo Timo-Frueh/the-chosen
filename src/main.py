@@ -117,6 +117,12 @@ class Main:
         self.longsword.set_description("a simple longsword but seems like good craftsmanship")
         self.cellar.add_item(self.longsword)
 
+        self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
+        self.swords_odd.set_description("both faintly glowing")
+        self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
+                                                "Dusk silver and Dawn crimson")
+        self.hidden_room.add_item(self.swords_odd)
+
         RPGInfo.welcome()
 
         self.player_name = input("What is your name? ")
