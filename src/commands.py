@@ -73,7 +73,7 @@ class Commands:
                     print(f"You do not have a {fight_with}.")
 
             else:
-                print(f"There is no {enemy.get_name()} here.")
+                print(f"There is no {fight} here.")
 
         else:
             print("There is no one here to fight.")

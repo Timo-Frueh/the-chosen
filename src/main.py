@@ -170,6 +170,7 @@ class Main:
         self.gatekeeper.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
                                          "\t\t\tkill you if you try to take his throne.\n"
                                          "\t\t\tLong live the Demon King!")
+        self.gatekeeper.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.gatekeeper)
 
         self.demon_king = Boss(character_name="An-Harat", kills_needed=20)
@@ -229,7 +230,13 @@ class Main:
             else:
                 print(f"I do not know what you meant by {command}.")
 
-        print(f"You vanquished {self.player.get_kills()} enemies during the game.")
+        if self.player.get_kills() == 0:
+            print(f"You vanquished not a single during the game.")
+        elif self.player.get_kills() == 1:
+            print(f"You vanquished 1 enemy during the game.")
+        elif self.player.get_kills() > 1:
+            print(f"You vanquished {self.player.get_kills()} enemies during the game.")
+
         print("")
         RPGInfo.credits()
         print("")

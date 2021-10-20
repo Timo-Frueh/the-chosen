@@ -52,7 +52,8 @@ class Stranger(Character):
             print(f"The {self.name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
             return False
         else:
-            print(f"You kill the {self.name}.\n That wasn't just ... You feel sorry for the {self.name}.")
+            print(f"You kill the {self.name}.\nThat wasn't just ... You feel sorry for the {self.name}.")
+            return True
 
 
 class Friend(Character):
