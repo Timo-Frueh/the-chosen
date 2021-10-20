@@ -131,25 +131,34 @@ class Main:
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
         self.elliot = Friend(character_name="Elliot")
-        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name ..")
+        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
         self.elliot.set_conversation(f"Hey, {self.player_name}! Long time no see! Don't mind me, I'm just doing my "
                                      "work around here.")
         self.west_room.add_character(self.elliot)
 
         self.scholar = Stranger(class_name="scholar", deadly=False)
-        self.scholar.set_desc("who's currently searching for a book somewhere in the shelves")
-        self.scholar.set_conversation("Hello my son. Are you in need of a book?\n"
-                                      "               I'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
+        self.scholar.set_desc("currently searching for some book somewhere on the shelves.")
+        self.scholar.set_conversation("\tHello my son. Are you in need of a book?\n"
+                                      "\t\tI'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
         self.library.add_character(self.scholar)
 
         self.hag = Stranger(class_name="old hag", deadly=False)
-        self.hag.set_desc("sitting on the bed")
-        self.hag.set_conversation("Oooh ... what a fine surprise ... the Chosen is finally here. You know\n"
-                                  "               your task already, I suppose? Quick, quick, let me tell you something then:\n"
-                                  "               To discover the swords you must find the three burning suns, then turn\n"
-                                  "               to ice and take the daring step.\n"
-                                  "               That doesn't help you? Well, this is all I know.")
+        self.hag.set_desc("sitting on the bed.")
+        self.hag.set_conversation("\tOooh ... what a fine surprise ... the Chosen is finally here. You know\n"
+                                  "\t\tyour task already, I suppose? Quick, quick, let me tell you something then:\n"
+                                  "\t\tTo discover the swords you must find the three burning suns, then turn\n"
+                                  "\t\tto ice and take the daring step.\n"
+                                  "\t\tThat doesn't help you? Well, this is all I know.")
         self.staff_room.add_character(self.hag)
+
+        self.stranger = Stranger(class_name="stranger", deadly=True)
+        self.stranger.set_desc("leaning on the far end of the wall, examining you with cold, blue eyes.")
+        self.stranger.set_conversation("\tHm. Another one. The world is going mad .... And what do you do?\n"
+                                       "\t\tWaving around your sword as if you were able to do something.\n"
+                                       "\t\tThis is all pointless!")
+        self.hall.add_character(self.stranger)
+
+
 
         print("\nYou look around.")
 

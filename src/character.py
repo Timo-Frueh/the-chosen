@@ -5,7 +5,7 @@ class Character:
         self.conversation = None
 
     def describe(self):
-        print(f"You see {self.name}, {self.description}.")
+        print(f"You see {self.name}, {self.description}")
 
     def talk(self):
         if self.conversation:
@@ -39,7 +39,7 @@ class Stranger(Character):
         self.deadly = deadly
 
     def describe(self):
-        print(f"You see a {self.name}, {self.description}.")
+        print(f"You see a {self.name}, {self.description}")
 
     def talk(self):
         if self.conversation:
@@ -52,7 +52,7 @@ class Stranger(Character):
             print(f"The {self.name} lands a fatal blow. You die ...")
             return False
         else:
-            print(f"You kill the {self.name}.\n That wasn't just ... You feel sorry for the {self.name}")
+            print(f"You kill the {self.name}.\n That wasn't just ... You feel sorry for the {self.name}.")
 
 
 class Friend(Character):
