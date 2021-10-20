@@ -130,6 +130,12 @@ class Main:
             self.player_name = "Stranger"
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
+        self.elliot = Friend(character_name="Elliot")
+        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name ..")
+        self.elliot.set_conversation(f"Hey, {self.player_name}! Long time no see! Don't mind me, I'm just doing my "
+                                     "work around here.")
+        self.west_room.add_character(self.elliot)
+
         print("\nYou look around.")
 
         print("")

@@ -13,7 +13,7 @@ class Character:
         else:
             print(f"{self.name} doesn't want to talk to you.")
 
-    def fight(self, weapon):
+    def fight(self, weapon, player):
         print(f"{self.name} does not want to fight you.")
         return True
 
