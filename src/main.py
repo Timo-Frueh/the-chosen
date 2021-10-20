@@ -167,10 +167,17 @@ class Main:
 
         self.gatekeeper = Enemy(character_name="The Gatekeeper")
         self.gatekeeper.set_desc("standing firm in front of the Throne Room, holding his lance close.")
-        self.gatekeeper.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will"
-                                         "\t\tkill you if you try to take his throne."
-                                         "\t\tLong live the Demon King!")
+        self.gatekeeper.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
+                                         "\t\t\tkill you if you try to take his throne.\n"
+                                         "\t\t\tLong live the Demon King!")
         self.throne_entrance.add_character(self.gatekeeper)
+
+        self.demon_king = Boss(character_name="An-Harat", kills_needed=20)
+        self.demon_king.set_desc(", the Demon King, sitting on his magnificent throne and looking incredibly menacing.")
+        self.demon_king.set_conversation("\tI know you're here to kill me.\n"
+                                         "\t\t\t\tSo let's just skip the talking part and start to FIGHT!")
+        self.demon_king.add_weakness(self.swords_odd)
+        self.throne_room.add_character(self.demon_king)
 
         print("\nYou look around.")
 

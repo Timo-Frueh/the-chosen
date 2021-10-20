@@ -99,12 +99,12 @@ class Boss(Enemy):
 
     def fight(self, weapon, player):
         if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
-            print(f"You kill the {self.name} with the {weapon.get_name()}!")
+            print(f"You kill {self.name} with the {weapon.get_name()}!")
             player.get_current_room().remove_character(self)
             return True
 
         else:
-            print(f"The {self.name} lands a fatal blow. You die ...")
+            print(f"{self.name} lands a fatal blow. You die ...")
 
 
 class Mob(Enemy):
