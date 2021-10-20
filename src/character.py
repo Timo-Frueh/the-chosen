@@ -34,8 +34,8 @@ class Character:
 
 
 class Stranger(Character):
-    def __init__(self, character_name):
-        super().__init__(character_name)
+    def __init__(self, class_name):
+        super().__init__(class_name)
 
     def describe(self):
         print(f"You see a {self.name}, {self.description}")
@@ -77,3 +77,17 @@ class Enemy(Character):
 
     def remove_weakness(self, weakness):
         self.weaknesses.remove(weakness)
+
+
+class Mob(Enemy):
+    def __init__(self, class_name):
+        super().__init__(class_name)
+
+    def fight(self, weapon, player):
+        if weapon in self.weaknesses:
+            print(f"You kill the {self.name} with the {weapon.get_name()}!")
+            player.get_current_room().remove_character(self)
+            return True
+
+        else:
+            print(f"The {self.name} lands a fatal blow. You die ...")
