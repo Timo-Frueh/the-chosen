@@ -111,9 +111,8 @@ class Main:
         self.throne_entrance.link_room(direction="north", room=self.throne_room)
         self.throne_room.link_room(direction="south", room=self.throne_entrance)
 
-        self.longsword = Artifact(art="the", item_name="Excalibur", initial_room=self.cellar)
-        self.longsword.set_description("a longsword about the length of your arm. It's glowing slightly")
-        self.longsword.set_initial_description("thrust into the ground before you and glowing")
+        self.longsword = Item(art="a", item_name="sword")
+        self.longsword.set_description("a simple longsword but seems like good craftsmanship")
         self.cellar.add_item(self.longsword)
 
         self.dummy = Enemy(character_name="Dummy")
