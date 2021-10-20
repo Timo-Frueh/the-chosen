@@ -38,13 +38,17 @@ class Stranger(Character):
         super().__init__(class_name)
 
     def describe(self):
-        print(f"You see a {self.name}, {self.description}")
+        print(f"You see a {self.name}, {self.description}.")
 
     def talk(self):
         if self.conversation:
             print(f"[The {self.name}]: {self.conversation}")
         else:
             print(f"{self.name} doesn't want to talk to you.")
+
+    def fight(self, weapon, player):
+        print(f"The {self.name} does not want to fight you.")
+        return True
 
 
 class Friend(Character):
@@ -53,6 +57,10 @@ class Friend(Character):
 
     def hug(self):
         print(f"{self.name} hugs you back.")
+
+    def fight(self, weapon, player):
+        print("You wouldn't want to hurt a friend, would you?")
+        return True
 
 
 class Enemy(Character):
