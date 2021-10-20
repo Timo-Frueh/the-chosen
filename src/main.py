@@ -115,11 +115,6 @@ class Main:
         self.longsword.set_description("a simple longsword but seems like good craftsmanship")
         self.cellar.add_item(self.longsword)
 
-        self.dummy = Enemy(character_name="Dummy")
-        self.dummy.set_desc("just standing around")
-        self.dummy.add_weakness(self.longsword)
-        self.cellar.add_character(self.dummy)
-
         RPGInfo.welcome()
 
         self.player_name = input("What is your name? ")
