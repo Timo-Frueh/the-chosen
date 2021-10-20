@@ -13,6 +13,7 @@ class Commands:
                 "fight     ": "  fight someone",
                 "take      ": "  put something into your inventory",
                 "drop      ": "  drop something in your inventory",
+                "hug       ": "  hug someone",
                 "quit      ": "  quit the game -> NOTE: you will not be able to restore the game later",
                 "help      ": "  show this list"}
     
@@ -123,7 +124,7 @@ class Commands:
                 elif isinstance(character, Enemy):
                     print("You wouldn't want to do that.")
                 elif isinstance(character, Character):
-                    print("I don't think they'd appreciate that.")
+                    print("I doubt they'd appreciate that.")
 
             else:
                 print(f"There is no {hug} here.")
