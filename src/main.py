@@ -102,8 +102,11 @@ class Main:
         self.library_entrance.link_room(direction="south", room=self.hall)
         self.hall.link_room(direction="north", room=self.library_entrance)
 
-        self.hall.link_room(direction="east", room=self.throne_entrance)
-        self.throne_entrance.link_room(direction="west", room=self.hall)
+        self.hall.link_room(direction="east", room=self.east_room)
+        self.east_room.link_room(direction="west", room=self.hall)
+
+        self.east_room.link_room(direction="east", room=self.throne_entrance)
+        self.throne_entrance.link_room(direction="west", room=self.east_room)
 
         self.throne_entrance.link_room(direction="north", room=self.throne_room)
         self.throne_room.link_room(direction="south", room=self.throne_entrance)
