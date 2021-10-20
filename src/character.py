@@ -34,8 +34,9 @@ class Character:
 
 
 class Stranger(Character):
-    def __init__(self, class_name):
+    def __init__(self, class_name, deadly):
         super().__init__(class_name)
+        self.deadly = deadly
 
     def describe(self):
         print(f"You see a {self.name}, {self.description}.")
@@ -47,8 +48,11 @@ class Stranger(Character):
             print(f"{self.name} doesn't want to talk to you.")
 
     def fight(self, weapon, player):
-        print(f"The {self.name} does not want to fight you.")
-        return True
+        if self.deadly:
+            print(f"The {self.name} lands a fatal blow. You die ...")
+            return False
+        else:
+            print(f"You kill the {self.name}.\n That wasn't just ... You feel sorry for the {self.name}")
 
 
 class Friend(Character):

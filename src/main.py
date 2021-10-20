@@ -136,13 +136,13 @@ class Main:
                                      "work around here.")
         self.west_room.add_character(self.elliot)
 
-        self.scholar = Stranger(class_name="scholar")
+        self.scholar = Stranger(class_name="scholar", deadly=False)
         self.scholar.set_desc("who's currently searching for a book somewhere in the shelves")
         self.scholar.set_conversation("Hello my son. Are you in need of a book?\n"
                                       "               I'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
         self.library.add_character(self.scholar)
 
-        self.hag = Stranger(class_name="old hag")
+        self.hag = Stranger(class_name="old hag", deadly=False)
         self.hag.set_desc("sitting on the bed")
         self.hag.set_conversation("Oooh ... what a fine surprise ... the Chosen is finally here. You know\n"
                                   "               your task already, I suppose? Quick, quick, let me tell you something then:\n"
