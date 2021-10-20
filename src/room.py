@@ -6,6 +6,7 @@ class Room:
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.hidden_links = {}
         self.characters = []
         self.items = []
 
@@ -63,6 +64,12 @@ class Room:
 
     def link_room(self, direction, room):
         self.linked_rooms[direction] = room
+
+    def get_hidden_links(self):
+        return self.hidden_links
+
+    def link_hidden(self, direction, room):
+        self.hidden_links[direction] = room
 
     def get_characters(self):
         return self.characters

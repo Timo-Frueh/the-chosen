@@ -7,6 +7,8 @@ class Player:
     def move(self, direction):
         if direction in self.current_room.get_linked_rooms():
             self.current_room = self.current_room.get_linked_rooms()[direction]
+        elif direction in self.current_room.get_hidden_links():
+            self.current_room = self.current_room.get_hidden_links()[direction]
         else:
             print("You can't go that way.")
             print("")

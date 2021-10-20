@@ -109,7 +109,9 @@ class Main:
         self.throne_entrance.link_room(direction="west", room=self.east_room)
 
         self.throne_entrance.link_room(direction="north", room=self.throne_room)
-        self.throne_room.link_room(direction="south", room=self.throne_entrance)
+
+        self.throne_entrance.link_hidden(direction="south", room=self.hidden_room)
+        self.hidden_room.link_hidden(direction="north", room=self.throne_entrance)
 
         self.longsword = Item(art="a", item_name="sword")
         self.longsword.set_description("a simple longsword but seems like good craftsmanship")
