@@ -129,23 +129,3 @@ class Mob(Enemy):
 
     def talk(self):
         print(f"[The {self.name}]: Long live the Demon King!")
-
-
-class FireDemon(Mob):
-    def __init__(self):
-        super().__init__("demon of fire")
-
-
-class WaterDemon(Mob):
-    def __init__(self):
-        super().__init__("demon of water")
-
-
-class EarthDemon(Mob):
-    def __init__(self):
-        super().__init__("demon of earth")
-
-
-class AirDemon(Mob):
-    def __init__(self):
-        super().__init__("demon of air")
