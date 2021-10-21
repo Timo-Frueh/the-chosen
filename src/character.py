@@ -114,7 +114,7 @@ class Mob(Enemy):
         super().__init__(class_name)
 
     def describe(self):
-        print(f"You see a {self.name}, {self.description}")
+        print(f"You see a {self.name}, looking malevolently at you.")
 
     def fight(self, weapon, player):
         if weapon in self.weaknesses:
