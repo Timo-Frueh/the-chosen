@@ -114,14 +114,26 @@ class Main:
         self.hidden_room.link_hidden(direction="north", room=self.throne_entrance)
 
         self.longsword = Item(art="a", item_name="sword")
-        self.longsword.set_description("a simple longsword but seems like good craftsmanship")
+        self.longsword.set_description("a simple longsword but seems like good craftsmanship.")
         self.cellar.add_item(self.longsword)
 
+        self.crossbow = Item(art="a", item_name="crossbow")
+        self.crossbow.set_description("double-winged and small. It looks magical, probably enchanted to shoot infinite bolts.")
+        self.cellar.add_item(self.crossbow)
+
         self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
-        self.swords_odd.set_description("both faintly glowing")
+        self.swords_odd.set_description("both faintly glowing.")
         self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
                                                 "Dusk silver and Dawn crimson")
         self.hidden_room.add_item(self.swords_odd)
+
+        self.candle = Item(art="a", item_name="candle")
+        self.candle.set_description("lying on the ground, glowing faintly.")
+        self.hall.add_item(self.candle)
+
+        self.water_bottle = Item(art="a", item_name="bottle of water")
+        self.water_bottle.set_description("standing on the ground.")
+        self.library.add_item(self.water_bottle)
 
         RPGInfo.welcome()
 
@@ -131,6 +143,44 @@ class Main:
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
         self.fire_demon = Mob(class_name="demon of fire")
+        self.fire_demon.add_weakness(self.swords_odd)
+        self.fire_demon.add_weakness(self.water_bottle)
+        self.west_room.add_character(self.fire_demon)
+
+        self.fire_demon2 = Mob(class_name="demon of fire")
+        self.fire_demon2.add_weakness(self.swords_odd)
+        self.fire_demon2.add_weakness(self.water_bottle)
+        self.east_room.add_character(self.fire_demon2)
+
+        self.water_demon = Mob(class_name="demon of water")
+        self.water_demon.add_weakness(self.swords_odd)
+        self.water_demon.add_weakness(self.candle)
+        self.trophy_room.add_character(self.water_demon)
+
+        self.water_demon2 = Mob(class_name="demon of water")
+        self.water_demon2.add_weakness(self.swords_odd)
+        self.water_demon2.add_weakness(self.candle)
+        self.library_entrance.add_character(self.water_demon2)
+
+        self.earth_demon = Mob(class_name="demon of earth")
+        self.earth_demon.add_weakness(self.swords_odd)
+        self.earth_demon.add_weakness(self.longsword)
+        self.ns_passageway.add_character(self.earth_demon)
+
+        self.earth_demon2 = Mob(class_name="demon of earth")
+        self.earth_demon2.add_weakness(self.swords_odd)
+        self.earth_demon2.add_weakness(self.longsword)
+        self.library.add_character(self.earth_demon)
+
+        self.air_demon = Mob(class_name="demon of air")
+        self.air_demon.add_weakness(self.swords_odd)
+        self.air_demon.add_weakness(self.crossbow)
+        self.staff_room.add_character(self.air_demon)
+
+        self.air_demon2 = Mob(class_name="demon of air")
+        self.air_demon2.add_weakness(self.swords_odd)
+        self.air_demon2.add_weakness(self.crossbow)
+        self.hall.add_character(self.air_demon2)
 
         self.elliot = Friend(character_name="Elliot")
         self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
