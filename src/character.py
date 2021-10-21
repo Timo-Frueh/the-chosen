@@ -106,17 +106,31 @@ class Boss(Enemy):
 
         else:
             print(f"{self.name} lands a fatal blow. You die ...")
+            return False
 
 
 class Mob(Enemy):
     def __init__(self, class_name):
         super().__init__(class_name)
 
+    def describe(self):
+        print(f"You see a {self.name}, {self.description}")
+
     def fight(self, weapon, player):
         if weapon in self.weaknesses:
             print(f"You kill the {self.name} with the {weapon.get_name()}!")
             player.get_current_room().remove_character(self)
+            player.add_kill()
             return True
 
         else:
             print(f"The {self.name} lands a fatal blow. You die ...")
+            return False
+
+    def talk(self):
+        if self.conversation:
+            print(f"[The {self.name}]: {self.conversation}")
+        else:
+            print(f"The {self.name} doesn't want to talk to you.")
+
+
