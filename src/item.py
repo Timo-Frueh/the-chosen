@@ -7,7 +7,7 @@ class Item:
         self.description = None
 
     def describe(self):
-        print(f"{self.name_w_cap_art} is here, {self.description}.")
+        print(f"{self.name_w_cap_art} is here, {self.description}")
 
     def get_name(self):
         return self.name
@@ -33,7 +33,7 @@ class Artifact(Item):
         self.initial_description = None
 
     def describe_initial(self):
-        print(f"{self.name_w_cap_art} is here, {self.initial_description}.")
+        print(f"{self.name_w_cap_art} is here, {self.initial_description}")
 
     def get_initial_description(self):
         return self.initial_description
@@ -51,7 +51,7 @@ class Artifacts(Artifact):
         self.art = art
 
     def describe(self):
-        print(f"{self.name_w_cap_art} are here, {self.description}.")
+        print(f"{self.name_w_cap_art} are here, {self.description}")
 
     def describe_initial(self):
-        print(f"{self.name_w_cap_art} are here, {self.initial_description}.")
+        print(f"{self.name_w_cap_art} are here, {self.initial_description}")

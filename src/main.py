@@ -124,11 +124,11 @@ class Main:
         self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
         self.swords_odd.set_description("both faintly glowing.")
         self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
-                                                "Dusk silver and Dawn crimson")
+                                                "Dusk silver and Dawn crimson.")
         self.hidden_room.add_item(self.swords_odd)
 
         self.candle = Item(art="a", item_name="candle")
-        self.candle.set_description("lying on the ground, glowing faintly.")
+        self.candle.set_description("standing on the ground, its flame flickering.")
         self.hall.add_item(self.candle)
 
         self.water_bottle = Item(art="a", item_name="bottle of water")
@@ -225,10 +225,10 @@ class Main:
         self.gatekeeper.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.gatekeeper)
 
-        self.demon_king = Boss(character_name="An-Harat", kills_needed=20)
+        self.demon_king = Boss(character_name="An-Harat", kills_needed=7)
         self.demon_king.set_desc("the Demon King, sitting on his magnificent throne and looking incredibly menacing.")
         self.demon_king.set_conversation("\tI know you're here to kill me.\n"
-                                         "\t\t\t\tSo let's just skip the talking part and start to FIGHT!")
+                                         "\t\t\tSo let's just skip the talking part and start to FIGHT!")
         self.demon_king.add_weakness(self.swords_odd)
         self.throne_room.add_character(self.demon_king)
 
@@ -261,6 +261,12 @@ class Main:
 
             elif command in ["inventory", "i", "backpack"]:
                 Cmd.show_inventory(self.player)
+
+            elif command == "fight" and self.player.get_current_room() == self.throne_room:
+                alive = Cmd.fight(self.player)
+
+                if alive:
+                    victory = True
 
             elif command == "fight":
                 alive = Cmd.fight(self.player)
