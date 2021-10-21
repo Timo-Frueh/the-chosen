@@ -131,7 +131,7 @@ class Main:
         self.candle.set_description("standing on the ground, its flame flickering.")
         self.hall.add_item(self.candle)
 
-        self.water_bottle = Item(art="a", item_name="bottle of water")
+        self.water_bottle = Item(art="a", item_name="bottle of holy water")
         self.water_bottle.set_description("standing on the ground.")
         self.library.add_item(self.water_bottle)
 
