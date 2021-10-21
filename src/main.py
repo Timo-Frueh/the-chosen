@@ -3,7 +3,7 @@ from room import Room
 from player import Player
 from character import Stranger, Friend, Enemy, Boss, Mob
 from commands import Commands as Cmd
-from item import Item, Artifact, Artifacts
+from item import Item, Artifacts
 
 import os
 from clear_screen import clear
@@ -114,7 +114,7 @@ class Main:
         self.hidden_room.link_hidden(direction="north", room=self.throne_entrance)
 
         self.longsword = Item(art="a", item_name="sword")
-        self.longsword.set_description("a simple longsword but seems like good craftsmanship.")
+        self.longsword.set_description("a simple longsword, but it seems like good craftsmanship.")
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Item(art="a", item_name="crossbow")
@@ -264,13 +264,12 @@ class Main:
                 Cmd.show_inventory(self.player)
 
             elif command == "fight" and self.player.get_current_room() == self.throne_room:
-                alive = Cmd.fight(self.player)
-
-                if alive:
-                    victory = True
+                boss_fight = Cmd.fight(self.player)
+                alive = boss_fight["alive"]
+                victory = boss_fight["victory"]
 
             elif command == "fight":
-                alive = Cmd.fight(self.player)
+                alive = Cmd.fight(self.player)["alive"]
 
             elif command == "take":
                 Cmd.take(self.player)
@@ -286,6 +285,9 @@ class Main:
                 if confirm == "y":
                     alive = False
 
+            elif command == "":
+                pass
+
             else:
                 print(f"I do not know what you meant by {user_input}.")
 
@@ -293,7 +295,7 @@ class Main:
             print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
 
         if self.player.get_kills() == 0:
-            print(f"You vanquished not a single during the game.")
+            print(f"You vanquished not a single enemy during the game.")
         elif self.player.get_kills() == 1:
             print(f"You vanquished 1 enemy during the game.")
         elif self.player.get_kills() > 1:

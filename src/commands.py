@@ -59,6 +59,7 @@ class Commands:
     @staticmethod
     def fight(player):
         alive = True
+        victory = False
 
         if player.get_current_room().get_characters():
             user_input = input("Fight whom? ")
@@ -71,6 +72,8 @@ class Commands:
 
                 if weapon:
                     alive = player.get_current_room().get_character(fight).fight(weapon, player)
+                    if alive:
+                        victory = True
                 else:
                     print(f"You do not have a {fight_with}.")
 
@@ -80,7 +83,7 @@ class Commands:
         else:
             print("There is no one here to fight.")
 
-        return alive
+        return {"alive": alive, "victory": victory}
 
     @staticmethod
     def take(player):
