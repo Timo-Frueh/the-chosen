@@ -128,9 +128,24 @@ class Mob(Enemy):
             return False
 
     def talk(self):
-        if self.conversation:
-            print(f"[The {self.name}]: {self.conversation}")
-        else:
-            print(f"The {self.name} doesn't want to talk to you.")
+        print(f"[The {self.name}]: Long live the Demon King!")
 
 
+class FireDemon(Mob):
+    def __init__(self):
+        super().__init__("demon of fire")
+
+
+class WaterDemon(Mob):
+    def __init__(self):
+        super().__init__("demon of water")
+
+
+class EarthDemon(Mob):
+    def __init__(self):
+        super().__init__("demon of earth")
+
+
+class AirDemon(Mob):
+    def __init__(self):
+        super().__init__("demon of air")
