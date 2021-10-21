@@ -245,7 +245,8 @@ class Main:
 
         while alive and not victory:
             print("")
-            command = input("> ").lower().replace(" ", "")
+            user_input = input("> ")
+            command = user_input.lower().replace(" ", "")
 
             if command in ["commands", "help", "?"]:
                 Cmd.print_commands()
@@ -286,7 +287,10 @@ class Main:
                     alive = False
 
             else:
-                print(f"I do not know what you meant by {command}.")
+                print(f"I do not know what you meant by {user_input}.")
+
+        if victory:
+            print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
 
         if self.player.get_kills() == 0:
             print(f"You vanquished not a single during the game.")

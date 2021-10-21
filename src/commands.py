@@ -34,14 +34,15 @@ class Commands:
     @staticmethod
     def talk(player):
         if player.get_current_room().get_characters():
-            talk_to = input("Talk to whom? ").lower().replace(" ", "")
+            user_input = input("Talk to whom? ")
+            talk_to = user_input.lower().replace(" ", "")
             character = player.get_current_room().get_character(talk_to)
 
             if character:
                 character.talk()
 
             else:
-                print(f"There is no {talk_to} here.")
+                print(f"There is no {user_input} here.")
 
         else:
             print("There is no one here to listen to your beautiful voice.")
@@ -60,7 +61,8 @@ class Commands:
         alive = True
 
         if player.get_current_room().get_characters():
-            fight = input("Fight whom? ").lower().replace(" ", "")
+            user_input = input("Fight whom? ")
+            fight = user_input.lower().replace(" ", "")
             enemy = player.get_current_room().get_character(fight)
 
             if enemy:
@@ -73,7 +75,7 @@ class Commands:
                     print(f"You do not have a {fight_with}.")
 
             else:
-                print(f"There is no {fight} here.")
+                print(f"There is no {user_input} here.")
 
         else:
             print("There is no one here to fight.")
@@ -83,7 +85,8 @@ class Commands:
     @staticmethod
     def take(player):
         if player.get_current_room().get_items():
-            take = input("What do you want to take? ").lower().replace(" ", "")
+            user_input = input("What do you want to take? ")
+            take = user_input.lower().replace(" ", "")
             item = player.get_current_room().get_item(take)
 
             if item:
@@ -91,7 +94,7 @@ class Commands:
                 player.add_to_inventory(item)
                 print("Taken.")
             else:
-                print(f"There is no {take} here.")
+                print(f"There is no {user_input} here.")
 
         else:
             print("There is nothing here to take.")
@@ -99,7 +102,8 @@ class Commands:
     @staticmethod
     def drop(player):
         if player.get_inventory():
-            drop = input("What do you want do drop? ")
+            user_input = input("What do you want do drop? ")
+            drop = user_input.lower().replace(" ", "")
             item = player.get_inventory_item(drop)
 
             if item:
@@ -107,7 +111,7 @@ class Commands:
                 player.get_current_room().add_item(item)
                 print("Dropped.")
             else:
-                print(f"You do not have a {drop}.")
+                print(f"You do not have a {user_input}.")
 
         else:
             print("You do not have anything to drop.")
@@ -115,7 +119,8 @@ class Commands:
     @staticmethod
     def hug(player):
         if player.get_current_room().get_characters():
-            hug = input("Hug whom? ").lower().replace(" ", "")
+            user_input = input("Hug whom? ")
+            hug = user_input.lower().replace(" ", "")
             character = player.get_current_room().get_character(hug)
 
             if character:
@@ -127,7 +132,7 @@ class Commands:
                     print("I doubt they'd appreciate that.")
 
             else:
-                print(f"There is no {hug} here.")
+                print(f"There is no {user_input} here.")
 
         else:
             print("There is no one here to receive your comforting embrace.")
