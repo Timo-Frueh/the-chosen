@@ -56,4 +56,4 @@ An example `fight` command:
 
 You can also just input a positional command as you would input a normal one and the game will ask you for the parameters.
 
-## Have fun!
+Have fun!
