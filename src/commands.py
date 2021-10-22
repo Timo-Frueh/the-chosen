@@ -32,9 +32,12 @@ class Commands:
         player.get_current_room().describe()
 
     @staticmethod
-    def talk(player):
+    def talk(player, who):
         if player.get_current_room().get_characters():
-            user_input = input("Talk to whom? ")
+            if not who:
+                user_input = input("Talk to whom? ")
+            else:
+                user_input = who
             talk_to = user_input.lower().replace(" ", "")
             character = player.get_current_room().get_character(talk_to)
 
@@ -57,15 +60,15 @@ class Commands:
             print("You are empty-handed.")
 
     @staticmethod
-    def fight(player, character, item):
+    def fight(player, who, item):
         alive = True
         victory = False
 
         if player.get_current_room().get_characters():
-            if not character:
+            if not who:
                 user_input = input("Fight whom? ")
             else:
-                user_input = character
+                user_input = who
 
             fight = user_input.lower().replace(" ", "")
             enemy = player.get_current_room().get_character(fight)
@@ -95,9 +98,13 @@ class Commands:
         return {"alive": alive, "victory": victory}
 
     @staticmethod
-    def take(player):
+    def take(player, what):
         if player.get_current_room().get_items():
-            user_input = input("What do you want to take? ")
+            if not what:
+                user_input = input("What do you want to take? ")
+            else:
+                user_input = what
+
             take = user_input.lower().replace(" ", "")
             item = player.get_current_room().get_item(take)
 
@@ -112,9 +119,13 @@ class Commands:
             print("There is nothing here to take.")
 
     @staticmethod
-    def drop(player):
+    def drop(player, what):
         if player.get_inventory():
-            user_input = input("What do you want do drop? ")
+            if not what:
+                user_input = input("What do you want do drop? ")
+            else:
+                user_input = what
+
             drop = user_input.lower().replace(" ", "")
             item = player.get_inventory_item(drop)
 
@@ -129,9 +140,13 @@ class Commands:
             print("You do not have anything to drop.")
 
     @staticmethod
-    def hug(player):
+    def hug(player, who):
         if player.get_current_room().get_characters():
-            user_input = input("Hug whom? ")
+            if not who:
+                user_input = input("Hug whom? ")
+            else:
+                user_input = who
+
             hug = user_input.lower().replace(" ", "")
             character = player.get_current_room().get_character(hug)
 

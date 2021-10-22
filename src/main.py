@@ -258,30 +258,34 @@ class Main:
             elif command in ["look", "l"]:
                 Cmd.look(self.player)
 
-            elif command == "talk":
-                Cmd.talk(self.player)
+            elif "talk" in command:
+                talk_input = InputInterpreter.interpret_single(command, "talk")
+                Cmd.talk(self.player, talk_input)
 
             elif command in ["inventory", "i", "backpack"]:
                 Cmd.show_inventory(self.player)
 
             elif command == "fight" and self.player.get_current_room() == self.throne_room:
                 boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
-                boss_fight = Cmd.fight(self.player, character=boss_fight_input[0], item=boss_fight_input[1])
+                boss_fight = Cmd.fight(self.player, who=boss_fight_input[0], item=boss_fight_input[1])
                 alive = boss_fight["alive"]
                 victory = boss_fight["victory"]
 
             elif "fight" in command:
                 fight_input = InputInterpreter.interpret_double(command, "fight", "with")
-                alive = Cmd.fight(self.player, character=fight_input[0], item=fight_input[1])["alive"]
+                alive = Cmd.fight(self.player, who=fight_input[0], item=fight_input[1])["alive"]
 
-            elif command == "take":
-                Cmd.take(self.player)
+            elif "take" in command:
+                take_input = InputInterpreter.interpret_single(command, "take")
+                Cmd.take(self.player, take_input)
 
-            elif command == "drop":
-                Cmd.drop(self.player)
+            elif "drop" in command:
+                drop_input = InputInterpreter.interpret_single(command, "drop")
+                Cmd.drop(self.player, drop_input)
 
-            elif command == "hug":
-                Cmd.hug(self.player)
+            elif "hug" in command:
+                hug_input = InputInterpreter.interpret_single(command, "hug")
+                Cmd.hug(self.player, hug_input)
 
             elif command in ["quit", "exit"]:
                 confirm = Cmd.quit()
