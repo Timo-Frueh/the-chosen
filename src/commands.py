@@ -57,17 +57,26 @@ class Commands:
             print("You are empty-handed.")
 
     @staticmethod
-    def fight(player):
+    def fight(player, character, item):
         alive = True
         victory = False
 
         if player.get_current_room().get_characters():
-            user_input = input("Fight whom? ")
+            if not character:
+                user_input = input("Fight whom? ")
+            else:
+                user_input = character
+
             fight = user_input.lower().replace(" ", "")
             enemy = player.get_current_room().get_character(fight)
 
             if enemy:
-                fight_with = input("What do you want to fight with? ").lower().replace(" ", "")
+                if not item:
+                    scnd_input = input("What do you want to fight with? ")
+                else:
+                    scnd_input = item
+
+                fight_with = scnd_input.lower().replace(" ", "")
                 weapon = player.get_inventory_item(fight_with)
 
                 if weapon:

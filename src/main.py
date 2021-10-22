@@ -4,6 +4,7 @@ from player import Player
 from character import Stranger, Friend, Enemy, Boss, Mob
 from commands import Commands as Cmd
 from item import Item, Artifacts
+from input_interpreter import InputInterpreter
 
 import os
 from clear_screen import clear
@@ -264,12 +265,14 @@ class Main:
                 Cmd.show_inventory(self.player)
 
             elif command == "fight" and self.player.get_current_room() == self.throne_room:
-                boss_fight = Cmd.fight(self.player)
+                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
+                boss_fight = Cmd.fight(self.player, character=boss_fight_input[0], item=boss_fight_input[1])
                 alive = boss_fight["alive"]
                 victory = boss_fight["victory"]
 
-            elif command == "fight":
-                alive = Cmd.fight(self.player)["alive"]
+            elif "fight" in command:
+                fight_input = InputInterpreter.interpret_double(command, "fight", "with")
+                alive = Cmd.fight(self.player, character=fight_input[0], item=fight_input[1])["alive"]
 
             elif command == "take":
                 Cmd.take(self.player)
