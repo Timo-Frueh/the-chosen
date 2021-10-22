@@ -312,7 +312,7 @@ class Main:
         RPGInfo.credits()
         print("")
 
-        input("[Hit any key to exit.]")
+        input("[Hit enter to exit.]")
         clear()
 
 
