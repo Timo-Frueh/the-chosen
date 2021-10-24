@@ -1,4 +1,4 @@
-from item import Item, Artifact, Artifacts
+from the_chosen.item import Item, Artifact, Artifacts
 
 
 class Room:

@@ -1,4 +1,4 @@
-from character import Character, Enemy, Friend
+from the_chosen.character import Character, Enemy, Friend
 
 
 class Commands:

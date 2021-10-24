@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='the chosen',
+    name='the-chosen',
     version='0.1.1',
     packages=['the_chosen'],
     url='https://github.com/Timo-Frueh/the-chosen',
@@ -10,6 +10,6 @@ setup(
     author_email='timo.frueh@icloud.com',
     description='A short text-adventure',
     install_requires=['clear-screen~=0.1.14'],
-    package_data={'the_chosen': ['resources']},
+    package_data={'the_chosen': ['resources/*']},
     entry_points={'console_scripts': ['the-chosen=the_chosen.main:main']}
 )

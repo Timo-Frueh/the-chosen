@@ -1,10 +1,10 @@
-from rpginfo import RPGInfo
-from room import Room
-from player import Player
-from character import Stranger, Friend, Enemy, Boss, Mob
-from commands import Commands as Cmd
-from item import Item, Artifacts
-from input_interpreter import InputInterpreter
+from the_chosen.rpginfo import RPGInfo
+from the_chosen.room import Room
+from the_chosen.player import Player
+from the_chosen.character import Stranger, Friend, Enemy, Boss, Mob
+from the_chosen.commands import Commands as Cmd
+from the_chosen.item import Item, Artifacts
+from the_chosen.input_interpreter import InputInterpreter
 
 import os
 from clear_screen import clear
