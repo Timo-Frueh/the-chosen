@@ -316,7 +316,11 @@ class Main:
         clear()
 
 
-if __name__ == "__main__":
-    Game = Main()
+def main():
+    game = Main()
 
-    Game.mainloop()
+    game.mainloop()
+
+
+if __name__ == "__main__":
+    main()
