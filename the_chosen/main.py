@@ -265,7 +265,7 @@ class Main:
             elif command in ["inventory", "i", "backpack"]:
                 Cmd.show_inventory(self.player)
 
-            elif command == "fight" and self.player.get_current_room() == self.throne_room:
+            elif "fight" in command and self.player.get_current_room() == self.throne_room:
                 boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
                 boss_fight = Cmd.fight(self.player, who=boss_fight_input[0], item=boss_fight_input[1])
                 alive = boss_fight["alive"]
