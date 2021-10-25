@@ -10,13 +10,13 @@ Your objective is to find a pair of legendary swords and kill an evil king with 
 
 To install directly from the latest release, use:
 ~~~ shell
-sudo curl -L https://github.com/Timo-Frueh/the-chosen/releases/download/latest/the-chosen -o /usr/local/bin/the-chosen
+sudo curl -L https://github.com/Timo-Frueh/the-chosen/releases/latest/download/the-chosen -o /usr/local/bin/the-chosen
 sudo chmod a+rx /usr/local/bin/the-chosen
 ~~~
 
 Or, alternatively, with`wget`
 ~~~ shell
-sudo wget https://github.com/Timo-Frueh/the-chosen/releases/download/latest/the-chosen -O /usr/local/bin/the-chosen
+sudo wget https://github.com/Timo-Frueh/the-chosen/releases/latest/download/the-chosen -O /usr/local/bin/the-chosen
 sudo chmod a+rx /usr/local/bin/the-chosen
 ~~~
 
