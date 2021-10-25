@@ -2,13 +2,19 @@
 # Full copyright notice in main.py
 
 class Player:
+
+    # define constructor and four object attributes
     def __init__(self, player_name, starting_room):
         self.name = player_name
         self.inventory = []
         self.current_room = starting_room
         self.kills = 0
 
+    # move to a room to the direction
     def move(self, direction):
+
+        # check all links of the current room, move if there is a room to the desired direction and
+        # print special messages for vertical and hidden links
         if direction in self.current_room.get_links():
             self.current_room = self.current_room.get_links()[direction]
         elif direction in self.current_room.get_vertical_links():
@@ -21,6 +27,7 @@ class Player:
             print("You can't go that way.")
             print("")
 
+    # getters and setters
     def get_inventory(self):
         return self.inventory
 
