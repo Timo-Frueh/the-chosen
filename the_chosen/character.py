@@ -1,3 +1,6 @@
+# The Chosen  Copyright (C) 2021  Timo Früh
+# Full copyright notice in main.py
+
 class Character:
     def __init__(self, character_name):
         self.name = character_name

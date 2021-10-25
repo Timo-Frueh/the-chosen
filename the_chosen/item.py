@@ -1,3 +1,6 @@
+# The Chosen  Copyright (C) 2021  Timo Früh
+# Full copyright notice in main.py
+
 class Item:
     def __init__(self, art, item_name):
         self.name = item_name

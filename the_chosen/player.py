@@ -1,3 +1,6 @@
+# The Chosen  Copyright (C) 2021  Timo Früh
+# Full copyright notice in main.py
+
 class Player:
     def __init__(self, player_name, starting_room):
         self.name = player_name
