@@ -4,6 +4,26 @@ This is a short Zork-like text-adventure I wrote.
 
 Your objective is to find a pair of legendary swords and kill an evil king with them.
 
+## How to install
+
+### macOS, Linux
+
+To install directly from the latest release, use:
+~~~ shell
+sudo curl -L https://github.com/Timo-Frueh/the-chosen/releases/download/v0.1.2-alpha/the-chosen -o /usr/local/bin/the-chosen
+sudo chmod a+rx /usr/local/bin/the-chosen
+~~~
+
+Or, alternatively, with`wget`
+~~~ shell
+sudo wget https://github.com/Timo-Frueh/the-chosen/releases/download/v0.1.2-alpha/the-chosen -O /usr/local/bin/the-chosen
+sudo chmod a+rx /usr/local/bin/the-chosen
+~~~
+
+### Windows, macOS, Linux
+
+You can also just download the ZIP-file or tarball from the latest release and install with `setup.py` manually.
+
 ## How to play
 
 There are multiple commands you can use to interact with the game world. 
@@ -16,6 +36,8 @@ north     :  move north
 east      :  move east
 south     :  move south
 west      :  move west
+up        :  move up
+down      :  move down
 look      :  look at your surroundings
 talk      :  talk to someone in the room
 inventory :  show what you are carrying
