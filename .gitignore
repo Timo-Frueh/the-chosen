@@ -149,3 +149,4 @@ cython_debug/
 
 # Stuff specific to my machine
 dist.sh
+dist.py
