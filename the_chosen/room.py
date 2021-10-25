@@ -5,6 +5,8 @@ from the_chosen.item import Item, Artifact, Artifacts
 
 
 class Room:
+
+    # define constructor and seven object attributes
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
@@ -14,28 +16,39 @@ class Room:
         self.characters = []
         self.items = []
 
+    # print the details of the room
     def describe(self):
+
+        # print the name of the room
         print(self.name)
 
+        # print exactly as many ¯ as needed to form an underline
         for n in range(0, len(self.name)-1):
             print("¯", end="")
         print("¯")
 
+        # print the rooms description
         print(self.description)
 
+        # print the description lines of all characters in the room
         for character in self.characters:
             character.describe()
 
+        # print the description lines of all items in the room
+        # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
             if isinstance(item, Artifact) and item.get_initial_room() == self:
                 item.describe_initial()
             else:
                 item.describe()
 
+        # print all (non-hidden) links
         self.print_links()
         self.print_vertical_links()
 
     def print_links(self):
+
+        # print a different message depending on how many links there actually are
         if len(self.links) == 1:
             for direction in self.links:
                 print(f"There is a door to the {direction}.")
@@ -56,12 +69,15 @@ class Room:
             print("There are doors to all directions.")
 
     def print_vertical_links(self):
+
+        # print a different message depending on how many links there actually are
         if len(self.vertical_links) == 1:
             for direction in self.vertical_links:
                 print(f"There is a ladder leading {direction}.")
         elif len(self.vertical_links) == 2:
             print("There is a ladder leading up and down.")
 
+    # getters and setters
     def get_desc(self):
         return self.description
 
