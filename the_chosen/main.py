@@ -18,7 +18,7 @@ class Main:
         self.file_path = os.path.dirname(os.path.abspath(__file__))
         self.welcome_f = open(os.path.join(self.file_path, "resources", "welcome_message.txt"), "r")
         self.cellar_f = open(os.path.join(self.file_path, "resources", "cellar.txt"), "r")
-        self.stairwell_f = open(os.path.join(self.file_path, "resources", "stairwell.txt"), "r")
+        self.cellar_ladder_f = open(os.path.join(self.file_path, "resources", "cellar_ladder.txt"), "r")
         self.hall_f = open(os.path.join(self.file_path, "resources", "hall.txt"), "r")
         self.west_room_f = open(os.path.join(self.file_path, "resources", "west_room.txt"), "r")
         self.trophy_room_f = open(os.path.join(self.file_path, "resources", "trophy_room.txt"), "r")
@@ -40,8 +40,8 @@ class Main:
         self.cellar = Room(room_name="Cellar")
         self.cellar.set_desc(self.cellar_f.read())
 
-        self.stairwell = Room(room_name="Stairwell to the Cellar")
-        self.stairwell.set_desc(self.stairwell_f.read())
+        self.cellar_ladder = Room(room_name="Ladder to the Cellar")
+        self.cellar_ladder.set_desc(self.cellar_ladder_f.read())
 
         self.hall = Room(room_name="The Hall")
         self.hall.set_desc(self.hall_f.read())
@@ -76,40 +76,40 @@ class Main:
         self.throne_room = Room(room_name="The Throne Room")
         self.throne_room.set_desc(self.throne_room_f.read())
 
-        self.cellar.link_room(direction="west", room=self.stairwell)
-        self.stairwell.link_room(direction="east", room=self.cellar)
+        self.cellar.link_vertical(direction="up", room=self.cellar_ladder)
+        self.cellar_ladder.link_vertical(direction="down", room=self.cellar)
 
-        self.stairwell.link_room(direction="north", room=self.hall)
-        self.hall.link_room(direction="south", room=self.stairwell)
+        self.cellar_ladder.link(direction="north", room=self.hall)
+        self.hall.link(direction="south", room=self.cellar_ladder)
 
-        self.hall.link_room(direction="west", room=self.west_room)
-        self.west_room.link_room(direction="east", room=self.hall)
+        self.hall.link(direction="west", room=self.west_room)
+        self.west_room.link(direction="east", room=self.hall)
 
-        self.west_room.link_room(direction="west", room=self.trophy_room)
-        self.trophy_room.link_room(direction="east", room=self.west_room)
+        self.west_room.link(direction="west", room=self.trophy_room)
+        self.trophy_room.link(direction="east", room=self.west_room)
 
-        self.trophy_room.link_room(direction="north", room=self.ns_passageway)
-        self.ns_passageway.link_room(direction="south", room=self.trophy_room)
+        self.trophy_room.link(direction="north", room=self.ns_passageway)
+        self.ns_passageway.link(direction="south", room=self.trophy_room)
 
-        self.ns_passageway.link_room(direction="north", room=self.staff_room)
-        self.staff_room.link_room(direction="south", room=self.ns_passageway)
+        self.ns_passageway.link(direction="north", room=self.staff_room)
+        self.staff_room.link(direction="south", room=self.ns_passageway)
 
-        self.staff_room.link_room(direction="east", room=self.library)
-        self.library.link_room(direction="west", room=self.staff_room)
+        self.staff_room.link(direction="east", room=self.library)
+        self.library.link(direction="west", room=self.staff_room)
 
-        self.library.link_room(direction="south", room=self.library_entrance)
-        self.library_entrance.link_room(direction="north", room=self.library)
+        self.library.link(direction="south", room=self.library_entrance)
+        self.library_entrance.link(direction="north", room=self.library)
 
-        self.library_entrance.link_room(direction="south", room=self.hall)
-        self.hall.link_room(direction="north", room=self.library_entrance)
+        self.library_entrance.link(direction="south", room=self.hall)
+        self.hall.link(direction="north", room=self.library_entrance)
 
-        self.hall.link_room(direction="east", room=self.east_room)
-        self.east_room.link_room(direction="west", room=self.hall)
+        self.hall.link(direction="east", room=self.east_room)
+        self.east_room.link(direction="west", room=self.hall)
 
-        self.east_room.link_room(direction="east", room=self.throne_entrance)
-        self.throne_entrance.link_room(direction="west", room=self.east_room)
+        self.east_room.link(direction="east", room=self.throne_entrance)
+        self.throne_entrance.link(direction="west", room=self.east_room)
 
-        self.throne_entrance.link_room(direction="north", room=self.throne_room)
+        self.throne_entrance.link(direction="north", room=self.throne_room)
 
         self.throne_entrance.link_hidden(direction="south", room=self.hidden_room)
         self.hidden_room.link_hidden(direction="north", room=self.throne_entrance)
@@ -252,7 +252,7 @@ class Main:
             if command in ["commands", "help", "?"]:
                 Cmd.print_commands()
 
-            elif command in ["north", "east", "south", "west"]:
+            elif command in ["north", "east", "south", "west", "up", "down"]:
                 Cmd.movement(self.player, command)
 
             elif command in ["look", "l"]:

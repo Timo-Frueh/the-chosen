@@ -7,6 +7,8 @@ class Commands:
                 "east      ": "  move east",
                 "south     ": "  move south",
                 "west      ": "  move west",
+                "up        ": "  move up",
+                "down      ": "  move down",
                 "look      ": "  look at your surroundings",
                 "talk      ": "  talk to someone in the room",
                 "inventory ": "  show what you are carrying",

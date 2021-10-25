@@ -6,13 +6,16 @@ class Player:
         self.kills = 0
 
     def move(self, direction):
-        if direction in self.current_room.get_linked_rooms():
-            self.current_room = self.current_room.get_linked_rooms()[direction]
+        if direction in self.current_room.get_links():
+            self.current_room = self.current_room.get_links()[direction]
+        elif direction in self.current_room.get_vertical_links():
+            print(f"You climb {direction} the ladder.\n")
+            self.current_room = self.current_room.get_vertical_links()[direction]
         elif direction in self.current_room.get_hidden_links():
             print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
             self.current_room = self.current_room.get_hidden_links()[direction]
         else:
-            print("You walk head first into a wall and realize: You can't go that way.")
+            print("You can't go that way.")
             print("")
 
     def get_inventory(self):
