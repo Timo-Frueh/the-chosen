@@ -4,7 +4,7 @@ class InputInterpreter:
     def interpret_single(command, key):
         output = command.replace(key, "")
 
-        return output
+        return output.strip()
 
     @staticmethod
     def interpret_double(command, key, separator):
@@ -14,6 +14,6 @@ class InputInterpreter:
         try:
             output[1]
         except IndexError:
-            output.append(None)
+            output.append("")
 
-        return output
+        return [output[0].strip(), output[1].strip()]

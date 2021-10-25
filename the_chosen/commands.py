@@ -40,7 +40,7 @@ class Commands:
                 user_input = input("Talk to whom? ")
             else:
                 user_input = who
-            talk_to = user_input.lower().replace(" ", "")
+            talk_to = user_input.lower().strip()
             character = player.get_current_room().get_character(talk_to)
 
             if character:
@@ -72,7 +72,7 @@ class Commands:
             else:
                 user_input = who
 
-            fight = user_input.lower().replace(" ", "")
+            fight = user_input.lower().strip()
             enemy = player.get_current_room().get_character(fight)
 
             if enemy:
@@ -81,7 +81,7 @@ class Commands:
                 else:
                     scnd_input = item
 
-                fight_with = scnd_input.lower().replace(" ", "")
+                fight_with = scnd_input.lower().strip()
                 weapon = player.get_inventory_item(fight_with)
 
                 if weapon:
@@ -89,7 +89,7 @@ class Commands:
                     if alive:
                         victory = True
                 else:
-                    print(f"You do not have a {fight_with}.")
+                    print(f"You do not have a {scnd_input}.")
 
             else:
                 print(f"There is no {user_input} here.")
@@ -107,7 +107,7 @@ class Commands:
             else:
                 user_input = what
 
-            take = user_input.lower().replace(" ", "")
+            take = user_input.lower().strip()
             item = player.get_current_room().get_item(take)
 
             if item:
@@ -128,7 +128,7 @@ class Commands:
             else:
                 user_input = what
 
-            drop = user_input.lower().replace(" ", "")
+            drop = user_input.lower().strip()
             item = player.get_inventory_item(drop)
 
             if item:
@@ -149,7 +149,7 @@ class Commands:
             else:
                 user_input = who
 
-            hug = user_input.lower().replace(" ", "")
+            hug = user_input.lower().strip()
             character = player.get_current_room().get_character(hug)
 
             if character:

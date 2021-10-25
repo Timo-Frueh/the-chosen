@@ -247,7 +247,7 @@ class Main:
         while alive and not victory:
             print("")
             user_input = input("> ")
-            command = user_input.lower().replace(" ", "")
+            command = user_input.lower().strip()
 
             if command in ["commands", "help", "?"]:
                 Cmd.print_commands()
