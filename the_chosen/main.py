@@ -372,8 +372,8 @@ class Main:
                 # execute the quit() method from the Commands class and set its output to the confirm variable
                 confirm = Cmd.quit()
 
-                # end the game if the output was "y"
-                if confirm == "y":
+                # end the game if confirmation was given
+                if confirm:
                     alive = False
 
             # if the command is empty pass on
