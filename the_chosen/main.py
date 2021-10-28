@@ -251,13 +251,13 @@ class Main:
         self.warrioress.set_desc("seeming a bit lost but eying you with obvious distrust.")
         self.ns_passageway.add_character(self.warrioress)
 
-        self.gatekeeper = Enemy(character_name="The Gatekeeper")
-        self.gatekeeper.set_desc("standing firm in front of the Throne Room, holding his lance close.")
-        self.gatekeeper.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
+        self.mandrak = Enemy(character_name="Mandrak")
+        self.mandrak.set_desc("a servant of An-Harat, the Demon King, standing firm in front of the Throne Room, holding his lance close.")
+        self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
                                          "\t\t\tkill you if you try to take his throne.\n"
                                          "\t\t\tLong live the Demon King!")
-        self.gatekeeper.add_weakness(self.swords_odd)
-        self.throne_entrance.add_character(self.gatekeeper)
+        self.mandrak.add_weakness(self.swords_odd)
+        self.throne_entrance.add_character(self.mandrak)
 
         self.demon_king = Boss(character_name="An-Harat", kills_needed=7)
         self.demon_king.set_desc("the Demon King, sitting on his magnificent throne and looking incredibly menacing.")
