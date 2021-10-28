@@ -138,7 +138,7 @@ class Main:
 
         # initialise all items, set their (initial) description and their initial room
         self.longsword = Item(art="a", item_name="sword")
-        self.longsword.set_description("a simple longsword, but it seems like good craftsmanship.")
+        self.longsword.set_description("a simple one, but it seems like good craftsmanship.")
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Item(art="a", item_name="crossbow")
