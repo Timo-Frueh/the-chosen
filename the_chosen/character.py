@@ -46,6 +46,10 @@ class Character:
     def set_conversation(self, new_conversation):
         self.conversation = new_conversation
 
+    # this get_title() method doesn't do anything but is needed later for bosses
+    def get_title(self):
+        return ""
+
 
 class Stranger(Character):
 
@@ -141,10 +145,17 @@ class Enemy(Character):
 
 class Boss(Enemy):
 
-    # define constructor and add a "kills_needed" attribute, defining how many kills the player must have to kill the boss
-    def __init__(self, character_name, kills_needed):
+    # define constructor
+    # and add a title
+    # and add a "kills_needed" attribute, defining how many kills the player must have to kill the boss
+    def __init__(self, character_name, title, kills_needed):
         super().__init__(character_name)
         self.kills_needed = kills_needed
+        self.title = title
+
+    # print a line describing the boss
+    def describe(self):
+        print(f"You see {self.name}, the {self.title}, {self.description}")
 
     # fight the boss: returns true if the player is still alive after the fight
     def fight(self, weapon, player):
@@ -168,6 +179,10 @@ class Boss(Enemy):
             # display a message that the player has died
             print(f"{self.name} lands a fatal blow.\nYou die ...")
             return False
+
+    # getters and setters
+    def get_title(self):
+        return self.title
 
 
 class Mob(Enemy):

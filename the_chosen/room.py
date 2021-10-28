@@ -108,9 +108,11 @@ class Room:
     def get_characters(self):
         return self.characters
 
-    def get_character(self, name):
+    def get_character(self, search):
         for character in self.characters:
-            if character.name.lower().replace(" ", "") == name.lower().replace(" ", ""):
+            if character.get_name().lower().replace(" ", "") == search.lower().replace(" ", ""):
+                return character
+            elif character.get_title().lower().replace(" ", "") == search.lower().replace(" ", ""):
                 return character
 
     def add_character(self, character):
