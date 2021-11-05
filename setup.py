@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='the-chosen',
-    version='1.0.1',
+    version='1.0.2',
     packages=['the_chosen'],
     url='https://github.com/Timo-Frueh/the-chosen',
     license='GPL-3.0',
