@@ -236,7 +236,7 @@ class Main:
         self.hag.set_conversation("\tOooh ... what a fine surprise ... the Chosen is finally here. You know\n"
                                   "\t\tyour task already, I suppose? Quick, quick, let me tell you something then:\n"
                                   "\t\tTo discover the swords you must find the three burning suns, then turn\n"
-                                  "\t\tto ice and take the daring step.\n"
+                                  "\t\tsouth  and take the daring step.\n"
                                   "\t\tThat doesn't help you? Well, this is all I know.")
         self.staff_room.add_character(self.hag)
 
