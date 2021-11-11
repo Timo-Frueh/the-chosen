@@ -1,3 +1,5 @@
+#     coding=utf-8
+
 #     The Chosen: At Nights End: A short text-adventure
 #     Copyright (C) 2021 Timo Früh
 #
