@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
