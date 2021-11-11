@@ -254,8 +254,8 @@ class Main:
         self.mandrak = Enemy(character_name="Mandrak")
         self.mandrak.set_desc("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
         self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
-                                         "\t\t\tkill you if you try to take his throne.\n"
-                                         "\t\t\tLong live the Demon King!")
+                                         "\t\tkill you if you try to take his throne.\n"
+                                         "\t\tLong live the Demon King!")
         self.mandrak.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.mandrak)
 
