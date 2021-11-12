@@ -424,11 +424,12 @@ class Main:
         # print an empty line after the kill message
         print("")
 
-        # print the credits
-        RPGInfo.credits()
+        if victory:
+            # print the credits
+            RPGInfo.credits()
 
-        # print an empty line after the credits
-        print("")
+            # print an empty line after the credits
+            print("")
 
         # print a message to hit enter to exit the game
         input("[Hit enter to exit.]")
