@@ -264,7 +264,7 @@ class Main:
         self.demon_king = Boss(character_name="An-Harat", title="Demon King", kills_needed=7)
         self.demon_king.set_desc("sitting on his magnificent throne and looking incredibly menacing.")
         self.demon_king.set_conversation("\tI know you're here to kill me.\n"
-                                         "\t\t\tSo let's just skip the talking part and start to FIGHT!")
+                                         "\t\tSo let's just skip the talking part and start to FIGHT!")
         self.demon_king.add_weakness(self.swords_odd)
         self.throne_room.add_character(self.demon_king)
 
@@ -305,6 +305,15 @@ class Main:
             # if the command is "look" or "l" execute the look() method from the Commands class
             elif command in ["look", "l"]:
                 Cmd.look(self.player)
+
+            # if the player writes "talk to" instead of "talk" do the same as if they wrote "talk"
+            elif "talk to" in command:
+
+                # interpret positional command "talk to ..."
+                talk_to_input = InputInterpreter.interpret_single(command, "talk to")
+
+                # execute the talk() method from the Commands class
+                Cmd.talk(self.player, talk_to_input)
 
             # if "talk" is in the command do the following
             elif "talk" in command:
