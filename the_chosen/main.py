@@ -144,7 +144,8 @@ class Main:
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Item(art="a", item_name="crossbow")
-        self.crossbow.set_description("double-winged and small. It looks magical, probably enchanted to shoot infinite bolts.")
+        self.crossbow.set_description(
+            "double-winged and small. It looks magical, probably enchanted to shoot infinite bolts.")
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
@@ -262,8 +263,8 @@ class Main:
         self.mandrak.add_alias("servant")
         self.mandrak.set_desc("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
         self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
-                                         "\t\tkill you if you try to take his throne.\n"
-                                         "\t\tLong live the Demon King!")
+                                      "\t\tkill you if you try to take his throne.\n"
+                                      "\t\tLong live the Demon King!")
         self.mandrak.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.mandrak)
 
@@ -448,5 +449,4 @@ def main():
 # run the game if it is started from this file
 # (only to be used through pyinstaller or somesuch, use ../the-chosen.py instead)
 if __name__ == "__main__":
-
     main()
