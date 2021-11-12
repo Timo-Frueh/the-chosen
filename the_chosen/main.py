@@ -263,8 +263,16 @@ class Main:
 
         self.demon_king = Boss(character_name="An-Harat", title="Demon King", kills_needed=7)
         self.demon_king.set_desc("sitting on his magnificent throne and looking incredibly menacing.")
-        self.demon_king.set_conversation("\tI know you're here to kill me.\n"
-                                         "\t\tSo let's just skip the talking part and start to FIGHT!")
+        self.demon_king.set_conversation("\tAah, greetings, Chosen. You are here at last.\n"
+                                         "\t\tWhat took you so long? My demons certainly were no challenge for you,\n"
+                                         "\t\tfor you are in the posession of the legendary Swords of Dusk and Dawn.\n"
+                                         "\t\tEven as powerful a servant as Mandrak would not have been able to withstand\n"
+                                         "\t\tthose dreadful blades of yours, the bringers of death and destruction.\n"
+                                         "\t\tAre you here to kill me, then? Do you want to take my throne?\n"
+                                         "\t\tYou want to take my world from me, because you think it belongs to you mortals?\n"
+                                         "\t\tYou want to end my eternal reign and rid the world of my kind?\n"
+                                         "\t\tCome on then, try to ban me from my realm, try to destroy my immortal soul\n"
+                                         "\t\twith these weapons you carry and I'll behead you right where you stand!")
         self.demon_king.add_weakness(self.swords_odd)
         self.throne_room.add_character(self.demon_king)
 
