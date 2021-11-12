@@ -443,3 +443,10 @@ def main():
     game = Main()
 
     game.mainloop()
+
+
+# run the game if it is started from this file
+# (only to be used through pyinstaller or somesuch, use ../the-chosen.py instead)
+if __name__ == "__main__":
+
+    main()
