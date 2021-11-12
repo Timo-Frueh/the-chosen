@@ -73,7 +73,7 @@ class Commands:
 
             # if this character doesn't exist or is not in the current room print a message
             else:
-                print(f"There is no {user_input} here.")
+                print(f"There is no one called {user_input} here.")
 
         # if there is no-one in the current room print a message
         else:
@@ -147,7 +147,7 @@ class Commands:
 
             # if this character doesn't exist or is not in the current room display a message
             else:
-                print(f"There is no {user_input} here.")
+                print(f"There is no one called {user_input} here.")
 
         # if there is no-one in the room to fight display a message
         else:
@@ -189,7 +189,7 @@ class Commands:
 
             # if this item doesn't exist or is not in the current room print a message
             else:
-                print(f"There is no {user_input} here.")
+                print(f"There is no item called {user_input} here.")
 
         # if there isn't anything in the room to take print a message
         else:
@@ -270,7 +270,7 @@ class Commands:
 
             # if this character doesn't exist or is not in the current room print a message
             else:
-                print(f"There is no {user_input} here.")
+                print(f"There is no one called {user_input} here.")
 
         # if there is no-one in the room to hug print a message
         else:
