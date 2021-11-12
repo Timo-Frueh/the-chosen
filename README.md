@@ -14,15 +14,21 @@ sudo curl -L https://github.com/Timo-Frueh/the-chosen/releases/latest/download/t
 sudo chmod a+rx /usr/local/bin/the-chosen
 ~~~
 
-Or, alternatively, with`wget`
+Or, alternatively, with `wget`
 ~~~ shell
 sudo wget https://github.com/Timo-Frueh/the-chosen/releases/latest/download/the-chosen -O /usr/local/bin/the-chosen
 sudo chmod a+rx /usr/local/bin/the-chosen
 ~~~
 
+_NOTE: You need admin permissions for this._
+
 ### Windows, macOS, Linux
 
-You can also just download the ZIP-file or tarball from the latest release and install with `setup.py` manually.
+1. You can download the ZIP-file or tarball from the latest release and install with `setup.py` manually.
+
+2. You can also download the ZIP-file or tarball from the latest release and run the game directly with `python` from the entry script `the-chosen.py`
+   
+_NOTE: Python 3.6 or newer is required to run the game directly._
 
 ## How to play
 
