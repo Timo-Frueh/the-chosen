@@ -25,9 +25,14 @@ class Player:
         elif direction in self.current_room.get_hidden_links():
             print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
             self.current_room = self.current_room.get_hidden_links()[direction]
+        elif direction in ["north", "east", "south", "west"]:
+            print("You run head first into a wall and realize: You can't go that way.\n")
+        elif direction == "up":
+            print("You jump. Nothing happens. What did you expect?\n")
+        elif direction == "down":
+            print("You kneel down and examine the floor. There doesn't seem to be a way down.\n")
         else:
-            print("You can't go that way.")
-            print("")
+            print("You can't go that way.\n")
 
     # getters and setters
     def get_inventory(self):
