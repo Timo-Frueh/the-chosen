@@ -8,6 +8,7 @@ class Item:
     # define constructor and the five object attributes
     def __init__(self, art, item_name):
         self.name = item_name
+        self.aliases = [item_name.lower().strip()]
         self.art = art
 
         # the name with the article
@@ -25,6 +26,12 @@ class Item:
     # getters and setters
     def get_name(self):
         return self.name
+
+    def get_aliases(self):
+        return self.aliases
+
+    def add_alias(self, alias):
+        self.aliases.append(alias.lower().strip())
 
     def get_name_w_art(self):
         return self.name_w_art

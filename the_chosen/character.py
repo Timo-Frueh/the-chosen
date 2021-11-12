@@ -8,6 +8,7 @@ class Character:
     # define constructor and the three opject attributes
     def __init__(self, character_name):
         self.name = character_name
+        self.aliases = [character_name.lower().strip()]
         self.description = None
         self.conversation = None
 
@@ -35,6 +36,12 @@ class Character:
     # getters and setters
     def get_name(self):
         return self.name
+
+    def get_aliases(self):
+        return self.aliases
+
+    def add_alias(self, alias):
+        self.aliases.append(alias.lower().strip())
 
     def get_desc(self):
         return self.description

@@ -148,6 +148,7 @@ class Main:
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
+        self.swords_odd.add_alias("swords")
         self.swords_odd.set_description("both faintly glowing.")
         self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
                                                 "Dusk silver and Dawn crimson.")
@@ -158,6 +159,9 @@ class Main:
         self.hall.add_item(self.candle)
 
         self.water_bottle = Item(art="a", item_name="bottle of holy water")
+        self.water_bottle.add_alias("holy water")
+        self.water_bottle.add_alias("bottle")
+        self.water_bottle.add_alias("water")
         self.water_bottle.set_description("standing on the ground.")
         self.library.add_item(self.water_bottle)
 
@@ -234,6 +238,7 @@ class Main:
         self.library.add_character(self.scholar)
 
         self.hag = Stranger(class_name="old hag", deadly=False)
+        self.hag.add_alias("hag")
         self.hag.set_desc("sitting on the bed.")
         self.hag.set_conversation("\tOooh ... what a fine surprise ... the Chosen is finally here. You know\n"
                                   "\t\tyour task already, I suppose? Quick, quick, let me tell you something then:\n"
@@ -254,6 +259,7 @@ class Main:
         self.ns_passageway.add_character(self.warrioress)
 
         self.mandrak = Enemy(character_name="Mandrak")
+        self.mandrak.add_alias("servant")
         self.mandrak.set_desc("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
         self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
                                          "\t\tkill you if you try to take his throne.\n"

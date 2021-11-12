@@ -40,7 +40,7 @@ class Player:
 
     def get_inventory_item(self, name):
         for item in self.inventory:
-            if item.get_name().lower().replace(" ", "") == name.lower().replace(" ", ""):
+            if name.lower().strip() in item.get_aliases():
                 return item
 
     def add_to_inventory(self, item):

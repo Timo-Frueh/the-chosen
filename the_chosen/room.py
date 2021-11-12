@@ -112,9 +112,9 @@ class Room:
 
     def get_character(self, search):
         for character in self.characters:
-            if character.get_name().lower().replace(" ", "") == search.lower().replace(" ", ""):
+            if search.lower().strip() in character.get_aliases():
                 return character
-            elif character.get_title().lower().replace(" ", "") == search.lower().replace(" ", ""):
+            elif character.get_title().lower().strip() == search.lower().strip():
                 return character
 
     def add_character(self, character):
@@ -128,7 +128,7 @@ class Room:
 
     def get_item(self, name):
         for item in self.items:
-            if item.name.lower().replace(" ", "") == name.lower().replace(" ", ""):
+            if name.lower().strip() in item.get_aliases():
                 return item
 
     def add_item(self, item):
