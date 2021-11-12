@@ -290,4 +290,3 @@ class Commands:
         # if the quitting was not confirmed return false
         else:
             return False
-

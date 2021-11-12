@@ -3,7 +3,7 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-from the_chosen.item import Item, Artifact, Artifacts
+from the_chosen.item import Artifact
 
 
 class Room:
