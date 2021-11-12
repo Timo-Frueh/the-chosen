@@ -442,8 +442,3 @@ def main():
     game = Main()
 
     game.mainloop()
-
-
-# run the main() function if the program was started from this file
-if __name__ == "__main__":
-    main()
