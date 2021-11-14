@@ -92,6 +92,7 @@ class Stranger(Character):
         # if the stranger is not deadly the player kills the stranger and receives a message about it
         else:
             print(f"You kill the {self.name}.\nThis wasn't right ... You feel sorry for the {self.name}.")
+            player.get_current_room().remove_character(self)
             return True
 
 
