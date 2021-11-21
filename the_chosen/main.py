@@ -19,7 +19,7 @@
 from the_chosen.rpginfo import RPGInfo
 from the_chosen.room import Room
 from the_chosen.player import Player
-from the_chosen.character import Stranger, Friend, Enemy, Boss, Mob
+from the_chosen.character import Stranger, Friend, Enemy, Endboss, Mob
 from the_chosen.commands import Commands as Cmd
 from the_chosen.item import Item, Artifacts
 from the_chosen.input_interpreter import InputInterpreter
@@ -268,7 +268,7 @@ class Main:
         self.mandrak.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.mandrak)
 
-        self.demon_king = Boss(character_name="An-Harat", title="Demon King", kills_needed=7)
+        self.demon_king = Endboss(character_name="An-Harat", title="Demon King", kills_needed=7)
         self.demon_king.set_desc("sitting on his magnificent throne and looking incredibly menacing.")
         self.demon_king.set_conversation("\tAah, greetings, Chosen. You are here at last.\n"
                                          "\t\tWhat took you so long? My demons certainly were no challenge for you,\n"
@@ -350,11 +350,7 @@ class Main:
                 boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
 
                 # execute the fight() method from the Commands class and put its output into the boss_fight variable
-                boss_fight = Cmd.fight(self.player, who=boss_fight_input[0], item=boss_fight_input[1])
-
-                # set alive and victory according to the outcome of the fight
-                alive = boss_fight["alive"]
-                victory = boss_fight["victory"]
+                Cmd.fight(self.player, who=boss_fight_input[0], item=boss_fight_input[1])
 
             # if "fight" is in the command do the following
             elif "fight" in command:
@@ -362,8 +358,8 @@ class Main:
                 # interpret positional command "fight ... with ...
                 fight_input = InputInterpreter.interpret_double(command, "fight", "with")
 
-                # execute the fight() method from the Commands class and use its output to set the alive variable
-                alive = Cmd.fight(self.player, who=fight_input[0], item=fight_input[1])["alive"]
+                # execute the fight() method from the Commands class
+                Cmd.fight(self.player, who=fight_input[0], item=fight_input[1])
 
             # if "take" is in the command do the following
             elif "take" in command:
@@ -409,6 +405,14 @@ class Main:
             # if the command was none of the above print an error message
             else:
                 print(f"I do not know what you meant by {user_input}.")
+
+            # end the game if the player has died
+            if not self.player.isalive():
+                alive = False
+
+            # end the game if the player has killed the endboss
+            if self.player.haswon():
+                victory = True
 
         # print a victory message if victory is true after the end of the loop
         if victory:

@@ -10,7 +10,9 @@ class Player:
         self.name = player_name
         self.inventory = []
         self.current_room = starting_room
+        self.alive = True
         self.kills = 0
+        self.victory = False
 
     # move to a room to the direction
     def move(self, direction):
@@ -55,8 +57,20 @@ class Player:
     def get_current_room(self):
         return self.current_room
 
+    def isalive(self):
+        return self.alive
+
+    def die(self):
+        self.alive = False
+
     def get_kills(self):
         return self.kills
 
     def add_kill(self):
         self.kills += 1
+
+    def haswon(self):
+        return self.victory
+    
+    def win(self):
+        self.victory = True

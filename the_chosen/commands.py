@@ -96,11 +96,7 @@ class Commands:
     # define the fight method
     @staticmethod
     def fight(player, who, item):
-
-        # set alive to true and victory to false (for both variables to be changed depending on the outcome of the fight)
-        alive = True
-        victory = False
-
+        
         # if there is anyone in the current room do the following
         if player.get_current_room().get_characters():
 
@@ -134,12 +130,8 @@ class Commands:
                 # if this weapon exists and is in the players inventory do the following
                 if weapon:
 
-                    # set the alive variable to the outcome of the fight
-                    alive = player.get_current_room().get_character(fight).fight(weapon, player)
-
-                    # if the player is indeed still alive set the victory variable to true
-                    if alive:
-                        victory = True
+                    # start the fight
+                    player.get_current_room().get_character(fight).fight(weapon, player)
 
                 # if this weapon doesn't exist or is not in the players inventory display a message
                 else:
@@ -152,9 +144,6 @@ class Commands:
         # if there is no-one in the room to fight display a message
         else:
             print("There is no one here to fight.")
-
-        # return both the alive and victory variable inside a dictionary
-        return {"alive": alive, "victory": victory}
 
     # define the take command
     @staticmethod

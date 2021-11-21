@@ -31,7 +31,6 @@ class Character:
 
         # print a message that the character doesn't want to fight (because normal characters don't fight)
         print(f"{self.name} does not want to fight you.")
-        return True
 
     # getters and setters
     def get_name(self):
@@ -87,13 +86,12 @@ class Stranger(Character):
         # if the stranger is deadly the player dies and receives a message that the stranger didn't wish them harm
         if self.deadly:
             print(f"The {self.name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
-            return False
+            player.die()
 
         # if the stranger is not deadly the player kills the stranger and receives a message about it
         else:
             print(f"You kill the {self.name}.\nThis wasn't right ... You feel sorry for the {self.name}.")
             player.get_current_room().remove_character(self)
-            return True
 
 
 class Friend(Character):
@@ -109,7 +107,6 @@ class Friend(Character):
     # fight the friend: the game doesn't let you and displays a message about it
     def fight(self, weapon, player):
         print("You wouldn't want to hurt a friend, would you?")
-        return True
 
 
 class Enemy(Character):
@@ -133,14 +130,13 @@ class Enemy(Character):
 
             # add a kill to the killcounter
             player.add_kill()
-            return True
 
         # if it is not
         else:
 
             # print a message that the player has died
             print(f"{self.name} lands a fatal blow.\nYou die ...")
-            return False
+            player.die()
 
     # getters and setters
     def get_weakness(self):
@@ -153,7 +149,7 @@ class Enemy(Character):
         self.weaknesses.remove(weakness)
 
 
-class Boss(Enemy):
+class Endboss(Enemy):
 
     # define constructor
     # and add a title
@@ -181,14 +177,16 @@ class Boss(Enemy):
 
             # add a kill to the killcounter
             player.add_kill()
-            return True
+
+            # make the player win the game
+            player.win()
 
         # if it is not or the kills are not enough
         else:
 
             # display a message that the player has died
             print(f"{self.name} lands a fatal blow.\nYou die ...")
-            return False
+            player.die()
 
     # getters and setters
     def get_title(self):
@@ -219,14 +217,13 @@ class Mob(Enemy):
 
             # add a kill to the killcounter
             player.add_kill()
-            return True
 
         # if it was not
         else:
 
             # print a message that the player has died
             print(f"The {self.name} lands a fatal blow.\nYou die ...")
-            return False
+            player.die()
 
     # talk to the mob: they always say the same thing
     def talk(self):
