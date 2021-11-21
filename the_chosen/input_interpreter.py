@@ -10,7 +10,7 @@ class InputInterpreter:
     def interpret_single(command, key):
 
         # replace the command with nothing so that only the argument remains
-        output = command.replace(key, "")
+        output = command.replace(key, "").replace(" a ", "").replace(" the ", "")
 
         # return the argument, stripped from whitespaces at end and beginning
         return output.strip()
@@ -20,7 +20,7 @@ class InputInterpreter:
     def interpret_double(command, key, separator):
 
         # replace the command with nothing so that only the arguments and the separator remain
-        without_key = command.replace(key, "")
+        without_key = command.replace(key, "").replace(" a ", "").replace(" the ", "")
 
         # split the above at the separator and thereby removing the separator
         output = without_key.split(separator)
