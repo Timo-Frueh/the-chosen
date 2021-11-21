@@ -50,16 +50,16 @@ class Commands:
 
     # define the talk command
     @staticmethod
-    def talk(player, who):
+    def talk(player, whom):
 
         # if there is anyone in the current room do the following
         if player.get_current_room().get_characters():
 
             # if there was no input specifying a character ask for one
-            if not who:
+            if not whom:
                 user_input = input("Talk to whom? ")
             else:
-                user_input = who
+                user_input = whom
 
             # make the user input all lowercase and strip it of whitespaces at beginning and end
             talk_to = user_input.lower().strip()
@@ -95,16 +95,16 @@ class Commands:
 
     # define the fight method
     @staticmethod
-    def fight(player, who, item):
-        
+    def fight(player, whom, item):
+
         # if there is anyone in the current room do the following
         if player.get_current_room().get_characters():
 
             # if there was no input specifying the character ask for one
-            if not who:
+            if not whom:
                 user_input = input("Fight whom? ")
             else:
-                user_input = who
+                user_input = whom
 
             # make the user input all lowercase and strip it of whitespaces at beginning and end
             fight = user_input.lower().strip()
@@ -225,16 +225,16 @@ class Commands:
 
     # define the hug command
     @staticmethod
-    def hug(player, who):
+    def hug(player, whom):
 
         # if there is anyone in the room to hug do the following
         if player.get_current_room().get_characters():
 
             # if there was no input specifying the character ask for one
-            if not who:
+            if not whom:
                 user_input = input("Hug whom? ")
             else:
-                user_input = who
+                user_input = whom
 
             # make the user input all lowercase and strip it of whitespaces at beginning and end
             hug = user_input.lower().strip()
