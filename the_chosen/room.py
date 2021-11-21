@@ -114,8 +114,6 @@ class Room:
         for character in self.characters:
             if search.lower().strip() in character.get_aliases():
                 return character
-            elif character.get_title().lower().strip() == search.lower().strip():
-                return character
 
     def add_character(self, character):
         self.characters.append(character)
