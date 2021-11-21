@@ -158,6 +158,8 @@ class Endboss(Enemy):
         super().__init__(character_name)
         self.kills_needed = kills_needed
         self.title = title
+        self.aliases.append(self.title)
+        self.aliases.append(f"{self.name}, {self.title}")
 
     # print a line describing the boss
     def describe(self):
