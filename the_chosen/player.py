@@ -35,6 +35,226 @@ class Player:
             print("You kneel down and examine the floor. There doesn't seem to be a way down.\n")
         else:
             print("You can't go that way.\n")
+        
+        self.current_room.describe()
+
+
+    # look around
+    def look(self):
+
+        # print the details of the current room
+        self.get_current_room().describe()
+
+    # talk to someone
+    def talk(self, whom):
+
+        # if there is anyone in the current room do the following
+        if self.get_current_room().get_characters():
+
+            # if there was no input specifying a character ask for one
+            if not whom:
+                user_input = input("Talk to whom? ")
+            else:
+                user_input = whom
+
+            # make the user input all lowercase and strip it of whitespaces at beginning and end
+            talk_to = user_input.lower().strip()
+
+            # get the character in the room the player wants to talk to
+            character = self.get_current_room().get_character(talk_to)
+
+            # if this character exists and is in the current room talk to them
+            if character:
+                character.talk()
+
+            # if this character doesn't exist or is not in the current room print a message
+            else:
+                print(f"There is no one called {user_input} here.")
+
+        # if there is no-one in the current room print a message
+        else:
+            print("There is no one here to listen to your beautiful voice.")
+
+    # show the players inventory
+    def show_inventory(self):
+
+        # if the player has anything in their inventory print all items (including capital articles) in a bulletlist
+        if self.get_inventory():
+            print("You are carrying:")
+            for item in self.get_inventory():
+                print(f"- {item.get_name_w_cap_art()}")
+
+        # if the player doesn't have anything print a message
+        else:
+            print("You are empty-handed.")
+
+    # fight someone with something
+    def fight(self, whom, item):
+
+        # if there is anyone in the current room do the following
+        if self.get_current_room().get_characters():
+
+            # if there was no input specifying the character ask for one
+            if not whom:
+                user_input = input("Fight whom? ")
+            else:
+                user_input = whom
+
+            # make the user input all lowercase and strip it of whitespaces at beginning and end
+            fight = user_input.lower().strip()
+
+            # get the character in the room the player wants to fight
+            enemy = self.get_current_room().get_character(fight)
+
+            # if this character exists do the following
+            if enemy:
+
+                # if there was no input specifying the weapon ask for one
+                if not item:
+                    scnd_input = input("What do you want to fight with? ")
+                else:
+                    scnd_input = item
+
+                # make the user input all lowercase and strip it of whitespaces at beginning and end
+                fight_with = scnd_input.lower().strip()
+
+                # get the weapon the player wants to fight with
+                weapon = self.get_inventory_item(fight_with)
+
+                # if this weapon exists and is in the players inventory do the following
+                if weapon:
+
+                    # start the fight
+                    self.get_current_room().get_character(fight).fight(weapon, self)
+
+                # if this weapon doesn't exist or is not in the players inventory display a message
+                else:
+                    print(f"You do not have a {scnd_input}.")
+
+            # if this character doesn't exist or is not in the current room display a message
+            else:
+                print(f"There is no one called {user_input} here.")
+
+        # if there is no-one in the room to fight display a message
+        else:
+            print("There is no one here to fight.")
+
+    # take something
+    def take(player, what):
+
+        # if there is anything in the room to take do the following
+        if player.get_current_room().get_items():
+
+            # if there was no input specifying the item ask for one
+            if not what:
+                user_input = input("What do you want to take? ")
+            else:
+                user_input = what
+
+            # make the user input all lowercase and strip it of whitespaces at beginning and end
+            take = user_input.lower().strip()
+
+            # get the item the player wants to take
+            item = player.get_current_room().get_item(take)
+
+            # if this item exists and is in the current room do the following
+            if item:
+
+                # remove the item from the current room
+                player.get_current_room().remove_item(item)
+
+                # add the item to the players inventory
+                player.add_to_inventory(item)
+
+                # print a message that the item was taken
+                print("Taken.")
+
+            # if this item doesn't exist or is not in the current room print a message
+            else:
+                print(f"There is no item called {user_input} here.")
+
+        # if there isn't anything in the room to take print a message
+        else:
+            print("There is nothing here to take.")
+
+    # drop something
+    def drop(self, what):
+
+        # if there is anything in the players inventory do the following
+        if self.get_inventory():
+
+            # if there was no input specifying the item ask for one
+            if not what:
+                user_input = input("What do you want do drop? ")
+            else:
+                user_input = what
+
+            # make the user input all lowercase and strip it of whitespaces at beginning and end
+            drop = user_input.lower().strip()
+
+            # get the item the player wants to drop
+            item = self.get_inventory_item(drop)
+
+            # if this item exists and is in the players inventory do the following
+            if item:
+
+                # remove the item from the players inventory
+                self.remove_from_inventory(item)
+
+                # add the item to the current room
+                self.get_current_room().add_item(item)
+
+                # print a message that the item was dropped
+                print("Dropped.")
+
+            # if this item doesn't exist or is not in the players inventory print a message
+            else:
+                print(f"You do not have a {user_input}.")
+
+        # if there isn't anything in the inventory to drop print a message
+        else:
+            print("You do not have anything to drop.")
+
+    # hug someone
+    def hug(self, whom):
+
+        # if there is anyone in the room to hug do the following
+        if self.get_current_room().get_characters():
+
+            # if there was no input specifying the character ask for one
+            if not whom:
+                user_input = input("Hug whom? ")
+            else:
+                user_input = whom
+
+            # make the user input all lowercase and strip it of whitespaces at beginning and end
+            hug = user_input.lower().strip()
+
+            # get the character the player wants to hug
+            character = self.get_current_room().get_character(hug)
+
+            # if this character exists and is in the current room do the following
+            if character:
+
+                # if the character is a friend hug them
+                if isinstance(character, Friend):
+                    character.hug()
+
+                # if the character is an enemy print a message
+                elif isinstance(character, Enemy):
+                    print("You wouldn't want to hug this malicious creature.")
+
+                # if the character is any other character type print a message
+                elif isinstance(character, Character):
+                    print("I doubt they'd appreciate that.")
+
+            # if this character doesn't exist or is not in the current room print a message
+            else:
+                print(f"There is no one called {user_input} here.")
+
+        # if there is no-one in the room to hug print a message
+        else:
+            print("There is no one here to receive your comforting embrace.")
 
     # getters and setters
     def get_inventory(self):

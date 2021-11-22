@@ -315,11 +315,11 @@ class Main:
 
             # if the command is a direction execute the movement() method from the Commands class
             elif command in ["north", "east", "south", "west", "up", "down"]:
-                Cmd.movement(self.player, command)
+                self.player.move(command)
 
             # if the command is "look" or "l" execute the look() method from the Commands class
             elif command in ["look", "l"]:
-                Cmd.look(self.player)
+                self.player.look()
 
             # if the player writes "talk to" instead of "talk" do the same as if they wrote "talk"
             elif "talk to" in command:
@@ -328,7 +328,7 @@ class Main:
                 talk_to_input = InputInterpreter.interpret_single(command, "talk to")
 
                 # execute the talk() method from the Commands class
-                Cmd.talk(self.player, talk_to_input)
+                self.player.talk(talk_to_input)
 
             # if "talk" is in the command do the following
             elif "talk" in command:
@@ -337,11 +337,11 @@ class Main:
                 talk_input = InputInterpreter.interpret_single(command, "talk")
 
                 # execute the talk() method from the Commands class
-                Cmd.talk(self.player, talk_input)
+                self.player.talk(talk_input)
 
             # if the command is "inventory" or "i" or "backpack" execute the show_inventory() method from the Commands class
             elif command in ["inventory", "i", "backpack"]:
-                Cmd.show_inventory(self.player)
+                self.player.show_inventory()
 
             # if "fight" is in the command and the player is currently in the throne room do the following
             elif "fight" in command and self.player.get_current_room() == self.throne_room:
@@ -350,7 +350,7 @@ class Main:
                 boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
 
                 # execute the fight() method from the Commands class and put its output into the boss_fight variable
-                Cmd.fight(self.player, whom=boss_fight_input[0], item=boss_fight_input[1])
+                self.player.fight(whom=boss_fight_input[0], item=boss_fight_input[1])
 
             # if "fight" is in the command do the following
             elif "fight" in command:
@@ -359,7 +359,7 @@ class Main:
                 fight_input = InputInterpreter.interpret_double(command, "fight", "with")
 
                 # execute the fight() method from the Commands class
-                Cmd.fight(self.player, whom=fight_input[0], item=fight_input[1])
+                self.player.fight(whom=fight_input[0], item=fight_input[1])
 
             # if "take" is in the command do the following
             elif "take" in command:
@@ -368,7 +368,7 @@ class Main:
                 take_input = InputInterpreter.interpret_single(command, "take")
 
                 # execute the take() method from the Commands class
-                Cmd.take(self.player, take_input)
+                self.player.take(take_input)
 
             # if "drop" is in the command do the following
             elif "drop" in command:
@@ -377,7 +377,7 @@ class Main:
                 drop_input = InputInterpreter.interpret_single(command, "drop")
 
                 # execute the drop() method from the Commands class
-                Cmd.drop(self.player, drop_input)
+                self.player.drop(drop_input)
 
             # if "hug" is in the command do the following
             elif "hug" in command:
@@ -386,7 +386,7 @@ class Main:
                 hug_input = InputInterpreter.interpret_single(command, "hug")
 
                 # execute the hug() method from the Commands class
-                Cmd.hug(self.player, hug_input)
+                self.player.hug(hug_input)
 
             # if the command is "quit" or "exit"
             elif command in ["quit", "exit"]:
