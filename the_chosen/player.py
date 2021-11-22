@@ -236,17 +236,8 @@ class Player:
             # if this character exists and is in the current room do the following
             if character:
 
-                # if the character is a friend hug them
-                if isinstance(character, Friend):
-                    character.hug()
-
-                # if the character is an enemy print a message
-                elif isinstance(character, Enemy):
-                    print("You wouldn't want to hug this malicious creature.")
-
-                # if the character is any other character type print a message
-                elif isinstance(character, Character):
-                    print("I doubt they'd appreciate that.")
+                # hug the character
+                character.hug()
 
             # if this character doesn't exist or is not in the current room print a message
             else:

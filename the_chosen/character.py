@@ -32,6 +32,9 @@ class Character:
         # print a message that the character doesn't want to fight (because normal characters don't fight)
         print(f"{self.name} does not want to fight you.")
 
+    def hug(self):
+        print("I doubt they'd appreciate that.")
+
     # getters and setters
     def get_name(self):
         return self.name
@@ -137,6 +140,9 @@ class Enemy(Character):
             # print a message that the player has died
             print(f"{self.name} lands a fatal blow.\nYou die ...")
             player.die()
+
+    def hug(self):
+        print("You wouldn't want to hug this malicious creature.")
 
     # getters and setters
     def get_weakness(self):
