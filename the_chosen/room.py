@@ -12,9 +12,9 @@ class Room:
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
-        self.links = {}
-        self.vertical_links = {}
-        self.hidden_links = {}
+        self.doors = {}
+        self.ladders = {}
+        self.illusory_walls = {}
         self.characters = []
         self.items = []
 
@@ -45,38 +45,38 @@ class Room:
                 item.describe()
 
         # print all (non-hidden) links
-        self.print_links()
-        self.print_vertical_links()
+        self.print_doors()
+        self.print_ladders()
 
-    def print_links(self):
+    def print_doors(self):
 
         # print a different message depending on how many links there actually are
-        if len(self.links) == 1:
-            for direction in self.links:
+        if len(self.doors) == 1:
+            for direction in self.doors:
                 print(f"There is a door to the {direction}.")
 
-        elif len(self.links) == 2:
+        elif len(self.doors) == 2:
             directions = []
-            for direction in self.links:
+            for direction in self.doors:
                 directions.append(direction)
             print(f"There are doors to the {directions[0]} and {directions[1]}.")
 
-        elif len(self.links) == 3:
+        elif len(self.doors) == 3:
             directions = []
-            for direction in self.links:
+            for direction in self.doors:
                 directions.append(direction)
             print(f"There are doors to the {directions[0]}, {directions[1]} and {directions[2]}.")
 
-        elif len(self.links) == 4:
+        elif len(self.doors) == 4:
             print("There are doors to all directions.")
 
-    def print_vertical_links(self):
+    def print_ladders(self):
 
         # print a different message depending on how many links there actually are
-        if len(self.vertical_links) == 1:
-            for direction in self.vertical_links:
+        if len(self.ladders) == 1:
+            for direction in self.ladders:
                 print(f"There is a ladder leading {direction}.")
-        elif len(self.vertical_links) == 2:
+        elif len(self.ladders) == 2:
             print("There is a ladder leading up and down.")
 
     # getters and setters
@@ -90,22 +90,22 @@ class Room:
         return self.name
 
     def get_links(self):
-        return self.links
+        return self.doors
 
     def link(self, direction, room):
-        self.links[direction] = room
+        self.doors[direction] = room
 
     def get_vertical_links(self):
-        return self.vertical_links
+        return self.ladders
 
     def link_vertical(self, direction, room):
-        self.vertical_links[direction] = room
+        self.ladders[direction] = room
 
     def get_hidden_links(self):
-        return self.hidden_links
+        return self.illusory_walls
 
     def link_hidden(self, direction, room):
-        self.hidden_links[direction] = room
+        self.illusory_walls[direction] = room
 
     def get_characters(self):
         return self.characters
