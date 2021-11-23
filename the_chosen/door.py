@@ -1,6 +1,3 @@
-from os import CLD_CONTINUED
-
-
 class Link:
     def __init__(self, connect_1, connect_2):
         self.connections = [connect_1, connect_2]
