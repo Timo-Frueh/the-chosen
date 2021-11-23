@@ -89,19 +89,19 @@ class Room:
     def get_name(self):
         return self.name
 
-    def get_links(self):
+    def get_doors(self):
         return self.doors
 
     def link(self, direction, room):
         self.doors[direction] = room
 
-    def get_vertical_links(self):
+    def get_ladders(self):
         return self.ladders
 
     def link_vertical(self, direction, room):
         self.ladders[direction] = room
 
-    def get_hidden_links(self):
+    def get_ill_walls(self):
         return self.illusory_walls
 
     def link_hidden(self, direction, room):
