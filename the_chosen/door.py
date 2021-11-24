@@ -11,11 +11,11 @@ class Door(Link):
         super().__init__(connect_1, connect_2)
         self.open = isopen
     
-    def open(self):
+    def open_door(self):
         self.open = True
         print("You opened the door.")
 
-    def close(self):
+    def close_door(self):
         self.open = False
         print("You closed the door.")
     
