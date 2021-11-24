@@ -5,6 +5,12 @@ class Link:
     def get_connections(self):
         return self.connections
 
+    def get_other_room(self, room):
+        if room == self.connections[0]:
+            return self.connections[1]
+        elif room == self.connections[1]:
+            return self.connections[0]
+
 
 class Door(Link):
     def __init__(self, isopen, connect_1, connect_2):
