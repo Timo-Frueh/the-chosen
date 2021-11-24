@@ -248,10 +248,23 @@ class Player:
             print("There is no one here to receive your comforting embrace.")
 
     def pass_through_link(self, link):
-        if link in self.current_room.get_doors() or link in self.current_room.get_ladders() or link in self.current_room.get_ill_walls():
-            self.current_room == link.get_other_room(self.current_room)
+        if link in self.current_room.get_doors().values():
+            if link.isopen():
+                self.current_room == link.get_other_room(self.current_room)
+            else:
+                print("This door is closed.")
         else:
             raise Exception("This door doesn't connect to the player's current room.")
+
+        if link in self.current_room.get_ladders().values():
+            self.current_room = link.get_other_room(self.current_room)
+        else:
+            raise Exception("This ladder doesn't connect to the player's current room.")
+        
+        if link in self.current_room.get_ill_walls().values():
+            self.current_room = link.get_other_room(self.current_room)
+        else:
+            raise Exception("This illusory wall doesn't connect to the player's current room.")
 
     # getters and setters
     def get_inventory(self):
