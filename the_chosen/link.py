@@ -15,7 +15,7 @@ class Link:
         return self.connections
 
     def add_connection(self, room):
-        if len(self.connections) <= 2:
+        if len(self.connections) < 2:
             self.connections.append(room)
         else:
             raise Exception("A link cannot have more than two connections.")
