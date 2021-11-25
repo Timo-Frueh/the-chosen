@@ -3,9 +3,6 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-from the_chosen.character import Character, Enemy, Friend
-
-
 class Commands:
 
     # make a list of all possible commands
