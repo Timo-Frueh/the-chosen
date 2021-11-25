@@ -23,6 +23,8 @@ from the_chosen.character import Stranger, Friend, Enemy, Endboss, Mob
 from the_chosen.commands import Commands as Cmd
 from the_chosen.item import Item, Artifacts
 from the_chosen.input_interpreter import InputInterpreter
+from the_chosen.link import Door, Ladder, IllusoryWall
+from the_chosen.direction_helper import DirectionHelper as Dh
 
 import os
 from clear_screen import clear
@@ -100,43 +102,19 @@ class Main:
         self.throne_room.set_desc(self.throne_room_f.read())
 
         # connect all the rooms
-        self.cellar.link_vertical(direction="up", room=self.cellar_ladder)
-        self.cellar_ladder.link_vertical(direction="down", room=self.cellar)
-
-        self.cellar_ladder.link(direction="north", room=self.hall)
-        self.hall.link(direction="south", room=self.cellar_ladder)
-
-        self.hall.link(direction="west", room=self.west_room)
-        self.west_room.link(direction="east", room=self.hall)
-
-        self.west_room.link(direction="west", room=self.trophy_room)
-        self.trophy_room.link(direction="east", room=self.west_room)
-
-        self.trophy_room.link(direction="north", room=self.ns_passageway)
-        self.ns_passageway.link(direction="south", room=self.trophy_room)
-
-        self.ns_passageway.link(direction="north", room=self.staff_room)
-        self.staff_room.link(direction="south", room=self.ns_passageway)
-
-        self.staff_room.link(direction="east", room=self.library)
-        self.library.link(direction="west", room=self.staff_room)
-
-        self.library.link(direction="south", room=self.library_entrance)
-        self.library_entrance.link(direction="north", room=self.library)
-
-        self.library_entrance.link(direction="south", room=self.hall)
-        self.hall.link(direction="north", room=self.library_entrance)
-
-        self.hall.link(direction="east", room=self.east_room)
-        self.east_room.link(direction="west", room=self.hall)
-
-        self.east_room.link(direction="east", room=self.throne_entrance)
-        self.throne_entrance.link(direction="west", room=self.east_room)
-
-        self.throne_entrance.link(direction="north", room=self.throne_room)
-
-        self.throne_entrance.link_hidden(direction="south", room=self.hidden_room)
-        self.hidden_room.link_hidden(direction="north", room=self.throne_entrance)
+        self.cellar_up_ladder = Ladder({Dh.UP: self.cellar_ladder, Dh.DOWN: self.cellar})
+        self.cl_north_door = Door({Dh.NORTH: self.hall, Dh.SOUTH: self.cellar_ladder}, isopen=True)
+        self.hall_west_door = Door({Dh.WEST: self.west_room, Dh.EAST: self.hall}, isopen=True)
+        self.wr_west_door = Door({Dh.WEST: self.trophy_room, Dh.EAST: self.west_room}, isopen=True)
+        self.tr_north_door = Door({Dh.NORTH: self.ns_passageway, Dh.SOUTH: self.trophy_room}, isopen=True)
+        self.ns_north_door = Door({Dh.NORTH: self.staff_room, Dh.SOUTH: self.ns_passageway}, isopen=True)
+        self.sr_east_door = Door({Dh.EAST: self.library, Dh.WEST: self.staff_room}, isopen=True)
+        self.lb_south_door = Door({Dh.SOUTH: self.library_entrance, Dh.NORTH: self.library}, isopen=True)
+        self.le_south = Door({Dh.SOUTH: self.hall, Dh.NORTH: self.library_entrance}, isopen=True)
+        self.hall_east_door = Door({Dh.EAST: self.east_room, Dh.WEST: self.hall}, isopen=True)
+        self.er_east_door = Door({Dh.EAST: self.throne_entrance, Dh.WEST: self.east_room}, isopen=True)
+        self.throne_door = Door({Dh.NORTH: self.throne_room, Dh.SOUTH: self.throne_entrance}, isopen=True)
+        self.illusory_wall = IllusoryWall({Dh.SOUTH: self.hidden_room, Dh.NORTH: self.throne_entrance})
 
         # initialise all items, set their (initial) description and their initial room
         self.longsword = Item(art="a", item_name="sword")
@@ -144,8 +122,8 @@ class Main:
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Item(art="a", item_name="crossbow")
-        self.crossbow.set_description(
-            "double-winged and small. It looks magical, probably enchanted to shoot infinite bolts.")
+        self.crossbow.set_description("double-winged and small. It looks magical, "
+                                      "probably enchanted to shoot infinite bolts.")
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)

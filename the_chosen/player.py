@@ -19,14 +19,12 @@ class Player:
 
         # check all links of the current room, move if there is a room to the desired direction and
         # print special messages for vertical and hidden links
-        if direction in self.current_room.get_doors():
-            self.current_room = self.current_room.get_doors()[direction]
-        elif direction in self.current_room.get_ladders():
-            print(f"You climb {direction} the ladder.\n")
-            self.current_room = self.current_room.get_ladders()[direction]
-        elif direction in self.current_room.get_ill_walls():
-            print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
-            self.current_room = self.current_room.get_ill_walls()[direction]
+        if self.current_room.get_link(direction):
+            if self.current_room.get_link(direction).isopen():
+                self.current_room.get_link(direction).print_message(direction)
+                self.current_room = self.current_room.get_link(direction).get_other_room(self.current_room)
+            else:
+                print("This door is closed.\n")
         elif direction in ["north", "east", "south", "west"]:
             print("You run head first into a wall and realize: You can't go that way.\n")
         elif direction == "up":
@@ -35,9 +33,8 @@ class Player:
             print("You kneel down and examine the floor. There doesn't seem to be a way down.\n")
         else:
             print("You can't go that way.\n")
-        
-        self.current_room.describe()
 
+        self.current_room.describe()
 
     # look around
     def look(self):
@@ -140,10 +137,10 @@ class Player:
             print("There is no one here to fight.")
 
     # take something
-    def take(player, what):
+    def take(self, what):
 
         # if there is anything in the room to take do the following
-        if player.get_current_room().get_items():
+        if self.get_current_room().get_items():
 
             # if there was no input specifying the item ask for one
             if not what:
@@ -155,16 +152,16 @@ class Player:
             take = user_input.lower().strip()
 
             # get the item the player wants to take
-            item = player.get_current_room().get_item(take)
+            item = self.get_current_room().get_item(take)
 
             # if this item exists and is in the current room do the following
             if item:
 
                 # remove the item from the current room
-                player.get_current_room().remove_item(item)
+                self.get_current_room().remove_item(item)
 
                 # add the item to the players inventory
-                player.add_to_inventory(item)
+                self.add_to_inventory(item)
 
                 # print a message that the item was taken
                 print("Taken.")
@@ -247,25 +244,6 @@ class Player:
         else:
             print("There is no one here to receive your comforting embrace.")
 
-    def pass_through_link(self, link):
-        if link in self.current_room.get_doors().values():
-            if link.isopen():
-                self.current_room == link.get_other_room(self.current_room)
-            else:
-                print("This door is closed.")
-        else:
-            raise Exception("This door doesn't connect to the player's current room.")
-
-        if link in self.current_room.get_ladders().values():
-            self.current_room = link.get_other_room(self.current_room)
-        else:
-            raise Exception("This ladder doesn't connect to the player's current room.")
-        
-        if link in self.current_room.get_ill_walls().values():
-            self.current_room = link.get_other_room(self.current_room)
-        else:
-            raise Exception("This illusory wall doesn't connect to the player's current room.")
-
     # getters and setters
     def get_inventory(self):
         return self.inventory
@@ -301,6 +279,6 @@ class Player:
 
     def haswon(self):
         return self.victory
-    
+
     def win(self):
         self.victory = True

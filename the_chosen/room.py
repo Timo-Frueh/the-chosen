@@ -3,6 +3,7 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+from the_chosen.link import Door, Ladder, IllusoryWall
 from the_chosen.item import Artifact
 
 
@@ -12,6 +13,7 @@ class Room:
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
+        self.links = {}
         self.doors = {}
         self.ladders = {}
         self.illusory_walls = {}
@@ -79,6 +81,20 @@ class Room:
         elif len(self.ladders) == 2:
             print("There is a ladder leading up and down.")
 
+    def init_links(self):
+
+        for direction in self.links:
+            if isinstance(self.links[direction], Door):
+                self.doors[direction] = self.links[direction]
+
+        for direction in self.links:
+            if isinstance(self.links[direction], Ladder):
+                self.ladders[direction] = self.links[direction]
+
+        for direction in self.links:
+            if isinstance(self.links[direction], IllusoryWall):
+                self.illusory_walls[direction] = self.links[direction]
+
     # getters and setters
     def get_desc(self):
         return self.description
@@ -89,23 +105,14 @@ class Room:
     def get_name(self):
         return self.name
 
-    def get_doors(self):
-        return self.doors
+    def add_link(self, direction, door):
+        self.links[direction] = door
 
-    def link(self, direction, room):
-        self.doors[direction] = room
-
-    def get_ladders(self):
-        return self.ladders
-
-    def link_vertical(self, direction, room):
-        self.ladders[direction] = room
-
-    def get_ill_walls(self):
-        return self.illusory_walls
-
-    def link_hidden(self, direction, room):
-        self.illusory_walls[direction] = room
+    def get_link(self, direction):
+        try:
+            return self.links[direction]
+        except KeyError:
+            return None
 
     def get_characters(self):
         return self.characters
