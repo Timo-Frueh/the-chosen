@@ -4,12 +4,11 @@ from the_chosen.direction_helper import DirectionHelper as Dr
 class Link:
     def __init__(self, rooms):
         self.connections = []
+        self.message = None
 
         for direction in rooms:
             self.add_connection(rooms[direction])
             rooms[direction].add_link(Dr.reverse_dir(direction), self)
-
-        self.open = True
 
     def get_connections(self):
         return self.connections
@@ -25,6 +24,12 @@ class Link:
             return self.connections[1]
         elif room == self.connections[1]:
             return self.connections[0]
+
+    def isopen(self):
+        return True
+
+    def print_message(self, direction):
+        pass
 
 
 class Door(Link):
@@ -48,7 +53,13 @@ class Ladder(Link):
     def __init__(self, rooms):
         super().__init__(rooms)
 
+    def print_message(self, direction):
+        print(f"You climb {direction} the ladder.\n")
+
 
 class IllusoryWall(Link):
     def __init__(self, rooms):
         super().__init__(rooms)
+
+    def print_message(self, direction):
+        print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
