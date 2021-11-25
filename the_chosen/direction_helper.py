@@ -12,6 +12,9 @@ class DirectionHelper:
     UP = "up"
     DOWN = "down"
 
+    HORIZ_DIRECTIONS = [NORTH, EAST, SOUTH, WEST]
+    VERT_DIRECTIONS = [UP, DOWN]
+
     @classmethod
     def reverse_dir(cls, direction):
         if direction == cls.NORTH:

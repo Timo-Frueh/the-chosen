@@ -31,6 +31,12 @@ class Link:
         elif room == self.connections[1]:
             return self.connections[0]
 
+    def open_door(self):
+        print("This cannot be opened, because it is no door.")
+
+    def close_door(self):
+        print("This cannot be opened, because it is no door.")
+
     def isopen(self):
         return True
 

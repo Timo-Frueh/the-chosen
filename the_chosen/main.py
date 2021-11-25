@@ -366,6 +366,14 @@ class Main:
                 # execute the hug() method from the Commands class
                 self.player.hug(hug_input)
 
+            elif "open" in command:
+                open_input = InputInterpreter.interpret_single(command, "open")
+                self.player.open_door(open_input)
+
+            elif "close" in command:
+                close_input = InputInterpreter.interpret_single(command, "close")
+                self.player.close_door(close_input)
+
             # if the command is "quit" or "exit"
             elif command in ["quit", "exit"]:
 

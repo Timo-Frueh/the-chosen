@@ -51,6 +51,7 @@ fight     :  fight someone
 take      :  put something into your inventory
 drop      :  drop something in your inventory
 hug       :  hug someone
+open/close:  open/close a door
 quit      :  quit the game -> NOTE: you will not be able to restore the game later
 help      :  show this list
 ~~~
@@ -68,7 +69,7 @@ i    : inventory
 
 There are also positional commands:
 
-`talk`, `fight`, `take`, `drop` and `hug` are positional commands.
+`talk`, `fight`, `take`, `drop`, `hug`, `open` and `close` are positional commands.
 
 An example `talk` command:
 

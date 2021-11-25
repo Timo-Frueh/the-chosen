@@ -3,6 +3,9 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+from the_chosen.direction_helper import DirectionHelper as Dh
+
+
 class Player:
 
     # define constructor and four object attributes
@@ -24,12 +27,12 @@ class Player:
                 self.current_room.get_link(direction).print_message(direction)
                 self.current_room = self.current_room.get_link(direction).get_other_room(self.current_room)
             else:
-                print("This door is closed.\n")
-        elif direction in ["north", "east", "south", "west"]:
+                print(f"The door to the {direction} is closed.\n")
+        elif direction in Dh.HORIZ_DIRECTIONS:
             print("You run head first into a wall and realize: You can't go that way.\n")
-        elif direction == "up":
+        elif direction == Dh.UP:
             print("You jump. Nothing happens. What did you expect?\n")
-        elif direction == "down":
+        elif direction == Dh.DOWN:
             print("You kneel down and examine the floor. There doesn't seem to be a way down.\n")
         else:
             print("You can't go that way.\n")
@@ -243,6 +246,30 @@ class Player:
         # if there is no-one in the room to hug print a message
         else:
             print("There is no one here to receive your comforting embrace.")
+
+    def open_door(self, direction):
+        if direction in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(direction):
+                if not self.current_room.get_link(direction).isopen():
+                    self.current_room.get_link(direction).open_door()
+                else:
+                    print("This door is already closed.")
+            else:
+                print(f"There is no door to the {direction}")
+        else:
+            print("You need to specify a direction so I know which door you mean.")
+
+    def close_door(self, direction):
+        if direction in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(direction):
+                if self.current_room.get_link(direction).isopen():
+                    self.current_room.get_link(direction).close_door()
+                else:
+                    print("This door is already closed.")
+            else:
+                print(f"There is no door to the {direction}")
+        else:
+            print("You need to specify a direction so I know which door you mean.")
 
     # getters and setters
     def get_inventory(self):
