@@ -247,26 +247,42 @@ class Player:
             print("There is no one here to receive your comforting embrace.")
 
     def open_door(self, direction):
-        if direction in Dh.HORIZ_DIRECTIONS:
-            if self.current_room.get_link(direction):
-                if not self.current_room.get_link(direction).isopen():
-                    self.current_room.get_link(direction).open_door()
+
+        if direction.strip() == "":
+            user_input = input("Open door to which direction? ")
+        else:
+            user_input = direction
+
+        open_door = user_input.lower().strip()
+
+        if open_door in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(open_door):
+                if not self.current_room.get_link(open_door).isopen():
+                    self.current_room.get_link(open_door).open_door()
                 else:
-                    print("This door is already closed.")
+                    print("This door is already open.")
             else:
-                print(f"There is no door to the {direction}")
+                print(f"There is no door to the {user_input}")
         else:
             print("You need to specify a direction so I know which door you mean.")
 
     def close_door(self, direction):
-        if direction in Dh.HORIZ_DIRECTIONS:
-            if self.current_room.get_link(direction):
-                if self.current_room.get_link(direction).isopen():
-                    self.current_room.get_link(direction).close_door()
+
+        if direction.strip() == "":
+            user_input = input("Close door to which direction? ")
+        else:
+            user_input = direction
+
+        close_door = user_input.lower().strip()
+
+        if close_door in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(close_door):
+                if self.current_room.get_link(close_door).isopen():
+                    self.current_room.get_link(close_door).close_door()
                 else:
                     print("This door is already closed.")
             else:
-                print(f"There is no door to the {direction}")
+                print(f"There is no door to the {user_input}")
         else:
             print("You need to specify a direction so I know which door you mean.")
 
