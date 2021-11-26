@@ -303,7 +303,7 @@ class Main:
             elif "talk to" in command:
 
                 # interpret positional command "talk to ..."
-                talk_to_input = InputInterpreter.interpret_single(command, "talk to")
+                talk_to_input = InputInterpreter.interpret_single(command, "talk to", [" the "])
 
                 # execute the talk() method from the Commands class
                 self.player.talk(talk_to_input)
@@ -312,7 +312,7 @@ class Main:
             elif "talk" in command:
 
                 # interpret positional command "talk ..."
-                talk_input = InputInterpreter.interpret_single(command, "talk")
+                talk_input = InputInterpreter.interpret_single(command, "talk", [" the "])
 
                 # execute the talk() method from the Commands class
                 self.player.talk(talk_input)
@@ -325,7 +325,7 @@ class Main:
             elif "fight" in command and self.player.get_current_room() == self.throne_room:
 
                 # interpret positional command "fight ... with ..."
-                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with")
+                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "])
 
                 # execute the fight() method from the Commands class and put its output into the boss_fight variable
                 self.player.fight(whom=boss_fight_input[0], item=boss_fight_input[1])
@@ -334,7 +334,7 @@ class Main:
             elif "fight" in command:
 
                 # interpret positional command "fight ... with ...
-                fight_input = InputInterpreter.interpret_double(command, "fight", "with")
+                fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "])
 
                 # execute the fight() method from the Commands class
                 self.player.fight(whom=fight_input[0], item=fight_input[1])
@@ -343,7 +343,7 @@ class Main:
             elif "take" in command:
 
                 # interpret positional command "talk ..."
-                take_input = InputInterpreter.interpret_single(command, "take")
+                take_input = InputInterpreter.interpret_single(command, "take", [" the ", " a "])
 
                 # execute the take() method from the Commands class
                 self.player.take(take_input)
@@ -352,7 +352,7 @@ class Main:
             elif "drop" in command:
 
                 # interpret positional command "drop ..."
-                drop_input = InputInterpreter.interpret_single(command, "drop")
+                drop_input = InputInterpreter.interpret_single(command, "drop", [" the ", " a "])
 
                 # execute the drop() method from the Commands class
                 self.player.drop(drop_input)
@@ -361,17 +361,17 @@ class Main:
             elif "hug" in command:
 
                 # interpret the positional command "hug ..."
-                hug_input = InputInterpreter.interpret_single(command, "hug")
+                hug_input = InputInterpreter.interpret_single(command, "hug", [" the ", " a "])
 
                 # execute the hug() method from the Commands class
                 self.player.hug(hug_input)
 
             elif "open" in command:
-                open_input = InputInterpreter.interpret_single(command, "open")
+                open_input = InputInterpreter.interpret_single(command, "open", [" the ", " door"])
                 self.player.open_door(open_input)
 
             elif "close" in command:
-                close_input = InputInterpreter.interpret_single(command, "close")
+                close_input = InputInterpreter.interpret_single(command, "close", [" the ", " door"])
                 self.player.close_door(close_input)
 
             # if the command is "quit" or "exit"

@@ -51,11 +51,11 @@ class Door(Link):
     
     def open_door(self):
         self.open = True
-        print("You opened the door.")
+        print("You open the door.")
 
     def close_door(self):
         self.open = False
-        print("You closed the door.")
+        print("You close the door.")
     
     def isopen(self):
         return self.open
