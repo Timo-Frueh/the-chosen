@@ -292,7 +292,7 @@ class Main:
                 Cmd.print_commands()
 
             # if the command is a direction execute the movement() method from the Commands class
-            elif command in ["north", "east", "south", "west", "up", "down"]:
+            elif command in Dh.DIRECTIONS:
                 self.player.move(command)
 
             # if the command is "look" or "l" execute the look() method from the Commands class

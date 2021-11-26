@@ -26,18 +26,17 @@ class Player:
             if self.current_room.get_link(direction).isopen():
                 self.current_room.get_link(direction).print_message(direction)
                 self.current_room = self.current_room.get_link(direction).get_other_room(self.current_room)
+                self.current_room.describe()
             else:
-                print(f"The door to the {direction} is closed.\n")
+                print(f"The door to the {direction} is closed.")
         elif direction in Dh.HORIZ_DIRECTIONS:
-            print("You run head first into a wall and realize: You can't go that way.\n")
+            print("You run head first into a wall and realize: You can't go that way.")
         elif direction == Dh.UP:
-            print("You jump. Nothing happens. What did you expect?\n")
+            print("You jump. Nothing happens. What did you expect?")
         elif direction == Dh.DOWN:
-            print("You kneel down and examine the floor. There doesn't seem to be a way down.\n")
+            print("You kneel down and examine the floor. There doesn't seem to be a way down.")
         else:
-            print("You can't go that way.\n")
-
-        self.current_room.describe()
+            print("You can't go that way.")
 
     # look around
     def look(self):

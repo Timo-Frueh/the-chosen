@@ -112,7 +112,7 @@ class Room:
         try:
             return self.links[direction]
         except KeyError:
-            return None
+            pass
 
     def get_characters(self):
         return self.characters
