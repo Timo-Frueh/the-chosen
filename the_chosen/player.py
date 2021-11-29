@@ -266,6 +266,36 @@ class Player:
         else:
             print("You need to specify a direction so I know which door you mean.")
 
+    def unlock_door(self, direction, key):
+
+        if direction.strip() == "":
+            user_input = input("Unlock door to which direction? ")
+        else:
+            user_input = direction
+
+        if key.strip() == "":
+            user_input_1 = input("Which key do you want do use? ")
+        else:
+            user_input_1 = key
+
+        unlock_door = user_input.lower().strip()
+        user_input_1 = user_input_1.lower().strip()
+        unlock_key = self.get_inventory_item(user_input_1)
+
+        if unlock_door in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(unlock_door):
+                if self.current_room.get_link(unlock_door).islocked():
+                    if unlock_key:
+                        self.current_room.get_link(unlock_door).unlock_door(unlock_key)
+                    else:
+                        print("You do not have this key.")
+                else:
+                    print("This door is not locked.")
+            else:
+                print(f"There is no door to the {user_input}")
+        else:
+            print("You need to specify a direction so I know which door you mean.")
+
     def close_door(self, direction):
 
         if direction.strip() == "":
@@ -281,6 +311,36 @@ class Player:
                     self.current_room.get_link(close_door).close_door()
                 else:
                     print("This door is already closed.")
+            else:
+                print(f"There is no door to the {user_input}")
+        else:
+            print("You need to specify a direction so I know which door you mean.")
+
+    def lock_door(self, direction, key):
+
+        if direction.strip() == "":
+            user_input = input("Lock the door to which direction? ")
+        else:
+            user_input = direction
+
+        if key.strip() == "":
+            user_input_1 = input("Which key do you want do use? ")
+        else:
+            user_input_1 = key
+
+        lock_door = user_input.lower().strip()
+        user_input_1 = user_input_1.lower().strip()
+        lock_key = self.get_inventory_item(user_input_1)
+
+        if lock_door in Dh.HORIZ_DIRECTIONS:
+            if self.current_room.get_link(lock_door):
+                if not self.current_room.get_link(lock_door).islocked():
+                    if lock_key:
+                        self.current_room.get_link(lock_door).lock_door(lock_key)
+                    else:
+                        print("You do not have this key.")
+                else:
+                    print("This door is already locked.")
             else:
                 print(f"There is no door to the {user_input}")
         else:

@@ -13,7 +13,7 @@ class InputInterpreter:
         output = command.replace(key, "")
 
         for w in remove:
-            output = output.replace(w, "")
+            output = output.replace(w, " ")
 
         # return the argument, stripped from whitespaces at end and beginning
         return output.strip()
@@ -26,7 +26,7 @@ class InputInterpreter:
         without_key = command.replace(key, "")
 
         for w in remove:
-            output = without_key.replace(w, "")
+            without_key = without_key.replace(w, " ")
 
         # split the above at the separator and thereby removing the separator
         output = without_key.split(separator)

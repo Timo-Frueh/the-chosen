@@ -34,8 +34,14 @@ class Link:
     def open_door(self):
         print("This cannot be opened, because it is no door.")
 
+    def unlock_door(self, key):
+        print("This cannot be unlocked, because it is no door.")
+
     def close_door(self):
         print("This cannot be opened, because it is no door.")
+
+    def lock_door(self, key):
+        print("This cannot be closed, because it is no door.")
 
     def isopen(self):
         return True
@@ -45,20 +51,63 @@ class Link:
 
 
 class Door(Link):
-    def __init__(self, rooms, isopen):
+    def __init__(self, rooms, isopen, islocked):
         super().__init__(rooms)
         self.open = isopen
+        self.locked = islocked
+        self.keys = []
     
     def open_door(self):
-        self.open = True
-        print("You open the door.")
+        if not self.locked:
+            self.open = True
+            print("You open the door.")
+        else:
+            print("This door is locked.")
+
+    def unlock_door(self, key):
+        if self.open:
+            print("You cannot unlock an open door.")
+        elif not self.locked:
+            print("Why'd you want to unlock an unlocked door?")
+        elif not self.keys:
+            print("This door has no lock.")
+        else:
+            if key in self.keys:
+                self.locked = False
+                print("You unlock the door.")
+            else:
+                print("You cannot unlock the door with this key.")
 
     def close_door(self):
-        self.open = False
-        print("You close the door.")
+        if not self.locked:
+            self.open = False
+            print("You close the door.")
+        else:
+            raise Exception("An open door cannot be locked at the same time.")
+
+    def lock_door(self, key):
+        if self.open:
+            print("You cannot lock an open door.")
+        elif self.locked:
+            print("Why'd you want to lock a locked door?")
+        elif not self.keys:
+            print("This door has no lock.")
+        else:
+            if key in self.keys:
+                self.locked = True
+                print("You lock the door.")
     
     def isopen(self):
         return self.open
+
+    def islocked(self):
+        return self.locked
+
+    def add_key(self, key):
+        self.keys.append(key)
+
+    def get_keys(self):
+        return self.keys
 
 
 class Ladder(Link):

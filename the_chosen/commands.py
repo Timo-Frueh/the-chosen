@@ -20,6 +20,7 @@ class Commands:
                 "drop      ": "  drop something in your inventory",
                 "hug       ": "  hug someone",
                 "open/close": "  open/close a door",
+                "(un-)lock  ": " lock/unlock a door",
                 "quit      ": "  quit the game -> NOTE: you will not be able to restore the game later",
                 "help      ": "  show this list"}
 
