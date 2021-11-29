@@ -20,16 +20,19 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
-    def interpret_double(command, key, separator, remove):
+    def interpret_double(command, key, separator, remove_0, remove_1):
 
         # replace the command with nothing so that only the arguments and the separator remain
         without_key = command.replace(key, "")
 
-        for w in remove:
-            without_key = without_key.replace(w, " ")
-
         # split the above at the separator and thereby removing the separator
         output = without_key.split(separator)
+
+        for w in remove_0:
+            output[0] = output[0].replace(w, " ")
+
+        for w in remove_1:
+            output[1] = output[1].replace(w, " ")
 
         # try to access the second argument
         try:

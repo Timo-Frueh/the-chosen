@@ -332,7 +332,7 @@ class Main:
             elif "fight" in command and self.player.get_current_room() == self.throne_room:
 
                 # interpret positional command "fight ... with ..."
-                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "])
+                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "], [" the "])
 
                 # execute the fight() method from the Commands class and put its output into the boss_fight variable
                 self.player.fight(whom=boss_fight_input[0], item=boss_fight_input[1])
@@ -341,7 +341,7 @@ class Main:
             elif "fight" in command:
 
                 # interpret positional command "fight ... with ...
-                fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "])
+                fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "], [" the "])
 
                 # execute the fight() method from the Commands class
                 self.player.fight(whom=fight_input[0], item=fight_input[1])
@@ -382,11 +382,11 @@ class Main:
                 self.player.close_door(close_input)
 
             elif "unlock" in command:
-                unlock_input = InputInterpreter.interpret_double(command, "unlock", "with", [" the ", " door"])
+                unlock_input = InputInterpreter.interpret_double(command, "unlock", "with", [" the ", " door"], [" the "])
                 self.player.unlock_door(direction=unlock_input[0], key=unlock_input[1])
 
             elif "lock" in command:
-                lock_input = InputInterpreter.interpret_double(command, "lock", "with", [" the ", " door"])
+                lock_input = InputInterpreter.interpret_double(command, "lock", "with", [" the ", " door"], [" the "])
                 self.player.lock_door(direction=lock_input[0], key=lock_input[1])
 
             # if the command is "quit" or "exit"
