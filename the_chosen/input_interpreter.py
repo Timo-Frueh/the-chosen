@@ -28,12 +28,6 @@ class InputInterpreter:
         # split the above at the separator and thereby removing the separator
         output = without_key.split(separator)
 
-        for w in remove_0:
-            output[0] = output[0].replace(w, " ")
-
-        for w in remove_1:
-            output[1] = output[1].replace(w, " ")
-
         # try to access the second argument
         try:
             output[1]
@@ -41,6 +35,12 @@ class InputInterpreter:
         # if there was none add a second empty argument
         except IndexError:
             output.append("")
+
+        for w in remove_0:
+            output[0] = output[0].replace(w, " ")
+
+        for w in remove_1:
+            output[1] = output[1].replace(w, " ")
 
         # return the arguments in a list and stripped of whitespaces at end and beginning
         return [output[0].strip(), output[1].strip()]
