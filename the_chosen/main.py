@@ -335,7 +335,7 @@ class Main:
                 boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "], [" the "])
 
                 # execute the fight() method from the Commands class and put its output into the boss_fight variable
-                self.player.fight(whom=boss_fight_input[0], item=boss_fight_input[1])
+                self.player.fight(character=boss_fight_input[0], item=boss_fight_input[1])
 
             # if "fight" is in the command do the following
             elif "fight" in command:
@@ -344,7 +344,7 @@ class Main:
                 fight_input = InputInterpreter.interpret_double(command, "fight", "with", [" the ", ", "], [" the "])
 
                 # execute the fight() method from the Commands class
-                self.player.fight(whom=fight_input[0], item=fight_input[1])
+                self.player.fight(character=fight_input[0], item=fight_input[1])
 
             # if "take" is in the command do the following
             elif "take" in command:
