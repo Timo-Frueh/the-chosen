@@ -234,7 +234,7 @@ class Main:
         self.staff_room.add_character(self.hag)
 
         self.stranger = Stranger(class_name="stranger", deadly=True)
-        self.stranger.set_desc("leaning on the far end of the wall, examining you with cold, blue eyes.")
+        self.stranger.set_desc("leaning against the far end of the wall, examining you with cold, blue eyes.")
         self.stranger.set_conversation("Hm. Another one. The world is going mad .... And what do you do?\n"
                                        "\t\tWaving around your sword as if you were able to do something.\n"
                                        "\t\tThis is all pointless!")
