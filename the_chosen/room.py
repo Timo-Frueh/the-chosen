@@ -107,6 +107,7 @@ class Room:
 
     def add_link(self, direction, door):
         self.links[direction] = door
+        self.init_links()
 
     def get_link(self, direction):
         try:

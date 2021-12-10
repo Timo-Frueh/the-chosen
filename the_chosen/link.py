@@ -14,7 +14,6 @@ class Link:
         for direction in rooms:
             self.add_connection(rooms[direction])
             rooms[direction].add_link(Dr.reverse_dir(direction), self)
-            rooms[direction].init_links()
 
     def get_connections(self):
         return self.connections
