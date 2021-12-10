@@ -68,7 +68,7 @@ class Door(Link):
         if self.open:
             print("You cannot unlock an open door.")
         elif not self.locked:
-            print("Why'd you want to unlock an unlocked door?")
+            print("This door is already unlocked.")
         elif not self.keys:
             print("This door has no lock.")
         else:
@@ -76,26 +76,28 @@ class Door(Link):
                 self.locked = False
                 print("You unlock the door.")
             else:
-                print("You cannot unlock the door with this key.")
+                print("You cannot unlock the door with this.")
 
     def close_door(self):
         if not self.locked:
             self.open = False
             print("You close the door.")
         else:
-            raise Exception("An open door cannot be locked at the same time.")
+            raise Exception("An open door cannot be open and locked at the same time.")
 
     def lock_door(self, key):
         if self.open:
             print("You cannot lock an open door.")
         elif self.locked:
-            print("Why'd you want to lock a locked door?")
+            print("This door is already locked.")
         elif not self.keys:
             print("This door has no lock.")
         else:
             if key in self.keys:
                 self.locked = True
                 print("You lock the door.")
+            else:
+                print("You cannot lock the door with this.")
     
     def isopen(self):
         return self.open
