@@ -5,6 +5,7 @@
 
 from the_chosen.entity import Entity
 
+
 class Item (Entity):
 
     # define constructor and the five object attributes

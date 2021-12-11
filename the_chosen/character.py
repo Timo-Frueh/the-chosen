@@ -5,6 +5,7 @@
 
 from the_chosen.entity import Entity
 
+
 class Character(Entity):
 
     # define constructor and the three opject attributes
@@ -142,6 +143,7 @@ class Enemy(Character):
 class Miniboss(Enemy):
     def __init__(self, character_name):
         super().__init__("", character_name)
+
 
 class Endboss(Enemy):
 
