@@ -156,10 +156,10 @@ class Endboss(Enemy):
         self.title = title
         self.the_title = f"the {self.title}"
         self.c_the_title = f"The {self.title}"
-        self.aliases.append(self.title)
-        self.aliases.append(self.the_title)
-        self.aliases.append(f"{self.name} {self.title}")
-        self.aliases.append(f"{self.name} {self.the_title}")
+        self.add_alias(self.title)
+        self.add_alias(self.the_title)
+        self.add_alias(f"{self.name} {self.title}")
+        self.add_alias(f"{self.name} {self.the_title}")
 
     # print a line describing the boss
     def describe(self):
