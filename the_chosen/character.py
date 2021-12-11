@@ -154,8 +154,12 @@ class Endboss(Enemy):
         super().__init__("", character_name)
         self.kills_needed = kills_needed
         self.title = title
+        self.the_title = f"the {self.title}"
+        self.c_the_title = f"The {self.title}"
         self.aliases.append(self.title)
+        self.aliases.append(self.the_title)
         self.aliases.append(f"{self.name} {self.title}")
+        self.aliases.append(f"{self.name} {self.the_title}")
 
     # print a line describing the boss
     def describe(self):
@@ -168,7 +172,7 @@ class Endboss(Enemy):
         if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
 
             # print a message that the player has killed the boss
-            print(f"You kill {self.name} with the {weapon.get_name()}!")
+            print(f"You kill {self.name} with {weapon.get_the_name()}!")
 
             # remove the boss from the current room
             player.get_current_room().remove_character(self)
@@ -199,7 +203,7 @@ class Mob(Enemy):
 
     # print a line describing the mob
     def describe(self):
-        print(f"You see a {self.name}, looking malevolently at you.")
+        print(f"You see {self.art_name}, looking malevolently at you.")
 
     # fight the mob: return true if the player is still alive after the fight
     def fight(self, weapon, player):
@@ -208,7 +212,7 @@ class Mob(Enemy):
         if weapon in self.weaknesses:
 
             # print a message that the mob was killed by the player
-            print(f"You kill the {self.name} with the {weapon.get_name()}!")
+            print(f"You kill {self.art_name} with {weapon.get_the_name()}!")
 
             # remove the mob from the current room
             player.get_current_room().remove_character(self)
@@ -220,7 +224,7 @@ class Mob(Enemy):
         else:
 
             # print a message that the player has died
-            print(f"The {self.name} lands a fatal blow.\nYou die ...")
+            print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
             player.die()
 
     # talk to the mob: they always say the same thing

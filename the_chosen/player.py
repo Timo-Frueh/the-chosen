@@ -84,6 +84,8 @@ class Player:
             user_input_2 = input("What do you want to fight with? ")
         elif enemy and item.strip() != "":
             user_input_2 = item
+        else:
+            user_input_2 = ""
         
         fight_with = user_input_2.lower().strip()
         weapon = self.get_inventory_item(fight_with)
@@ -185,6 +187,8 @@ class Player:
             user_input_2 = input("Which key do you want to use? ")
         elif door and key.strip() != "":
             user_input_2 = key
+        else:
+            user_input_2 = ""
 
         unlock_with = user_input_2.lower().strip()
         key = self.get_inventory_item(unlock_with)
@@ -199,7 +203,6 @@ class Player:
             print(f"You do not have an item called {user_input_2}.")
         else:
             door.unlock_door(key)
-        
 
     def close_door(self, direction):
 
@@ -234,6 +237,8 @@ class Player:
             user_input_2 = input("Which key do you want to use? ")
         elif door and key.strip() != "":
             user_input_2 = key
+        else:
+            user_input_2 = ""
 
         lock_with = user_input_2.lower().strip()
         key = self.get_inventory_item(lock_with)
