@@ -17,6 +17,7 @@
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from the_chosen.rpginfo import RPGInfo
+from the_chosen.resource_helper import ResourceHelper as Rh
 from the_chosen.room import Room
 from the_chosen.player import Player
 from the_chosen.character import Stranger, Friend, Miniboss, Endboss, Mob
@@ -38,20 +39,29 @@ class Main:
 
         # load all room description files and the welcome message file
         self.file_path = os.path.dirname(os.path.abspath(__file__))
-        self.welcome_f = open(os.path.join(self.file_path, "resources", "welcome_message.txt"), "r")
-        self.cellar_f = open(os.path.join(self.file_path, "resources", "cellar.txt"), "r")
-        self.cellar_ladder_f = open(os.path.join(self.file_path, "resources", "cellar_ladder.txt"), "r")
-        self.hall_f = open(os.path.join(self.file_path, "resources", "hall.txt"), "r")
-        self.west_room_f = open(os.path.join(self.file_path, "resources", "west_room.txt"), "r")
-        self.trophy_room_f = open(os.path.join(self.file_path, "resources", "trophy_room.txt"), "r")
-        self.ns_passageway_f = open(os.path.join(self.file_path, "resources", "ns_passageway.txt"), "r")
-        self.staff_room_f = open(os.path.join(self.file_path, "resources", "staff_room.txt"), "r")
-        self.library_f = open(os.path.join(self.file_path, "resources", "library.txt"), "r")
-        self.library_entrance_f = open(os.path.join(self.file_path, "resources", "library_entrance.txt"), "r")
-        self.east_room_f = open(os.path.join(self.file_path, "resources", "east_room.txt"), "r")
-        self.throne_entrance_f = open(os.path.join(self.file_path, "resources", "throne_entrance.txt"), "r")
-        self.hidden_room_f = open(os.path.join(self.file_path, "resources", "hidden_room.txt"), "r")
-        self.throne_room_f = open(os.path.join(self.file_path, "resources", "throne_room.txt"), "r")
+        Rh.set_resources_path(os.path.join(self.file_path, "resources"))
+
+        self.welcome_f = Rh.get_resource("welcome_message.txt")
+        self.cellar_f = Rh.get_resource("cellar.txt")
+        self.cellar_ladder_f = Rh.get_resource("cellar_ladder.txt")
+        self.hall_f = Rh.get_resource("hall.txt")
+        self.west_room_f = Rh.get_resource("west_room.txt")
+        self.trophy_room_f = Rh.get_resource("trophy_room.txt")
+        self.ns_passageway_f = Rh.get_resource("ns_passageway.txt")
+        self.staff_room_f = Rh.get_resource("staff_room.txt")
+        self.library_f = Rh.get_resource("library.txt")
+        self.library_entrance_f = Rh.get_resource("library_entrance.txt")
+        self.east_room_f = Rh.get_resource("east_room.txt")
+        self.throne_entrance_f = Rh.get_resource("throne_entrance.txt")
+        self.hidden_room_f = Rh.get_resource("hidden_room.txt")
+        self.throne_room_f = Rh.get_resource("throne_room.txt")
+
+        self.longsword_f = Rh.get_resource("longsword.txt")
+        self.crossbow_f = Rh.get_resource("crossbow.txt")
+        self.swords_odd_f = Rh.get_resource("swords_odd.txt")
+        self.swords_odd_init_f = Rh.get_resource("swords_odd_init.txt")
+        self.candle_f = Rh.get_resource("candle.txt")
+        self.water_bottle_f = Rh.get_resource("water_bottle.txt")
 
         # configure the name and author of the game
         RPGInfo.author = "Timo Früh"
@@ -125,30 +135,28 @@ class Main:
 
         # initialise all items, set their (initial) description and their initial room
         self.longsword = Item(art="a", item_name="sword")
-        self.longsword.set_description("a simple one, but it seems like good craftsmanship.")
+        self.longsword.set_description(self.longsword_f)
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Item(art="a", item_name="crossbow")
-        self.crossbow.set_description("double-winged and small. It looks magical, "
-                                      "probably enchanted to shoot infinite bolts.")
+        self.crossbow.set_description(self.crossbow_f)
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
         self.swords_odd.add_alias("swords")
-        self.swords_odd.set_description("both faintly glowing.")
-        self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
-                                                "Dusk silver and Dawn crimson.")
+        self.swords_odd.set_description(self.swords_odd_f)
+        self.swords_odd.set_initial_description(self.swords_odd_init_f)
         self.hidden_room.add_item(self.swords_odd)
 
         self.candle = Item(art="a", item_name="candle")
-        self.candle.set_description("standing on the ground, its flame flickering.")
+        self.candle.set_description(self.candle_f)
         self.hall.add_item(self.candle)
 
         self.water_bottle = Item(art="a", item_name="bottle of holy water")
         self.water_bottle.add_alias("holy water")
         self.water_bottle.add_alias("bottle")
         self.water_bottle.add_alias("water")
-        self.water_bottle.set_description("standing on the ground.")
+        self.water_bottle.set_description(self.water_bottle_f)
         self.library.add_item(self.water_bottle)
 
         # print welcome message
