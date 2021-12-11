@@ -14,6 +14,7 @@ class ResourceHelper():
         cls.resources_path = path
 
     @classmethod
-    def get_resource(cls, resource):
-        return open(os.path.join(cls.resources_path, resource), "r")
+    def read_resource(cls, resource):
+        file = open(os.path.join(cls.resources_path, resource), "r")
+        return file.read()
 
