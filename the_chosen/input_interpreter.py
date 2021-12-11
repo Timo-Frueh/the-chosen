@@ -7,7 +7,7 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with a single argument
     @staticmethod
-    def interpret_single(command, key, remove):
+    def interpret_single(command, key, remove=[]):
 
         # replace the command with nothing so that only the argument remains
         output = command.replace(key, "")
@@ -20,7 +20,7 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
-    def interpret_double(command, key, separator, remove_0, remove_1):
+    def interpret_double(command, key, separator, remove_0=[], remove_1=[]):
 
         # replace the command with nothing so that only the arguments and the separator remain
         without_key = command.replace(key, "")
