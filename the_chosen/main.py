@@ -41,27 +41,42 @@ class Main:
         self.file_path = os.path.dirname(os.path.abspath(__file__))
         Rh.set_resources_path(os.path.join(self.file_path, "resources"))
 
-        self.welcome_f = Rh.get_resource("welcome_message.txt")
-        self.cellar_f = Rh.get_resource("cellar.txt")
-        self.cellar_ladder_f = Rh.get_resource("cellar_ladder.txt")
-        self.hall_f = Rh.get_resource("hall.txt")
-        self.west_room_f = Rh.get_resource("west_room.txt")
-        self.trophy_room_f = Rh.get_resource("trophy_room.txt")
-        self.ns_passageway_f = Rh.get_resource("ns_passageway.txt")
-        self.staff_room_f = Rh.get_resource("staff_room.txt")
-        self.library_f = Rh.get_resource("library.txt")
-        self.library_entrance_f = Rh.get_resource("library_entrance.txt")
-        self.east_room_f = Rh.get_resource("east_room.txt")
-        self.throne_entrance_f = Rh.get_resource("throne_entrance.txt")
-        self.hidden_room_f = Rh.get_resource("hidden_room.txt")
-        self.throne_room_f = Rh.get_resource("throne_room.txt")
+        self.welcome_f = Rh.read_resource("welcome_message.txt")
+        self.cellar_f = Rh.read_resource("cellar.txt")
+        self.cellar_ladder_f = Rh.read_resource("cellar_ladder.txt")
+        self.hall_f = Rh.read_resource("hall.txt")
+        self.west_room_f = Rh.read_resource("west_room.txt")
+        self.trophy_room_f = Rh.read_resource("trophy_room.txt")
+        self.ns_passageway_f = Rh.read_resource("ns_passageway.txt")
+        self.staff_room_f = Rh.read_resource("staff_room.txt")
+        self.library_f = Rh.read_resource("library.txt")
+        self.library_entrance_f = Rh.read_resource("library_entrance.txt")
+        self.east_room_f = Rh.read_resource("east_room.txt")
+        self.throne_entrance_f = Rh.read_resource("throne_entrance.txt")
+        self.hidden_room_f = Rh.read_resource("hidden_room.txt")
+        self.throne_room_f = Rh.read_resource("throne_room.txt")
 
-        self.longsword_f = Rh.get_resource("longsword.txt")
-        self.crossbow_f = Rh.get_resource("crossbow.txt")
-        self.swords_odd_f = Rh.get_resource("swords_odd.txt")
-        self.swords_odd_init_f = Rh.get_resource("swords_odd_init.txt")
-        self.candle_f = Rh.get_resource("candle.txt")
-        self.water_bottle_f = Rh.get_resource("water_bottle.txt")
+        self.longsword_f = Rh.read_resource("longsword.txt")
+        self.crossbow_f = Rh.read_resource("crossbow.txt")
+        self.swords_odd_f = Rh.read_resource("swords_odd.txt")
+        self.swords_odd_init_f = Rh.read_resource("swords_odd_init.txt")
+        self.candle_f = Rh.read_resource("candle.txt")
+        self.water_bottle_f = Rh.read_resource("water_bottle.txt")
+        self.key_f = Rh.read_resource("key.txt")
+
+        self.elliot_f = Rh.read_resource("elliot.txt")
+        self.elliot_con_f = Rh.read_resource("elliot_con.txt")
+        self.scholar_f = Rh.read_resource("scholar.txt")
+        self.scholar_con_f = Rh.read_resource("scholar_con.txt")
+        self.hag_f = Rh.read_resource("hag.txt")
+        self.hag_con_f = Rh.read_resource("hag_con.txt")
+        self.stranger_f = Rh.read_resource("stranger.txt")
+        self.stranger_con_f = Rh.read_resource("stranger_con.txt")
+        self.warrioress_f = Rh.read_resource("warrioress.txt")
+        self.mandrak_f = Rh.read_resource("mandrak.txt")
+        self.mandrak_con_f = Rh.read_resource("mandrak_con.txt")
+        self.demon_king_f = Rh.read_resource("demon_king.txt")
+        self.demon_king_con_f = Rh.read_resource("demon_king_con.txt")
 
         # configure the name and author of the game
         RPGInfo.author = "Timo Früh"
@@ -69,47 +84,47 @@ class Main:
         RPGInfo.subtitle = "At Nights End"
 
         # set welcome message to the content of the text file loaded above
-        RPGInfo.welcome_message = self.welcome_f.read()
+        RPGInfo.welcome_message = self.welcome_f
 
         # initialise all rooms and set their description to the corresponding text file
         self.cellar = Room(room_name="Cellar")
-        self.cellar.set_desc(self.cellar_f.read())
+        self.cellar.set_desc(self.cellar_f)
 
         self.cellar_ladder = Room(room_name="Ladder to the Cellar")
-        self.cellar_ladder.set_desc(self.cellar_ladder_f.read())
+        self.cellar_ladder.set_desc(self.cellar_ladder_f)
 
         self.hall = Room(room_name="The Hall")
-        self.hall.set_desc(self.hall_f.read())
+        self.hall.set_desc(self.hall_f)
 
         self.west_room = Room(room_name="Room West to the Hall")
-        self.west_room.set_desc(self.west_room_f.read())
+        self.west_room.set_desc(self.west_room_f)
 
         self.trophy_room = Room(room_name="Trophy Room")
-        self.trophy_room.set_desc(self.trophy_room_f.read())
+        self.trophy_room.set_desc(self.trophy_room_f)
 
         self.ns_passageway = Room(room_name="N/S Passageway")
-        self.ns_passageway.set_desc(self.ns_passageway_f.read())
+        self.ns_passageway.set_desc(self.ns_passageway_f)
 
         self.staff_room = Room(room_name="Staff Room")
-        self.staff_room.set_desc(self.staff_room_f.read())
+        self.staff_room.set_desc(self.staff_room_f)
 
         self.library = Room(room_name="The Library")
-        self.library.set_desc(self.library_f.read())
+        self.library.set_desc(self.library_f)
 
         self.library_entrance = Room(room_name="Library Entrance")
-        self.library_entrance.set_desc(self.library_entrance_f.read())
+        self.library_entrance.set_desc(self.library_entrance_f)
 
         self.east_room = Room(room_name="Room East to the Hall")
-        self.east_room.set_desc(self.east_room_f.read())
+        self.east_room.set_desc(self.east_room_f)
 
         self.throne_entrance = Room(room_name="Entrance to the Throne Room")
-        self.throne_entrance.set_desc(self.throne_entrance_f.read())
+        self.throne_entrance.set_desc(self.throne_entrance_f)
 
         self.hidden_room = Room(room_name="Hidden Room")
-        self.hidden_room.set_desc(self.hidden_room_f.read())
+        self.hidden_room.set_desc(self.hidden_room_f)
 
         self.throne_room = Room(room_name="The Throne Room")
-        self.throne_room.set_desc(self.throne_room_f.read())
+        self.throne_room.set_desc(self.throne_room_f)
 
         self.key = Item(art="a", item_name="key")
         self.key.set_description("made of brass.")
@@ -217,62 +232,40 @@ class Main:
         # initialise all characters, their descriptions, conversations, rooms and weaknesses
         # and define whether they are able to kill the player
         self.elliot = Friend(character_name="Elliot")
-        self.elliot.set_description("a man you've never seen before. Or have you? How else would you know his name?")
-        self.elliot.set_conversation(f"\tHey, {self.player_name}! Long time no see! Have you heard the latest gossip?\n"
-                                     "\t\tWe all know that the Demon King can be killed with the legendary Swords, right?\n"
-                                     "\t\tRumour has it that even with those you'd have to kill seven of\n"
-                                     "\t\this demons first, to weaken him.\n"
-                                     "\t\tBut what do I know!")
+        self.elliot.set_description(self.elliot_f)
+        self.elliot.set_conversation(f"Hey, {self.player_name}!\n" + self.elliot_con_f)
         self.west_room.add_character(self.elliot)
 
         self.scholar = Stranger(art="a", class_name="scholar", deadly=False)
-        self.scholar.set_description("currently searching for some book somewhere on the shelves.")
-        self.scholar.set_conversation("\tHello my son. Are you in need of a book?\n"
-                                      "\t\tI'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
+        self.scholar.set_description(self.scholar_f)
+        self.scholar.set_conversation(self.scholar_con_f)
         self.library.add_character(self.scholar)
 
         self.hag = Stranger(art="an", class_name="old hag", deadly=False)
         self.hag.add_alias("hag")
-        self.hag.set_description("sitting on the bed.")
-        self.hag.set_conversation("\tOooh ... what a fine surprise ... the Chosen is finally here. You know\n"
-                                  "\t\tyour task already, I suppose? Quick, quick, let me tell you something then:\n"
-                                  "\t\tTo discover the swords you must find the three burning suns, then turn\n"
-                                  "\t\tsouth and take the daring step.\n"
-                                  "\t\tThat doesn't help you? Well, this is all I know.")
+        self.hag.set_description(self.hag_f)
+        self.hag.set_conversation(self.hag_con_f)
         self.staff_room.add_character(self.hag)
 
         self.stranger = Stranger(art="a", class_name="stranger", deadly=True)
-        self.stranger.set_description("leaning against the far end of the wall, examining you with cold, blue eyes.")
-        self.stranger.set_conversation("Hm. Another one. The world is going mad .... And what do you do?\n"
-                                       "\t\tWaving around your sword as if you were able to do something.\n"
-                                       "\t\tThis is all pointless!")
+        self.stranger.set_description(self.stranger_f)
+        self.stranger.set_conversation(self.stranger_con_f)
         self.hall.add_character(self.stranger)
 
         self.warrioress = Stranger(art="a", class_name="warrioress", deadly=True)
-        self.warrioress.set_description("seeming a bit lost but eying you with obvious distrust.")
+        self.warrioress.set_description(self.warrioress_f)
         self.ns_passageway.add_character(self.warrioress)
 
         self.mandrak = Miniboss(character_name="Mandrak")
         self.mandrak.add_alias("servant")
-        self.mandrak.set_description("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
-        self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
-                                      "\t\tkill you if you try to take his throne.\n"
-                                      "\t\tLong live the Demon King!")
+        self.mandrak.set_description(self.mandrak_f)
+        self.mandrak.set_conversation(self.mandrak_con_f)
         self.mandrak.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.mandrak)
 
         self.demon_king = Endboss(character_name="An-Harat", title="Demon King", kills_needed=7)
-        self.demon_king.set_description("sitting on his magnificent throne and looking incredibly menacing.")
-        self.demon_king.set_conversation("\tAah, greetings, Chosen. You are here at last.\n"
-                                         "\t\tWhat took you so long? My demons certainly were no challenge for you,\n"
-                                         "\t\tfor you are in the posession of the legendary Swords of Dusk and Dawn.\n"
-                                         "\t\tEven as powerful a servant as Mandrak would not have been able to withstand\n"
-                                         "\t\tthose dreadful blades of yours, the bringers of death and destruction.\n"
-                                         "\t\tAre you here to kill me, then? Do you want to take my throne?\n"
-                                         "\t\tYou want to take my world from me, because you think it belongs to you mortals?\n"
-                                         "\t\tYou want to end my eternal reign and rid the world of my kind?\n"
-                                         "\t\tCome on then, try to ban me from my realm, try to destroy my immortal soul\n"
-                                         "\t\twith these weapons you carry and I'll behead you right where you stand!")
+        self.demon_king.set_description(self.demon_king_f)
+        self.demon_king.set_conversation(self.demon_king_con_f)
         self.demon_king.add_weakness(self.swords_odd)
         self.throne_room.add_character(self.demon_king)
 
