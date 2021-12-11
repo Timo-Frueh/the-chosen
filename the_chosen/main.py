@@ -19,7 +19,7 @@
 from the_chosen.rpginfo import RPGInfo
 from the_chosen.room import Room
 from the_chosen.player import Player
-from the_chosen.character import Stranger, Friend, Enemy, Endboss, Mob
+from the_chosen.character import Stranger, Friend, Miniboss, Endboss, Mob
 from the_chosen.commands import Commands as Cmd
 from the_chosen.item import Item, Artifacts
 from the_chosen.input_interpreter import InputInterpreter
@@ -133,7 +133,7 @@ class Main:
                                       "probably enchanted to shoot infinite bolts.")
         self.cellar.add_item(self.crossbow)
 
-        self.swords_odd = Artifacts(art="the", item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
+        self.swords_odd = Artifacts(item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
         self.swords_odd.add_alias("swords")
         self.swords_odd.set_description("both faintly glowing.")
         self.swords_odd.set_initial_description("resting in a wooden case, both shining brilliantly, "
@@ -166,42 +166,42 @@ class Main:
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
         # initialise all mobs and their weaknesses
-        self.fire_demon = Mob(class_name="demon of fire")
+        self.fire_demon = Mob(art="a", class_name="demon of fire")
         self.fire_demon.add_weakness(self.swords_odd)
         self.fire_demon.add_weakness(self.water_bottle)
         self.west_room.add_character(self.fire_demon)
 
-        self.fire_demon2 = Mob(class_name="demon of fire")
+        self.fire_demon2 = Mob(art="a", class_name="demon of fire")
         self.fire_demon2.add_weakness(self.swords_odd)
         self.fire_demon2.add_weakness(self.water_bottle)
         self.east_room.add_character(self.fire_demon2)
 
-        self.water_demon = Mob(class_name="demon of water")
+        self.water_demon = Mob(art="a", class_name="demon of water")
         self.water_demon.add_weakness(self.swords_odd)
         self.water_demon.add_weakness(self.candle)
         self.trophy_room.add_character(self.water_demon)
 
-        self.water_demon2 = Mob(class_name="demon of water")
+        self.water_demon2 = Mob(art="a", class_name="demon of water")
         self.water_demon2.add_weakness(self.swords_odd)
         self.water_demon2.add_weakness(self.candle)
         self.library_entrance.add_character(self.water_demon2)
 
-        self.earth_demon = Mob(class_name="demon of earth")
+        self.earth_demon = Mob(art="a", class_name="demon of earth")
         self.earth_demon.add_weakness(self.swords_odd)
         self.earth_demon.add_weakness(self.longsword)
         self.ns_passageway.add_character(self.earth_demon)
 
-        self.earth_demon2 = Mob(class_name="demon of earth")
+        self.earth_demon2 = Mob(art="a", class_name="demon of earth")
         self.earth_demon2.add_weakness(self.swords_odd)
         self.earth_demon2.add_weakness(self.longsword)
         self.library.add_character(self.earth_demon)
 
-        self.air_demon = Mob(class_name="demon of air")
+        self.air_demon = Mob(art="a", class_name="demon of air")
         self.air_demon.add_weakness(self.swords_odd)
         self.air_demon.add_weakness(self.crossbow)
         self.staff_room.add_character(self.air_demon)
 
-        self.air_demon2 = Mob(class_name="demon of air")
+        self.air_demon2 = Mob(art="a", class_name="demon of air")
         self.air_demon2.add_weakness(self.swords_odd)
         self.air_demon2.add_weakness(self.crossbow)
         self.hall.add_character(self.air_demon2)
@@ -209,7 +209,7 @@ class Main:
         # initialise all characters, their descriptions, conversations, rooms and weaknesses
         # and define whether they are able to kill the player
         self.elliot = Friend(character_name="Elliot")
-        self.elliot.set_desc("a man you've never seen before. Or have you? How else would you know his name?")
+        self.elliot.set_description("a man you've never seen before. Or have you? How else would you know his name?")
         self.elliot.set_conversation(f"\tHey, {self.player_name}! Long time no see! Have you heard the latest gossip?\n"
                                      "\t\tWe all know that the Demon King can be killed with the legendary Swords, right?\n"
                                      "\t\tRumour has it that even with those you'd have to kill seven of\n"
@@ -217,15 +217,15 @@ class Main:
                                      "\t\tBut what do I know!")
         self.west_room.add_character(self.elliot)
 
-        self.scholar = Stranger(class_name="scholar", deadly=False)
-        self.scholar.set_desc("currently searching for some book somewhere on the shelves.")
+        self.scholar = Stranger(art="a", class_name="scholar", deadly=False)
+        self.scholar.set_description("currently searching for some book somewhere on the shelves.")
         self.scholar.set_conversation("\tHello my son. Are you in need of a book?\n"
                                       "\t\tI'm sorry, but I'm afraid the library doesn't hand them over to strangers.")
         self.library.add_character(self.scholar)
 
-        self.hag = Stranger(class_name="old hag", deadly=False)
+        self.hag = Stranger(art="an", class_name="old hag", deadly=False)
         self.hag.add_alias("hag")
-        self.hag.set_desc("sitting on the bed.")
+        self.hag.set_description("sitting on the bed.")
         self.hag.set_conversation("\tOooh ... what a fine surprise ... the Chosen is finally here. You know\n"
                                   "\t\tyour task already, I suppose? Quick, quick, let me tell you something then:\n"
                                   "\t\tTo discover the swords you must find the three burning suns, then turn\n"
@@ -233,20 +233,20 @@ class Main:
                                   "\t\tThat doesn't help you? Well, this is all I know.")
         self.staff_room.add_character(self.hag)
 
-        self.stranger = Stranger(class_name="stranger", deadly=True)
-        self.stranger.set_desc("leaning against the far end of the wall, examining you with cold, blue eyes.")
+        self.stranger = Stranger(art="a", class_name="stranger", deadly=True)
+        self.stranger.set_description("leaning against the far end of the wall, examining you with cold, blue eyes.")
         self.stranger.set_conversation("Hm. Another one. The world is going mad .... And what do you do?\n"
                                        "\t\tWaving around your sword as if you were able to do something.\n"
                                        "\t\tThis is all pointless!")
         self.hall.add_character(self.stranger)
 
-        self.warrioress = Stranger(class_name="warrioress", deadly=True)
-        self.warrioress.set_desc("seeming a bit lost but eying you with obvious distrust.")
+        self.warrioress = Stranger(art="a", class_name="warrioress", deadly=True)
+        self.warrioress.set_description("seeming a bit lost but eying you with obvious distrust.")
         self.ns_passageway.add_character(self.warrioress)
 
-        self.mandrak = Enemy(character_name="Mandrak")
+        self.mandrak = Miniboss(character_name="Mandrak")
         self.mandrak.add_alias("servant")
-        self.mandrak.set_desc("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
+        self.mandrak.set_description("a servant of the Demon King, standing firm in front of the Throne Room, holding his lance close.")
         self.mandrak.set_conversation("\tTurn back, oh powerless soul. I will let you pass, but He will\n"
                                       "\t\tkill you if you try to take his throne.\n"
                                       "\t\tLong live the Demon King!")
@@ -254,7 +254,7 @@ class Main:
         self.throne_entrance.add_character(self.mandrak)
 
         self.demon_king = Endboss(character_name="An-Harat", title="Demon King", kills_needed=7)
-        self.demon_king.set_desc("sitting on his magnificent throne and looking incredibly menacing.")
+        self.demon_king.set_description("sitting on his magnificent throne and looking incredibly menacing.")
         self.demon_king.set_conversation("\tAah, greetings, Chosen. You are here at last.\n"
                                          "\t\tWhat took you so long? My demons certainly were no challenge for you,\n"
                                          "\t\tfor you are in the posession of the legendary Swords of Dusk and Dawn.\n"

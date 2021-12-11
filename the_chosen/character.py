@@ -3,13 +3,13 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-class Character:
+from the_chosen.entity import Entity
+
+class Character(Entity):
 
     # define constructor and the three opject attributes
-    def __init__(self, character_name):
-        self.name = character_name
-        self.aliases = [character_name.lower().strip()]
-        self.description = None
+    def __init__(self, art, character_name):
+        super().__init__(art, character_name)
         self.conversation = None
 
     # print a line describing the character
@@ -35,22 +35,6 @@ class Character:
     def hug(self):
         print("I doubt they'd appreciate that.")
 
-    # getters and setters
-    def get_name(self):
-        return self.name
-
-    def get_aliases(self):
-        return self.aliases
-
-    def add_alias(self, alias):
-        self.aliases.append(alias.lower().strip())
-
-    def get_desc(self):
-        return self.description
-
-    def set_desc(self, new_description):
-        self.description = new_description
-
     def get_conversation(self):
         return self.conversation
 
@@ -65,13 +49,13 @@ class Character:
 class Stranger(Character):
 
     # define constructor and add a "deadly" attribute defining whether the stranger kills a player when fought
-    def __init__(self, class_name, deadly):
-        super().__init__(class_name)
+    def __init__(self, art, class_name, deadly):
+        super().__init__(art, class_name)
         self.deadly = deadly
 
     # print a line describing the stranger
     def describe(self):
-        print(f"You see a {self.name}, {self.description}")
+        print(f"You see {self.art_name}, {self.description}")
 
     # talk to the stranger
     def talk(self):
@@ -79,21 +63,21 @@ class Stranger(Character):
         # if a conversation is set print it along with the strangers class name
         # if none is set print a message that the stranger doesn't want to talk to you
         if self.conversation:
-            print(f"[The {self.name}]: {self.conversation}")
+            print(f"[{self.c_the_name}]: {self.conversation}")
         else:
-            print(f"The {self.name} doesn't want to talk to you.")
+            print(f"{self.c_the_name} doesn't want to talk to you.")
 
     # fight a stranger: returns true if the player is still alive after a fight
     def fight(self, weapon, player):
 
         # if the stranger is deadly the player dies and receives a message that the stranger didn't wish them harm
         if self.deadly:
-            print(f"The {self.name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
+            print(f"{self.c_the_name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
             player.die()
 
         # if the stranger is not deadly the player kills the stranger and receives a message about it
         else:
-            print(f"You kill the {self.name}.\nThis wasn't right ... You feel sorry for the {self.name}.")
+            print(f"You kill {self.c_the_name}.\nThis wasn't right ... You feel sorry for {self.c_the_name}.")
             player.get_current_room().remove_character(self)
 
 
@@ -101,7 +85,7 @@ class Friend(Character):
 
     # call the constructor of the super class
     def __init__(self, character_name):
-        super().__init__(character_name)
+        super().__init__("", character_name)
 
     # hug the friend: prints a friendly message
     def hug(self):
@@ -115,8 +99,8 @@ class Friend(Character):
 class Enemy(Character):
 
     # define constructor and add a "weaknesses" list to hold the items a enemy is fightable with
-    def __init__(self, character_name):
-        super().__init__(character_name)
+    def __init__(self, art, character_name):
+        super().__init__(art, character_name)
         self.weaknesses = []
 
     # fight the enemy: returns true if the player is still alive after the fight
@@ -126,7 +110,7 @@ class Enemy(Character):
         if weapon in self.weaknesses:
 
             # print a message that the enemy was killed
-            print(f"You kill {self.name} with the {weapon.get_name()}!")
+            print(f"You kill {self.the_name} with {weapon.get_the_name()}!")
 
             # remove the enemy from the current room
             player.get_current_room().remove_character(self)
@@ -138,7 +122,7 @@ class Enemy(Character):
         else:
 
             # print a message that the player has died
-            print(f"{self.name} lands a fatal blow.\nYou die ...")
+            print(f"{self.the_name} lands a fatal blow.\nYou die ...")
             player.die()
 
     def hug(self):
@@ -155,13 +139,17 @@ class Enemy(Character):
         self.weaknesses.remove(weakness)
 
 
+class Miniboss(Enemy):
+    def __init__(self, character_name):
+        super().__init__("", character_name)
+
 class Endboss(Enemy):
 
     # define constructor
     # and add a title
     # and add a "kills_needed" attribute, defining how many kills the player must have to kill the boss
     def __init__(self, character_name, title, kills_needed):
-        super().__init__(character_name)
+        super().__init__("", character_name)
         self.kills_needed = kills_needed
         self.title = title
         self.aliases.append(self.title.lower().strip())
@@ -204,8 +192,8 @@ class Endboss(Enemy):
 class Mob(Enemy):
 
     # call the constructor of the super class
-    def __init__(self, class_name):
-        super().__init__(class_name)
+    def __init__(self, art, class_name):
+        super().__init__(art, class_name)
 
     # print a line describing the mob
     def describe(self):

@@ -65,7 +65,7 @@ class Player:
         if self.get_inventory():
             print("You are carrying:")
             for item in self.get_inventory():
-                print(f"- {item.get_name_w_cap_art()}")
+                print(f"- {item.get_c_art_name()}")
 
         else:
             print("You are empty-handed.")
