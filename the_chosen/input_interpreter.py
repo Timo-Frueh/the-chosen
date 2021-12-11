@@ -16,7 +16,7 @@ class InputInterpreter:
             output = output.replace(w, " ")
 
         # return the argument, stripped from whitespaces at end and beginning
-        return output.strip()
+        return output.lower().strip()
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
@@ -43,4 +43,4 @@ class InputInterpreter:
             output[1] = output[1].replace(w, " ")
 
         # return the arguments in a list and stripped of whitespaces at end and beginning
-        return [output[0].strip(), output[1].strip()]
+        return [output[0].lower().strip(), output[1].lower().strip()]
