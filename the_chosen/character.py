@@ -223,4 +223,4 @@ class Mob(Enemy):
 
     # talk to the mob: they always say the same thing
     def talk(self):
-        print(f"[The {self.name}]: Long live the Demon King!")
+        print(f"[The {self.name}]: *unintelligible bestial sounds*")
