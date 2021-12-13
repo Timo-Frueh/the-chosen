@@ -16,19 +16,20 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from the_chosen.rpginfo import RPGInfo
+import os
+
+from clear_screen import clear
+
+from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
+from the_chosen.commands import Commands as Cmd
+from the_chosen.direction_helper import DirectionHelper as Dh
+from the_chosen.input_interpreter import InputInterpreter
+from the_chosen.item import Artifacts, Item
+from the_chosen.link import Door, IllusoryWall, Ladder
+from the_chosen.player import Player
 from the_chosen.resource_helper import ResourceHelper as Rh
 from the_chosen.room import Room
-from the_chosen.player import Player
-from the_chosen.character import Stranger, Friend, Miniboss, Endboss, Mob
-from the_chosen.commands import Commands as Cmd
-from the_chosen.item import Item, Artifacts
-from the_chosen.input_interpreter import InputInterpreter
-from the_chosen.link import Door, Ladder, IllusoryWall
-from the_chosen.direction_helper import DirectionHelper as Dh
-
-import os
-from clear_screen import clear
+from the_chosen.rpginfo import RPGInfo
 
 
 class Main:
@@ -189,42 +190,42 @@ class Main:
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
 
         # initialise all mobs and their weaknesses
-        self.fire_demon = Mob(art="a", class_name="demon of fire")
+        self.fire_demon = Mob(art="a", character_name="demon of fire")
         self.fire_demon.add_weakness(self.swords_odd)
         self.fire_demon.add_weakness(self.water_bottle)
         self.west_room.add_character(self.fire_demon)
 
-        self.fire_demon2 = Mob(art="a", class_name="demon of fire")
+        self.fire_demon2 = Mob(art="a", character_name="demon of fire")
         self.fire_demon2.add_weakness(self.swords_odd)
         self.fire_demon2.add_weakness(self.water_bottle)
         self.east_room.add_character(self.fire_demon2)
 
-        self.water_demon = Mob(art="a", class_name="demon of water")
+        self.water_demon = Mob(art="a", character_name="demon of water")
         self.water_demon.add_weakness(self.swords_odd)
         self.water_demon.add_weakness(self.candle)
         self.trophy_room.add_character(self.water_demon)
 
-        self.water_demon2 = Mob(art="a", class_name="demon of water")
+        self.water_demon2 = Mob(art="a", character_name="demon of water")
         self.water_demon2.add_weakness(self.swords_odd)
         self.water_demon2.add_weakness(self.candle)
         self.library_entrance.add_character(self.water_demon2)
 
-        self.earth_demon = Mob(art="a", class_name="demon of earth")
+        self.earth_demon = Mob(art="a", character_name="demon of earth")
         self.earth_demon.add_weakness(self.swords_odd)
         self.earth_demon.add_weakness(self.longsword)
         self.ns_passageway.add_character(self.earth_demon)
 
-        self.earth_demon2 = Mob(art="a", class_name="demon of earth")
+        self.earth_demon2 = Mob(art="a", character_name="demon of earth")
         self.earth_demon2.add_weakness(self.swords_odd)
         self.earth_demon2.add_weakness(self.longsword)
         self.library.add_character(self.earth_demon)
 
-        self.air_demon = Mob(art="a", class_name="demon of air")
+        self.air_demon = Mob(art="a", character_name="demon of air")
         self.air_demon.add_weakness(self.swords_odd)
         self.air_demon.add_weakness(self.crossbow)
         self.staff_room.add_character(self.air_demon)
 
-        self.air_demon2 = Mob(art="a", class_name="demon of air")
+        self.air_demon2 = Mob(art="a", character_name="demon of air")
         self.air_demon2.add_weakness(self.swords_odd)
         self.air_demon2.add_weakness(self.crossbow)
         self.hall.add_character(self.air_demon2)
@@ -436,9 +437,9 @@ class Main:
 
         # print kill message (depending on how many the user scored)
         if self.player.get_kills() == 0:
-            print(f"You vanquished not a single enemy during the game.")
+            print("You vanquished not a single enemy during the game.")
         elif self.player.get_kills() == 1:
-            print(f"You vanquished 1 enemy during the game.")
+            print("You vanquished 1 enemy during the game.")
         elif self.player.get_kills() > 1:
             print(f"You vanquished {self.player.get_kills()} enemies during the game.")
 
