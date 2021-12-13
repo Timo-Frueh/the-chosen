@@ -112,16 +112,12 @@ class Door(Link):
 
 
 class Ladder(Link):
-    def __init__(self, rooms):
-        super().__init__(rooms)
 
     def print_message(self, direction):
         print(f"You climb {direction} the ladder.\n")
 
 
 class IllusoryWall(Link):
-    def __init__(self, rooms):
-        super().__init__(rooms)
-
+    
     def print_message(self, direction):
         print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
