@@ -11,16 +11,28 @@ class InputInterpreter:
     This class is used to interpret the commands typed by the user.
     """
 
-    # define a static method to interpret a positional command with a single argument
     @staticmethod
     def interpret_single(command, key, remove: list = None):
+
+        """
+        Intepret a command with only one argument.
+
+        :param command: the whole command the user has typed
+        :type command: str
+
+        :param key: command key that should trigger this command, e.g. "fight"
+        :type key: str
+
+        :param remove: a list of words (strings) to remove from the users input
+        :type remove: list
+        """
 
         # replace the command with nothing so that only the argument remains
         output = command.replace(key, "")
 
         if remove:
-            for w in remove:
-                output = output.replace(w, " ")
+            for word in remove:
+                output = output.replace(word, " ")
 
         # return the argument, stripped from whitespaces at end and beginning
         return output.lower().strip()
@@ -28,6 +40,25 @@ class InputInterpreter:
     # define a static method to interpret a positional command with two arguments
     @staticmethod
     def interpret_double(command, key, separator, remove_0: list = None, remove_1:list = None):
+
+        """
+        Interpret a command with two arguments.
+
+        :param command: the whole command the user has typed
+        :type command: str
+
+        :param key: command key that should trigger this command, e.g. "fight"
+        :type key: str
+
+        :param separator: command separator that is between the two arguments, e.g. "with"
+        :type separator: str
+
+        :param remove_0: list of words (strings) to remove from the first argument
+        :type remove_0: list
+
+        :param remove_1: list of words (strings) to remove from the second argument
+        :type remove_1: list
+        """
 
         # replace the command with nothing so that only the arguments and the separator remain
         without_key = command.replace(key, "")
