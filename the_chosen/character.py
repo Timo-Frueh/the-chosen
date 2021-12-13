@@ -197,10 +197,6 @@ class Endboss(Enemy):
 
 class Mob(Enemy):
 
-    # call the constructor of the super class
-    def __init__(self, art, class_name):
-        super().__init__(art, class_name)
-
     # print a line describing the mob
     def describe(self):
         print(f"You see {self.art_name}, looking malevolently at you.")
