@@ -12,7 +12,7 @@ class InputInterpreter:
     """
 
     @staticmethod
-    def interpret_single(command, key, remove: list = None):
+    def interpret_single(command: str, key: str, remove: list = None):
 
         """
         Intepret a command with only one argument.
@@ -39,7 +39,7 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
-    def interpret_double(command, key, separator, remove_0: list = None, remove_1:list = None):
+    def interpret_double(command: str, key:str, separator:str, remove_0: list = None, remove_1:list = None):
 
         """
         Interpret a command with two arguments.
