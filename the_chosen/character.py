@@ -28,7 +28,7 @@ class Character(Entity):
             print(f"{self.name} doesn't want to talk to you.")
 
     # fight a character: returns true if the player is still alive after the fight
-    def fight(self, weapon, player):
+    def fight(self, weapon, player): # pylint: disable=unused-argument
 
         # print a message that the character doesn't want to fight (because normal characters don't fight)
         print(f"{self.name} does not want to fight you.")
