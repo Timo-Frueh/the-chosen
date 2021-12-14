@@ -127,7 +127,7 @@ class Main:
         self.throne_room = Room(room_name="The Throne Room")
         self.throne_room.set_desc(self.throne_room_f)
 
-        self.key = Item(art="a", item_name="key")
+        self.key = Item(art="a", name="key")
         self.key.set_description("made of brass.")
         self.cellar.add_item(self.key)
 
@@ -150,11 +150,11 @@ class Main:
         self.illusory_wall = IllusoryWall({Dh.SOUTH: self.hidden_room, Dh.NORTH: self.throne_entrance})
 
         # initialise all items, set their (initial) description and their initial room
-        self.longsword = Item(art="a", item_name="sword")
+        self.longsword = Item(art="a", name="sword")
         self.longsword.set_description(self.longsword_f)
         self.cellar.add_item(self.longsword)
 
-        self.crossbow = Item(art="a", item_name="crossbow")
+        self.crossbow = Item(art="a", name="crossbow")
         self.crossbow.set_description(self.crossbow_f)
         self.cellar.add_item(self.crossbow)
 
@@ -164,11 +164,11 @@ class Main:
         self.swords_odd.set_initial_description(self.swords_odd_init_f)
         self.hidden_room.add_item(self.swords_odd)
 
-        self.candle = Item(art="a", item_name="candle")
+        self.candle = Item(art="a", name="candle")
         self.candle.set_description(self.candle_f)
         self.hall.add_item(self.candle)
 
-        self.water_bottle = Item(art="a", item_name="bottle of holy water")
+        self.water_bottle = Item(art="a", name="bottle of holy water")
         self.water_bottle.add_alias("holy water")
         self.water_bottle.add_alias("bottle")
         self.water_bottle.add_alias("water")

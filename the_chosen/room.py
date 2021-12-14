@@ -27,7 +27,7 @@ class Room:
         print(self.name)
 
         # print exactly as many ¯ as needed to form an underline
-        for n in range(0, len(self.name)-1):
+        for _ in range(0, len(self.name)-1):
             print("¯", end="")
         print("¯")
 

@@ -8,10 +8,6 @@ from the_chosen.entity import Entity
 
 class Item (Entity):
 
-    # define constructor and the five object attributes
-    def __init__(self, art, item_name):
-        super().__init__(art, item_name)
-
     # print a line describing the character
     def describe(self):
         print(f"{self.c_art_name} is here, {self.description}")
