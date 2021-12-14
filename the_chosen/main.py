@@ -78,6 +78,10 @@ class Main:
         self.mandrak_con_f = Rh.read_resource("mandrak_con.txt")
         self.demon_king_f = Rh.read_resource("demon_king.txt")
         self.demon_king_con_f = Rh.read_resource("demon_king_con.txt")
+        self.demon_king_hug_f = Rh.read_resource("demon_king_hug.txt")
+
+        self.air_demon_kill_f = Rh.read_resource("air_demon_kill.txt")
+        self.earth_demon_kill_f = Rh.read_resource("earth_demon_kill.txt")
 
         # configure the name and author of the game
         RPGInfo.author = "Timo Früh"
@@ -213,21 +217,25 @@ class Main:
         self.earth_demon = Mob(art="a", character_name="demon of earth")
         self.earth_demon.add_weakness(self.swords_odd)
         self.earth_demon.add_weakness(self.longsword)
+        self.earth_demon.set_kill_message(self.earth_demon_kill_f)
         self.ns_passageway.add_character(self.earth_demon)
 
         self.earth_demon2 = Mob(art="a", character_name="demon of earth")
         self.earth_demon2.add_weakness(self.swords_odd)
         self.earth_demon2.add_weakness(self.longsword)
+        self.earth_demon2.set_kill_message(self.earth_demon_kill_f)
         self.library.add_character(self.earth_demon)
 
         self.air_demon = Mob(art="a", character_name="demon of air")
         self.air_demon.add_weakness(self.swords_odd)
         self.air_demon.add_weakness(self.crossbow)
+        self.air_demon.set_kill_message(self.air_demon_kill_f)
         self.staff_room.add_character(self.air_demon)
 
         self.air_demon2 = Mob(art="a", character_name="demon of air")
         self.air_demon2.add_weakness(self.swords_odd)
         self.air_demon2.add_weakness(self.crossbow)
+        self.air_demon2.set_kill_message(self.air_demon_kill_f)
         self.hall.add_character(self.air_demon2)
 
         # initialise all characters, their descriptions, conversations, rooms and weaknesses
@@ -268,6 +276,7 @@ class Main:
         self.demon_king.set_description(self.demon_king_f)
         self.demon_king.set_conversation(self.demon_king_con_f)
         self.demon_king.add_weakness(self.swords_odd)
+        self.demon_king.set_hug_message(self.demon_king_hug_f)
         self.throne_room.add_character(self.demon_king)
 
         # print "You look around." and a empty line after that

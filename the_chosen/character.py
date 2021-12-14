@@ -134,8 +134,7 @@ class Enemy(Character):
         else:
 
             # print a message that the player has died
-            if self.kill_message:
-                print(self.kill_message)
+            print(self.kill_message)
             print(f"{self.the_name} lands a fatal blow.\nYou die ...")
             player.die()
 
@@ -206,8 +205,7 @@ class Endboss(Enemy):
         else:
 
             # display a message that the player has died
-            if self.kill_message:
-                print(self.kill_message)
+            print(self.kill_message)
             print(f"{self.name} lands a fatal blow.\nYou die ...")
             player.die()
 
@@ -241,6 +239,8 @@ class Mob(Enemy):
         else:
 
             # print a message that the player has died
+            if self.kill_message:
+                print(self.kill_message)
             print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
             player.die()
 
