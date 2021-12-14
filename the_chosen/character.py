@@ -12,6 +12,7 @@ class Character(Entity):
     def __init__(self, art, character_name):
         super().__init__(art, character_name)
         self.conversation = None
+        self.hug_message = None
 
     # print a line describing the character
     def describe(self):
@@ -34,13 +35,19 @@ class Character(Entity):
         print(f"{self.name} does not want to fight you.")
 
     def hug(self):
-        print("I doubt they'd appreciate that.")
+        if self.hug_message:
+            print(self.hug_message)
+        else:
+            print("I doubt they'd appreciate that.")
 
     def get_conversation(self):
         return self.conversation
 
     def set_conversation(self, new_conversation):
         self.conversation = new_conversation
+    
+    def set_hug_message(self, new_hug_message):
+        self.hug_message = new_hug_message
 
     # this get_title() method doesn't do anything but is needed later for bosses
     def get_title(self):
@@ -90,7 +97,10 @@ class Friend(Character):
 
     # hug the friend: prints a friendly message
     def hug(self):
-        print(f"{self.name} hugs you back.")
+        if self.hug_message:
+            print(self.hug_message)
+        else:
+            print(f"{self.name} hugs you back.")
 
     # fight the friend: the game doesn't let you and displays a message about it
     def fight(self, weapon, player):
@@ -103,6 +113,7 @@ class Enemy(Character):
     def __init__(self, art, character_name):
         super().__init__(art, character_name)
         self.weaknesses = []
+        self.kill_message = None
 
     # fight the enemy: returns true if the player is still alive after the fight
     def fight(self, weapon, player):
@@ -123,11 +134,16 @@ class Enemy(Character):
         else:
 
             # print a message that the player has died
+            if self.kill_message:
+                print(self.kill_message)
             print(f"{self.the_name} lands a fatal blow.\nYou die ...")
             player.die()
 
     def hug(self):
-        print("You wouldn't want to hug this malicious creature.")
+        if self.hug_message:
+            print(self.hug_message)
+        else:
+            print("You wouldn't want to hug this malicious creature.")
 
     # getters and setters
     def get_weakness(self):
@@ -138,6 +154,9 @@ class Enemy(Character):
 
     def remove_weakness(self, weakness):
         self.weaknesses.remove(weakness)
+    
+    def set_kill_message(self, message):
+        self.kill_message = message
 
 
 class Miniboss(Enemy):
@@ -187,6 +206,8 @@ class Endboss(Enemy):
         else:
 
             # display a message that the player has died
+            if self.kill_message:
+                print(self.kill_message)
             print(f"{self.name} lands a fatal blow.\nYou die ...")
             player.die()
 
