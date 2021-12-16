@@ -79,6 +79,7 @@ class Main:
         self.demon_king_f = Rh.read_resource("demon_king.txt")
         self.demon_king_con_f = Rh.read_resource("demon_king_con.txt")
         self.demon_king_hug_f = Rh.read_resource("demon_king_hug.txt")
+        self.demon_king_kill_f = Rh.read_resource("demon_king_kill.txt")
 
         self.air_demon_kill_f = Rh.read_resource("air_demon_kill.txt")
         self.earth_demon_kill_f = Rh.read_resource("earth_demon_kill.txt")
@@ -281,6 +282,7 @@ class Main:
         self.demon_king.set_conversation(self.demon_king_con_f)
         self.demon_king.add_weakness(self.swords_odd)
         self.demon_king.set_hug_message(self.demon_king_hug_f)
+        self.demon_king.set_kill_message(self.demon_king_kill_f)
         self.throne_room.add_character(self.demon_king)
 
         # print "You look around." and a empty line after that
