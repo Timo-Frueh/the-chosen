@@ -50,7 +50,7 @@ class Link:
 
 
 class Door(Link):
-    def __init__(self, rooms, isopen, islocked):
+    def __init__(self, rooms, isopen=True, islocked=False):
         super().__init__(rooms)
         self.open = isopen
         self.locked = islocked
