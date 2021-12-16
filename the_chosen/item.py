@@ -23,7 +23,7 @@ class Weapon(Item):
     
     def print_kill_message(self, character):
         if self.kill_message:
-            print(f"{self.kill_message}, killing {character.get_the_name()}")
+            print(f"{self.kill_message}, killing {character.get_the_name()}.")
         else:
             print(f"You kill {character.get_the_name()} with {self.the_name}")
 
