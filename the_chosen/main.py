@@ -411,27 +411,13 @@ class Main:
                 # execute the hug() method from the Commands class
                 self.player.hug(hug_input)
 
-            elif "open" in command and "with" in command:
-                open_with_input = InputInterpreter.interpret_double(command, "open", "with", [" the ", " door"])
-                self.player.unlock_door(direction=open_with_input[0], key=open_with_input[1])
-
-                if open_with_input[0].strip() != "" and open_with_input[1].strip() != "":
-                    self.player.open_door(direction=open_with_input[0])
-
             elif "open" in command:
-                open_input = InputInterpreter.interpret_single(command, "open", [" the ", " door"])
-                self.player.open_door(open_input)
-
-            elif "close" in command and "with" in command:
-                close_with_input = InputInterpreter.interpret_double(command, "close", "with", [" the ", " door"])
-                self.player.close_door(direction=close_with_input[0])
-
-                if close_with_input[0].strip() != "" and close_with_input[1].strip() != "":
-                    self.player.lock_door(direction=close_with_input[0], key=close_with_input[1])
+                open_with_input = InputInterpreter.interpret_double(command, "open", "with", [" the ", " door"])
+                self.player.open_door(direction=open_with_input[0], key=open_with_input[1])
 
             elif "close" in command:
-                close_input = InputInterpreter.interpret_single(command, "close", [" the ", " door"])
-                self.player.close_door(close_input)
+                close_with_input = InputInterpreter.interpret_double(command, "close", "with", [" the ", " door"])
+                self.player.close_door(direction=close_with_input[0], key=close_with_input[1])
 
             elif "unlock" in command:
                 unlock_input = InputInterpreter.interpret_double(command, "unlock", "with", [" the ", " door"])

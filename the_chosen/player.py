@@ -154,7 +154,7 @@ class Player:
         else:
             character.hug()
                 
-    def open_door(self, direction):
+    def open_door(self, direction, key):
 
         if direction.strip() == "":
             user_input = input("Open door to which direction? ")
@@ -162,7 +162,9 @@ class Player:
             user_input = direction
 
         open_door = user_input.lower().strip()
+        open_with = key.lower().strip()
         door = self.current_room.get_link(open_door)
+        key = self.get_inventory_item(open_with)
 
         if open_door not in Dh.HORIZ_DIRECTIONS:
             print("You need to specify a direction so I know which door you mean.")
@@ -170,6 +172,9 @@ class Player:
             print(f"There is no door to the {user_input}.")
         elif door.isopen():
             print("This door is already open.")
+        elif key:
+            door.unlock_door(key)
+            door.open_door()
         else:
             door.open_door()
 
@@ -204,15 +209,17 @@ class Player:
         else:
             door.unlock_door(key)
 
-    def close_door(self, direction):
+    def close_door(self, direction, key):
 
         if direction.strip() == "":
-            user_input = input("Close door to which direction? ")
+            user_input = input("Open door to which direction? ")
         else:
             user_input = direction
 
         close_door = user_input.lower().strip()
+        close_with = key.lower().strip()
         door = self.current_room.get_link(close_door)
+        key = self.get_inventory_item(close_with)
 
         if close_door not in Dh.HORIZ_DIRECTIONS:
             print("You need to specify a direction so I know which door you mean.")
@@ -220,6 +227,9 @@ class Player:
             print(f"There is no door to the {user_input}.")
         elif not door.isopen():
             print("This door is already closed.")
+        elif key:
+            door.close_door()
+            door.lock_door(key)
         else:
             door.close_door()
 
