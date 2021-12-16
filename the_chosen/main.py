@@ -82,6 +82,8 @@ class Main:
 
         self.air_demon_kill_f = Rh.read_resource("air_demon_kill.txt")
         self.earth_demon_kill_f = Rh.read_resource("earth_demon_kill.txt")
+        self.water_demon_kill_f = Rh.read_resource("water_demon_kill.txt")
+        self.fire_demon_kill_f = Rh.read_resource("fire_demon_kill.txt")
 
         # configure the name and author of the game
         RPGInfo.author = "Timo Früh"
@@ -207,11 +209,13 @@ class Main:
         self.water_demon = Mob(art="a", character_name="demon of water")
         self.water_demon.add_weakness(self.swords_odd)
         self.water_demon.add_weakness(self.candle)
+        self.water_demon.set_kill_message(self.water_demon_kill_f)
         self.trophy_room.add_character(self.water_demon)
 
         self.water_demon2 = Mob(art="a", character_name="demon of water")
         self.water_demon2.add_weakness(self.swords_odd)
         self.water_demon2.add_weakness(self.candle)
+        self.water_demon2.set_kill_message(self.water_demon_kill_f)
         self.library_entrance.add_character(self.water_demon2)
 
         self.earth_demon = Mob(art="a", character_name="demon of earth")
