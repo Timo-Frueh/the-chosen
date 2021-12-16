@@ -6,14 +6,29 @@
 from the_chosen.entity import Entity
 
 
-class Item (Entity):
+class Item(Entity):
 
     # print a line describing the character
     def describe(self):
         print(f"{self.c_art_name} is here, {self.description}")
 
 
-class Artifact(Item):
+class Weapon(Item):
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.kill_message = None
+    
+    def set_kill_message(self, kill_message):
+        self.kill_message = kill_message
+    
+    def print_kill_message(self, character):
+        if self.kill_message:
+            print(f"{self.kill_message}, killing {character.get_the_name()}")
+        else:
+            print(f"You kill {character.get_the_name()} with {self.the_name}")
+
+
+class Artifact(Weapon):
 
     # define constructor, set the article to "the", add an initial room and a initial description
     # (which is to be displayed if the item is lying in that initial room)

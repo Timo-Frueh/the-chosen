@@ -122,7 +122,7 @@ class Enemy(Character):
         if weapon in self.weaknesses:
 
             # print a message that the enemy was killed
-            print(f"You kill {self.the_name} with {weapon.get_the_name()}!")
+            weapon.print_kill_message()
 
             # remove the enemy from the current room
             player.get_current_room().remove_character(self)
@@ -134,8 +134,7 @@ class Enemy(Character):
         else:
 
             # print a message that the player has died
-            print(self.kill_message)
-            print(f"{self.the_name} lands a fatal blow.\nYou die ...")
+            self.print_kill_message()
             player.die()
 
     def hug(self):
@@ -156,6 +155,12 @@ class Enemy(Character):
     
     def set_kill_message(self, message):
         self.kill_message = message
+
+    def print_kill_message(self):
+        if self.kill_message:
+            print(self.kill_message)
+        else:
+            print(f"{self.c_the_name} lands a fatal blow. You die ...")
 
 
 class Miniboss(Enemy):
@@ -190,7 +195,7 @@ class Endboss(Enemy):
         if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
 
             # print a message that the player has killed the boss
-            print(f"You kill {self.name} with {weapon.get_the_name()}!")
+            weapon.print_kill_message()
 
             # remove the boss from the current room
             player.get_current_room().remove_character(self)
@@ -205,8 +210,7 @@ class Endboss(Enemy):
         else:
 
             # display a message that the player has died
-            print(self.kill_message)
-            print(f"{self.name} lands a fatal blow.\nYou die ...")
+            self.print_kill_message()
             player.die()
 
     # getters and setters
@@ -227,7 +231,7 @@ class Mob(Enemy):
         if weapon in self.weaknesses:
 
             # print a message that the mob was killed by the player
-            print(f"You kill {self.art_name} with {weapon.get_the_name()}!")
+            weapon.print_kill_message()
 
             # remove the mob from the current room
             player.get_current_room().remove_character(self)
@@ -239,9 +243,7 @@ class Mob(Enemy):
         else:
 
             # print a message that the player has died
-            if self.kill_message:
-                print(self.kill_message)
-            print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
+            self.print_kill_message()
             player.die()
 
     # talk to the mob: they always say the same thing
