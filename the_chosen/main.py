@@ -61,7 +61,7 @@ class Main:
         self.crossbow_f = Rh.read_resource("crossbow.txt")
         self.swords_odd_f = Rh.read_resource("swords_odd.txt")
         self.swords_odd_init_f = Rh.read_resource("swords_odd_init.txt")
-        self.candle_f = Rh.read_resource("candle.txt")
+        self.fire_wand_f = Rh.read_resource("fire_wand.txt")
         self.water_bottle_f = Rh.read_resource("water_bottle.txt")
         self.key_f = Rh.read_resource("key.txt")
 
@@ -170,9 +170,9 @@ class Main:
         self.swords_odd.set_initial_description(self.swords_odd_init_f)
         self.hidden_room.add_item(self.swords_odd)
 
-        self.candle = Item(art="a", name="candle")
-        self.candle.set_description(self.candle_f)
-        self.hall.add_item(self.candle)
+        self.fire_wand = Item(art="a", name="wand of fire")
+        self.fire_wand.set_description(self.fire_wand_f)
+        self.hall.add_item(self.fire_wand)
 
         self.water_bottle = Item(art="a", name="bottle of holy water")
         self.water_bottle.add_alias("holy water")
@@ -208,13 +208,13 @@ class Main:
 
         self.water_demon = Mob(art="a", character_name="demon of water")
         self.water_demon.add_weakness(self.swords_odd)
-        self.water_demon.add_weakness(self.candle)
+        self.water_demon.add_weakness(self.fire_wand)
         self.water_demon.set_kill_message(self.water_demon_kill_f)
         self.trophy_room.add_character(self.water_demon)
 
         self.water_demon2 = Mob(art="a", character_name="demon of water")
         self.water_demon2.add_weakness(self.swords_odd)
-        self.water_demon2.add_weakness(self.candle)
+        self.water_demon2.add_weakness(self.fire_wand)
         self.water_demon2.set_kill_message(self.water_demon_kill_f)
         self.library_entrance.add_character(self.water_demon2)
 
