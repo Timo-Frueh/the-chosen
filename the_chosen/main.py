@@ -24,7 +24,7 @@ from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
 from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.input_interpreter import InputInterpreter
-from the_chosen.item import Artifacts, Item
+from the_chosen.item import Artifacts, Weapon, Item
 from the_chosen.link import Door, IllusoryWall, Ladder
 from the_chosen.player import Player
 from the_chosen.resource_helper import ResourceHelper as Rh
@@ -62,7 +62,7 @@ class Main:
         self.swords_odd_f = Rh.read_resource("swords_odd.txt")
         self.swords_odd_init_f = Rh.read_resource("swords_odd_init.txt")
         self.fire_wand_f = Rh.read_resource("fire_wand.txt")
-        self.water_bottle_f = Rh.read_resource("water_bottle.txt")
+        self.holy_water_f = Rh.read_resource("holy_water.txt")
         self.key_f = Rh.read_resource("key.txt")
 
         self.elliot_f = Rh.read_resource("elliot.txt")
@@ -85,6 +85,11 @@ class Main:
         self.earth_demon_kill_f = Rh.read_resource("earth_demon_kill.txt")
         self.water_demon_kill_f = Rh.read_resource("water_demon_kill.txt")
         self.fire_demon_kill_f = Rh.read_resource("fire_demon_kill.txt")
+
+        self.longsword_kill_f = Rh.read_resource("longsword_kill.txt")
+        self.crossbow_kill_f = Rh.read_resource("crossbow_kill.txt")
+        self.holy_water_kill_f = Rh.read_resource("holy_water_kill.txt")
+        self.fire_wand_kill_f = Rh.read_resource("fire_wand_kill.txt")
 
         # configure the name and author of the game
         RPGInfo.author = "Timo Früh"
@@ -157,12 +162,14 @@ class Main:
         self.illusory_wall = IllusoryWall({Dh.SOUTH: self.hidden_room, Dh.NORTH: self.throne_entrance})
 
         # initialise all items, set their (initial) description and their initial room
-        self.longsword = Item(art="a", name="sword")
+        self.longsword = Weapon(art="a", name="sword")
         self.longsword.set_description(self.longsword_f)
+        self.longsword.set_kill_message(self.longsword_kill_f)
         self.cellar.add_item(self.longsword)
 
-        self.crossbow = Item(art="a", name="crossbow")
+        self.crossbow = Weapon(art="a", name="crossbow")
         self.crossbow.set_description(self.crossbow_f)
+        self.crossbow.set_kill_message(self.crossbow_kill_f)
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
@@ -171,16 +178,18 @@ class Main:
         self.swords_odd.set_initial_description(self.swords_odd_init_f)
         self.hidden_room.add_item(self.swords_odd)
 
-        self.fire_wand = Item(art="a", name="wand of fire")
+        self.fire_wand = Weapon(art="a", name="wand of fire")
         self.fire_wand.set_description(self.fire_wand_f)
+        self.fire_wand.set_kill_message(self.fire_wand_kill_f)
         self.hall.add_item(self.fire_wand)
 
-        self.water_bottle = Item(art="a", name="bottle of holy water")
-        self.water_bottle.add_alias("holy water")
-        self.water_bottle.add_alias("bottle")
-        self.water_bottle.add_alias("water")
-        self.water_bottle.set_description(self.water_bottle_f)
-        self.library.add_item(self.water_bottle)
+        self.holy_water = Weapon(art="a", name="bottle of holy water")
+        self.holy_water.add_alias("holy water")
+        self.holy_water.add_alias("bottle")
+        self.holy_water.add_alias("water")
+        self.holy_water.set_kill_message(self.holy_water_kill_f)
+        self.holy_water.set_description(self.holy_water_f)
+        self.library.add_item(self.holy_water)
 
         # print welcome message
         RPGInfo.welcome()
@@ -199,12 +208,14 @@ class Main:
         # initialise all mobs and their weaknesses
         self.fire_demon = Mob(art="a", character_name="demon of fire")
         self.fire_demon.add_weakness(self.swords_odd)
-        self.fire_demon.add_weakness(self.water_bottle)
+        self.fire_demon.add_weakness(self.holy_water)
+        self.fire_demon.set_kill_message(self.fire_demon_kill_f)
         self.west_room.add_character(self.fire_demon)
 
         self.fire_demon2 = Mob(art="a", character_name="demon of fire")
         self.fire_demon2.add_weakness(self.swords_odd)
-        self.fire_demon2.add_weakness(self.water_bottle)
+        self.fire_demon2.add_weakness(self.holy_water)
+        self.fire_demon2.set_kill_message(self.fire_demon_kill_f)
         self.east_room.add_character(self.fire_demon2)
 
         self.water_demon = Mob(art="a", character_name="demon of water")
