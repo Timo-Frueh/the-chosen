@@ -122,7 +122,7 @@ class Enemy(Character):
         if weapon in self.weaknesses:
 
             # print a message that the enemy was killed
-            weapon.print_kill_message()
+            weapon.print_kill_message(self)
 
             # remove the enemy from the current room
             player.get_current_room().remove_character(self)
@@ -195,7 +195,7 @@ class Endboss(Enemy):
         if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
 
             # print a message that the player has killed the boss
-            weapon.print_kill_message()
+            weapon.print_kill_message(self)
 
             # remove the boss from the current room
             player.get_current_room().remove_character(self)
@@ -231,7 +231,7 @@ class Mob(Enemy):
         if weapon in self.weaknesses:
 
             # print a message that the mob was killed by the player
-            weapon.print_kill_message()
+            weapon.print_kill_message(self)
 
             # remove the mob from the current room
             player.get_current_room().remove_character(self)
