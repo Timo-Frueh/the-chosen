@@ -42,6 +42,8 @@ class Weapon(Item):
     def __init__(self, art, name):
         super().__init__(art, name)
         self.kill_message = None
+        self.requirements = {"kills": 0}
+        self.no_req_message = None
     
     def set_kill_message(self, kill_message):
         self.kill_message = kill_message
@@ -51,6 +53,26 @@ class Weapon(Item):
             print(f"{self.kill_message}, killing {character.get_the_name()}.")
         else:
             print(f"You kill {character.get_the_name()} with {self.the_name}.")
+
+    def set_kills_req(self, kills):
+        self.requirements["kills"] = kills
+    
+    def req_are_met(self, player):
+        met = True
+
+        if player.get_kills() < self.requirements["kills"]:
+            met = False
+
+        return met
+    
+    def set_no_req_message(self, no_req_message):
+        self.no_req_message = no_req_message
+    
+    def print_no_req_message(self):
+        if self.no_req_message:
+            print(self.no_req_message)
+        else:
+            print("You do not yet meet this weapon's requirements and therefore lose the fight.\nYou die ...")
 
 
 class Artifact(Weapon):

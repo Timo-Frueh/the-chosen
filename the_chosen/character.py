@@ -119,7 +119,7 @@ class Enemy(Character):
     def fight(self, weapon, player):
 
         # if the used weapon is in the weaknesses list do the following
-        if weapon in self.weaknesses:
+        if weapon in self.weaknesses and weapon.req_are_met(player):
 
             # print a message that the enemy was killed
             weapon.print_kill_message(self)
@@ -130,9 +130,11 @@ class Enemy(Character):
             # add a kill to the killcounter
             player.add_kill()
 
+        elif not weapon.req_are_met(player):
+            weapon.print_no_req_message()
+            player.die()
         # if it is not
         else:
-
             # print a message that the player has died
             self.print_kill_message()
             player.die()
@@ -173,9 +175,8 @@ class Endboss(Enemy):
     # define constructor
     # and add a title
     # and add a "kills_needed" attribute, defining how many kills the player must have to kill the boss
-    def __init__(self, character_name, title, kills_needed):
+    def __init__(self, character_name, title):
         super().__init__("", character_name)
-        self.kills_needed = kills_needed
         self.title = title
         self.the_title = f"the {self.title}"
         self.c_the_title = f"The {self.title}"
@@ -192,7 +193,7 @@ class Endboss(Enemy):
     def fight(self, weapon, player):
 
         # if the used weapon is in the weaknesses list and the player has enough kills do the following
-        if weapon in self.weaknesses and player.get_kills() >= self.kills_needed:
+        if weapon in self.weaknesses and weapon.req_are_met(player):
 
             # print a message that the player has killed the boss
             weapon.print_kill_message(self)
@@ -206,6 +207,9 @@ class Endboss(Enemy):
             # make the player win the game
             player.win()
 
+        elif not weapon.req_are_met(player):
+            weapon.print_no_req_message()
+            player.die()
         # if it is not or the kills are not enough
         else:
 
@@ -223,28 +227,6 @@ class Mob(Enemy):
     # print a line describing the mob
     def describe(self):
         print(f"You see {self.art_name}, looking malevolently at you.")
-
-    # fight the mob: return true if the player is still alive after the fight
-    def fight(self, weapon, player):
-
-        # if the used weapon is in the weaknesses list do the following
-        if weapon in self.weaknesses:
-
-            # print a message that the mob was killed by the player
-            weapon.print_kill_message(self)
-
-            # remove the mob from the current room
-            player.get_current_room().remove_character(self)
-
-            # add a kill to the killcounter
-            player.add_kill()
-
-        # if it was not
-        else:
-
-            # print a message that the player has died
-            self.print_kill_message()
-            player.die()
 
     # talk to the mob: they always say the same thing
     def talk(self):

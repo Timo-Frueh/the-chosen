@@ -61,6 +61,7 @@ class Main:
         self.crossbow_f = Rh.read_resource("crossbow.txt")
         self.swords_odd_f = Rh.read_resource("swords_odd.txt")
         self.swords_odd_init_f = Rh.read_resource("swords_odd_init.txt")
+        self.swords_odd_req_msg_f = Rh.read_resource("swords_odd_req_msg.txt")
         self.fire_wand_f = Rh.read_resource("fire_wand.txt")
         self.holy_water_f = Rh.read_resource("holy_water.txt")
         self.key_f = Rh.read_resource("key.txt")
@@ -179,6 +180,7 @@ class Main:
         self.swords_odd.add_alias("swords")
         self.swords_odd.set_description(self.swords_odd_f)
         self.swords_odd.set_initial_description(self.swords_odd_init_f)
+        self.swords_odd.set_no_req_message(self.swords_odd_req_msg_f)
         self.hidden_room.add_item(self.swords_odd)
 
         self.fire_wand = Weapon(art="a", name="wand of fire")
@@ -209,6 +211,7 @@ class Main:
         # initialise the player, set their name to the prevously configured player name
         # and set their starting room to the cellar
         self.player = Player(player_name=self.player_name, starting_room=self.cellar)
+        self.swords_odd.set_kills_req(7)
 
         # initialise all mobs and their weaknesses
         self.fire_demon = Mob(art="a", character_name="demon of fire")
@@ -263,7 +266,7 @@ class Main:
         self.air_demon2 = Mob(art="a", character_name="demon of air")
         self.air_demon2.add_weakness(self.swords_odd)
         self.air_demon2.add_weakness(self.crossbow)
-        self.air_demon2.add_alias("air demon 2")
+        self.air_demon2.add_alias("air demon")
         self.air_demon2.set_kill_message(self.air_demon_kill_f)
         self.hall.add_character(self.air_demon2)
 
@@ -302,7 +305,7 @@ class Main:
         self.mandrak.add_weakness(self.swords_odd)
         self.throne_entrance.add_character(self.mandrak)
 
-        self.demon_king = Endboss(character_name="An-Harat", title="Demon King", kills_needed=7)
+        self.demon_king = Endboss(character_name="An-Harat", title="Demon King")
         self.demon_king.set_description(self.demon_king_f)
         self.demon_king.set_conversation(self.demon_king_con_f)
         self.demon_king.add_weakness(self.swords_odd)
