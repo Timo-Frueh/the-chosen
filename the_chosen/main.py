@@ -64,6 +64,7 @@ class Main:
         self.fire_wand_f = Rh.read_resource("fire_wand.txt")
         self.holy_water_f = Rh.read_resource("holy_water.txt")
         self.key_f = Rh.read_resource("key.txt")
+        self.key_unlock_f = Rh.read_resource("key_unlock.txt")
 
         self.elliot_f = Rh.read_resource("elliot.txt")
         self.elliot_con_f = Rh.read_resource("elliot_con.txt")
@@ -142,6 +143,7 @@ class Main:
 
         self.key = Key(art="a", name="key")
         self.key.set_description("made of brass.")
+        self.key.set_unlock_message(self.key_unlock_f)
         self.cellar.add_item(self.key)
 
         # connect all the rooms
