@@ -3,62 +3,90 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-class Item:
+from the_chosen.entity import Entity
 
-    # define constructor and the five object attributes
-    def __init__(self, art, item_name):
-        self.name = item_name
-        self.aliases = [item_name.lower().strip()]
-        self.art = art
 
-        # the name with the article
-        self.name_w_art = f"{self.art} {self.name}"
-
-        # the name with the capitalized article
-        self.name_w_cap_art = f"{self.art.capitalize()} {self.name}"
-
-        self.description = None
+class Item(Entity):
 
     # print a line describing the character
     def describe(self):
-        print(f"{self.name_w_cap_art} is here, {self.description}")
-
-    # getters and setters
-    def get_name(self):
-        return self.name
-
-    def get_aliases(self):
-        return self.aliases
-
-    def add_alias(self, alias):
-        self.aliases.append(alias.lower().strip())
-
-    def get_name_w_art(self):
-        return self.name_w_art
-
-    def get_name_w_cap_art(self):
-        return self.name_w_cap_art
-
-    def get_description(self):
-        return self.description
-
-    def set_description(self, new_description):
-        self.description = new_description
+        print(f"{self.c_art_name} is here, {self.description}")
 
 
-class Artifact(Item):
+class Key(Item):
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.unlock_message = None
+        self.lock_message = None
+
+    def set_unlock_message(self, unlock_message):
+        self.unlock_message = unlock_message
+    
+    def print_unlock_message(self):
+        if self.unlock_message:
+            print(self.unlock_message)
+        else:
+            print("You unlock the door.")
+
+    def set_lock_message(self, lock_message):
+        self.lock_message = lock_message
+
+    def print_lock_message(self):
+        if self.lock_message:
+            print(self.lock_message)
+        else:
+            print("You lock the door.")
+
+
+class Weapon(Item):
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.kill_message = None
+        self.requirements = {"kills": 0}
+        self.no_req_message = None
+    
+    def set_kill_message(self, kill_message):
+        self.kill_message = kill_message
+    
+    def print_kill_message(self, character):
+        if self.kill_message:
+            print(f"{self.kill_message}, killing {character.get_the_name()}.")
+        else:
+            print(f"You kill {character.get_the_name()} with {self.the_name}.")
+
+    def set_kills_req(self, kills):
+        self.requirements["kills"] = kills
+    
+    def req_are_met(self, player):
+        met = True
+
+        if player.get_kills() < self.requirements["kills"]:
+            met = False
+
+        return met
+    
+    def set_no_req_message(self, no_req_message):
+        self.no_req_message = no_req_message
+    
+    def print_no_req_message(self):
+        if self.no_req_message:
+            print(self.no_req_message)
+        else:
+            print("You do not yet meet this weapon's requirements and therefore lose the fight.\nYou die ...")
+
+
+class Artifact(Weapon):
 
     # define constructor, set the article to "the", add an initial room and a initial description
     # (which is to be displayed if the item is lying in that initial room)
     def __init__(self, art, item_name, initial_room):
         super().__init__(art, item_name)
-        self.art = "the"
         self.initial_room = initial_room
         self.initial_description = None
 
     # print a line describing the item when lying in the initial room
     def describe_initial(self):
-        print(f"{self.name_w_cap_art} is here, {self.initial_description}")
+        print(f"{self.c_art_name} is here, {self.initial_description}")
 
     # getters and setters
     def get_initial_description(self):
@@ -72,13 +100,13 @@ class Artifact(Item):
 
 
 class Artifacts(Artifact):
-    def __init__(self, art, item_name, initial_room):
-        super().__init__(art, item_name, initial_room)
+    def __init__(self, item_name, initial_room):
+        super().__init__("the", item_name, initial_room)
 
     # print a line describing the items
     def describe(self):
-        print(f"{self.name_w_cap_art} are here, {self.description}")
+        print(f"{self.c_the_name} are here, {self.description}")
 
     # print a line describing the items when lying in the initial room
     def describe_initial(self):
-        print(f"{self.name_w_cap_art} are here, {self.initial_description}")
+        print(f"{self.c_the_name} are here, {self.initial_description}")

@@ -3,8 +3,6 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-from the_chosen.item import Artifact
-
 
 class Room:
 
@@ -13,8 +11,9 @@ class Room:
         self.name = room_name
         self.description = None
         self.links = {}
-        self.vertical_links = {}
-        self.hidden_links = {}
+        self.doors = {}
+        self.ladders = {}
+        self.illusory_walls = {}
         self.characters = []
         self.items = []
 
@@ -25,7 +24,7 @@ class Room:
         print(self.name)
 
         # print exactly as many ¯ as needed to form an underline
-        for n in range(0, len(self.name)-1):
+        for _ in range(0, len(self.name)-1):
             print("¯", end="")
         print("¯")
 
@@ -39,45 +38,60 @@ class Room:
         # print the description lines of all items in the room
         # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
-            if isinstance(item, Artifact) and item.get_initial_room() == self:
+            if (type(item).__name__ in ["Artifact", "Artifacts"] and
+                item.get_initial_room() == self):
                 item.describe_initial()
             else:
                 item.describe()
 
         # print all (non-hidden) links
-        self.print_links()
-        self.print_vertical_links()
+        self.print_doors()
+        self.print_ladders()
 
-    def print_links(self):
+    def print_doors(self):
 
         # print a different message depending on how many links there actually are
-        if len(self.links) == 1:
-            for direction in self.links:
+        if len(self.doors) == 1:
+            for direction in self.doors:
                 print(f"There is a door to the {direction}.")
 
-        elif len(self.links) == 2:
+        elif len(self.doors) == 2:
             directions = []
-            for direction in self.links:
+            for direction in self.doors:
                 directions.append(direction)
             print(f"There are doors to the {directions[0]} and {directions[1]}.")
 
-        elif len(self.links) == 3:
+        elif len(self.doors) == 3:
             directions = []
-            for direction in self.links:
+            for direction in self.doors:
                 directions.append(direction)
             print(f"There are doors to the {directions[0]}, {directions[1]} and {directions[2]}.")
 
-        elif len(self.links) == 4:
+        elif len(self.doors) == 4:
             print("There are doors to all directions.")
 
-    def print_vertical_links(self):
+    def print_ladders(self):
 
         # print a different message depending on how many links there actually are
-        if len(self.vertical_links) == 1:
-            for direction in self.vertical_links:
+        if len(self.ladders) == 1:
+            for direction in self.ladders:
                 print(f"There is a ladder leading {direction}.")
-        elif len(self.vertical_links) == 2:
+        elif len(self.ladders) == 2:
             print("There is a ladder leading up and down.")
+
+    def init_links(self):
+
+        for direction in self.links:
+            if type(self.links[direction]).__name__ == "Door":
+                self.doors[direction] = self.links[direction]
+
+        for direction in self.links:
+            if type(self.links[direction]).__name__ == "Ladder":
+                self.ladders[direction] = self.links[direction]
+
+        for direction in self.links:
+            if type(self.links[direction]).__name__ == "IllusoryWall":
+                self.illusory_walls[direction] = self.links[direction]
 
     # getters and setters
     def get_desc(self):
@@ -89,23 +103,15 @@ class Room:
     def get_name(self):
         return self.name
 
-    def get_links(self):
-        return self.links
+    def add_link(self, direction, door):
+        self.links[direction] = door
+        self.init_links()
 
-    def link(self, direction, room):
-        self.links[direction] = room
-
-    def get_vertical_links(self):
-        return self.vertical_links
-
-    def link_vertical(self, direction, room):
-        self.vertical_links[direction] = room
-
-    def get_hidden_links(self):
-        return self.hidden_links
-
-    def link_hidden(self, direction, room):
-        self.hidden_links[direction] = room
+    def get_link(self, direction):
+        try:
+            return self.links[direction]
+        except KeyError:
+            pass
 
     def get_characters(self):
         return self.characters
