@@ -3,9 +3,6 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-from the_chosen.link import Door, Ladder, IllusoryWall
-from the_chosen.item import Artifact
-
 
 class Room:
 
@@ -41,7 +38,7 @@ class Room:
         # print the description lines of all items in the room
         # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
-            if isinstance(item, Artifact) and item.get_initial_room() == self:
+            if type(item).__name__ == "Artifact" and item.get_initial_room() == self:
                 item.describe_initial()
             else:
                 item.describe()
@@ -84,15 +81,15 @@ class Room:
     def init_links(self):
 
         for direction in self.links:
-            if isinstance(self.links[direction], Door):
+            if type(self.links[direction]).__name__ == "Door":
                 self.doors[direction] = self.links[direction]
 
         for direction in self.links:
-            if isinstance(self.links[direction], Ladder):
+            if type(self.links[direction]).__name__ == "Ladder":
                 self.ladders[direction] = self.links[direction]
 
         for direction in self.links:
-            if isinstance(self.links[direction], IllusoryWall):
+            if type(self.links[direction]).__name__ == "IllusoryWall":
                 self.illusory_walls[direction] = self.links[direction]
 
     # getters and setters
