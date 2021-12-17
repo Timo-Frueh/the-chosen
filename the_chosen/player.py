@@ -170,8 +170,6 @@ class Player:
             print("You need to specify a direction so I know which door you mean.")
         elif not door:
             print(f"There is no door to the {user_input}.")
-        elif door.isopen():
-            print("This door is already open.")
         elif key:
             door.unlock_door(key)
             door.open_door()
@@ -202,8 +200,6 @@ class Player:
             print("You need to specify a direction so I know which door you mean.")
         elif not door:
             print(f"There is no door to the {user_input}.")
-        elif not door.islocked():
-            print("This door is already unlocked.")
         elif not key:
             print(f"You do not have an item called {user_input_2}.")
         else:
@@ -225,8 +221,6 @@ class Player:
             print("You need to specify a direction so I know which door you mean.")
         elif not door:
             print(f"There is no door to the {user_input}.")
-        elif not door.isopen():
-            print("This door is already closed.")
         elif key:
             door.close_door()
             door.lock_door(key)
@@ -258,8 +252,6 @@ class Player:
         elif not door:
             print(f"There is no door to the {user_input}.")
         elif door.islocked():
-            print("This door is already locked.")
-        elif not key:
             print(f"You do not have an item called {user_input_2}.")
         else:
             door.lock_door(key)

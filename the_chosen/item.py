@@ -13,6 +13,31 @@ class Item(Entity):
         print(f"{self.c_art_name} is here, {self.description}")
 
 
+class Key(Item):
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.unlock_message = None
+        self.lock_message = None
+
+    def set_unlock_message(self, unlock_message):
+        self.unlock_message = unlock_message
+    
+    def print_unlock_message(self):
+        if self.unlock_message:
+            print(self.unlock_message)
+        else:
+            print("You unlock the door.")
+
+    def set_lock_message(self, lock_message):
+        self.lock_message = lock_message
+
+    def print_lock_message(self):
+        if self.lock_message:
+            print(self.lock_message)
+        else:
+            print("You lock the door.")
+
+
 class Weapon(Item):
     def __init__(self, art, name):
         super().__init__(art, name)

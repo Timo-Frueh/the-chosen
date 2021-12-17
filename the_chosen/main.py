@@ -24,7 +24,7 @@ from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
 from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.input_interpreter import InputInterpreter
-from the_chosen.item import Artifacts, Weapon, Item
+from the_chosen.item import Artifacts, Weapon, Key
 from the_chosen.link import Door, IllusoryWall, Ladder
 from the_chosen.player import Player
 from the_chosen.resource_helper import ResourceHelper as Rh
@@ -139,7 +139,7 @@ class Main:
         self.throne_room = Room(room_name="The Throne Room")
         self.throne_room.set_desc(self.throne_room_f)
 
-        self.key = Item(art="a", name="key")
+        self.key = Key(art="a", name="key")
         self.key.set_description("made of brass.")
         self.cellar.add_item(self.key)
 
