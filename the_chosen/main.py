@@ -74,6 +74,7 @@ class Main:
         self.stranger_f = Rh.read_resource("stranger.txt")
         self.stranger_con_f = Rh.read_resource("stranger_con.txt")
         self.warrioress_f = Rh.read_resource("warrioress.txt")
+        self.warrioress_con_f = Rh.read_resource("warrioress_con.txt")
         self.mandrak_f = Rh.read_resource("mandrak.txt")
         self.mandrak_con_f = Rh.read_resource("mandrak_con.txt")
         self.demon_king_f = Rh.read_resource("demon_king.txt")
@@ -289,6 +290,7 @@ class Main:
 
         self.warrioress = Stranger(art="a", class_name="warrioress", deadly=True)
         self.warrioress.set_description(self.warrioress_f)
+        self.warrioress.set_conversation(self.warrioress_con_f)
         self.ns_passageway.add_character(self.warrioress)
 
         self.mandrak = Miniboss(character_name="Mandrak")
