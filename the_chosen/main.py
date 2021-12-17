@@ -142,7 +142,7 @@ class Main:
         self.throne_room.set_desc(self.throne_room_f)
 
         self.key = Key(art="a", name="key")
-        self.key.set_description("made of brass.")
+        self.key.set_description(self.key_f)
         self.key.set_unlock_message(self.key_unlock_f)
         self.cellar.add_item(self.key)
 
