@@ -5,7 +5,8 @@
 
 import os
 
-class ResourceHelper():
+
+class ResourceHelper:
 
     resources_path = ""
 
@@ -17,4 +18,3 @@ class ResourceHelper():
     def read_resource(cls, resource):
         with open(os.path.join(cls.resources_path, resource), "r", encoding="UTF-8") as file:
             return file.read()
-

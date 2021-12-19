@@ -29,7 +29,7 @@ class Character(Entity):
             print(f"{self.name} doesn't want to talk to you.")
 
     # fight a character: returns true if the player is still alive after the fight
-    def fight(self, weapon, player): # pylint: disable=unused-argument
+    def fight(self, weapon, player):  # pylint: disable=unused-argument
 
         # print a message that the character doesn't want to fight (because normal characters don't fight)
         print(f"{self.name} does not want to fight you.")
@@ -45,7 +45,7 @@ class Character(Entity):
 
     def set_conversation(self, new_conversation):
         self.conversation = new_conversation
-    
+
     def set_hug_message(self, new_hug_message):
         self.hug_message = new_hug_message
 
@@ -154,7 +154,7 @@ class Enemy(Character):
 
     def remove_weakness(self, weakness):
         self.weaknesses.remove(weakness)
-    
+
     def set_kill_message(self, message):
         self.kill_message = message
 

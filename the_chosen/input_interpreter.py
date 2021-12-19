@@ -6,6 +6,7 @@ This file holds the InputInterpreter class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+
 class InputInterpreter:
     """
     This class is used to interpret the commands typed by the user.
@@ -39,7 +40,7 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
-    def interpret_double(command: str, key:str, separator:str, remove_0: list = None, remove_1:list = None):
+    def interpret_double(command: str, key: str, separator: str, remove_0: list = None, remove_1: list = None):
 
         """
         Interpret a command with two arguments.

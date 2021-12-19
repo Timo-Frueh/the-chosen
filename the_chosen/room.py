@@ -24,7 +24,7 @@ class Room:
         print(self.name)
 
         # print exactly as many ¯ as needed to form an underline
-        for _ in range(0, len(self.name)-1):
+        for _ in range(0, len(self.name) - 1):
             print("¯", end="")
         print("¯")
 
@@ -39,7 +39,7 @@ class Room:
         # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
             if (type(item).__name__ in ["Artifact", "Artifacts"] and
-                item.get_initial_room() == self):
+                    item.get_initial_room() == self):
                 item.describe_initial()
             else:
                 item.describe()
