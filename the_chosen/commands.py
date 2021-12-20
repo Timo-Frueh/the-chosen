@@ -29,18 +29,3 @@ class Commands:
     def print_commands(cls):
         for command in cls.commands:
             print(f"{command}:{cls.commands[command]}")
-
-    # define the quit command
-    @staticmethod
-    def quit():
-
-        # ask for confirmation on quitting and strip the input of whitespaces at beginning and end
-        confirm = input("Do you really whish to leave the game? (y is affermative) ").strip()
-
-        # if the quitting was confirmed return true
-        if confirm in ["Y", "y"]:
-            return True
-
-        # if the quitting was not confirmed return false
-        else:
-            return False

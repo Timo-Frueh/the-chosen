@@ -88,9 +88,9 @@ class Mainloop:
 
             elif command in ["quit", "exit"]:
 
-                confirm = Cmd.quit()
+                confirm = input("Do you really whish to leave the game? (y is affermative) ").strip()
 
-                if confirm:
+                if confirm in ["Y", "y"]:
                     alive = False
 
             elif command == "":
