@@ -168,12 +168,12 @@ class Main:
         # initialise all items, set their (initial) description and their initial room
         self.longsword = Weapon(art="a", name="sword")
         self.longsword.set_description(self.longsword_f)
-        self.longsword.set_kill_message(self.longsword_kill_f)
+        self.longsword.set_def_kill_message(self.longsword_kill_f)
         self.cellar.add_item(self.longsword)
 
         self.crossbow = Weapon(art="a", name="crossbow")
         self.crossbow.set_description(self.crossbow_f)
-        self.crossbow.set_kill_message(self.crossbow_kill_f)
+        self.crossbow.set_def_kill_message(self.crossbow_kill_f)
         self.cellar.add_item(self.crossbow)
 
         self.swords_odd = Artifacts(item_name="Swords of Dusk and Dawn", initial_room=self.hidden_room)
@@ -187,14 +187,14 @@ class Main:
         self.fire_wand.add_alias("wand")
         self.fire_wand.add_alias("fire")
         self.fire_wand.set_description(self.fire_wand_f)
-        self.fire_wand.set_kill_message(self.fire_wand_kill_f)
+        self.fire_wand.set_def_kill_message(self.fire_wand_kill_f)
         self.hall.add_item(self.fire_wand)
 
         self.holy_water = Weapon(art="a", name="bottle of holy water")
         self.holy_water.add_alias("holy water")
         self.holy_water.add_alias("bottle")
         self.holy_water.add_alias("water")
-        self.holy_water.set_kill_message(self.holy_water_kill_f)
+        self.holy_water.set_def_kill_message(self.holy_water_kill_f)
         self.holy_water.set_description(self.holy_water_f)
         self.library.add_item(self.holy_water)
 

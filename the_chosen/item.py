@@ -41,16 +41,21 @@ class Key(Item):
 class Weapon(Item):
     def __init__(self, art, name):
         super().__init__(art, name)
-        self.kill_message = None
+        self.kill_messages = {}
         self.requirements = {"kills": 0}
         self.no_req_message = None
     
-    def set_kill_message(self, kill_message):
-        self.kill_message = kill_message
+    def set_def_kill_message(self, kill_message):
+        self.kill_messages["def"] = kill_message
+
+    def set_kill_message(self, character_name, kill_message):
+        self.kill_messages[character_name] = kill_message
     
     def print_kill_message(self, character):
-        if self.kill_message:
-            print(f"{self.kill_message}, killing {character.get_the_name()}.")
+        if character.get_name() in self.kill_messages:
+            print(self.kill_messages[character.get_name()])
+        elif self.kill_messages["def"]:
+            print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
         else:
             print(f"You kill {character.get_the_name()} with {self.the_name}.")
 
