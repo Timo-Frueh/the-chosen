@@ -3,9 +3,9 @@
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-from the_chosen.input_interpreter import InputInterpreter
-from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.commands import Commands as Cmd
+from the_chosen.direction_helper import DirectionHelper as Dh
+from the_chosen.input_interpreter import InputInterpreter
 
 
 class Mainloop:

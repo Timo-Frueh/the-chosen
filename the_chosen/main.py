@@ -21,10 +21,10 @@ import os
 from clear_screen import clear
 
 from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
-from the_chosen.mainloop import Mainloop as Ml
 from the_chosen.direction_helper import DirectionHelper as Dh
-from the_chosen.item import Artifacts, Weapon, Key
+from the_chosen.item import Artifacts, Key, Weapon
 from the_chosen.link import Door, IllusoryWall, Ladder
+from the_chosen.mainloop import Mainloop as Ml
 from the_chosen.player import Player
 from the_chosen.resource_helper import ResourceHelper as Rh
 from the_chosen.room import Room
