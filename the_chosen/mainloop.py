@@ -6,6 +6,7 @@
 from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.input_interpreter import InputInterpreter
+from the_chosen.rpginfo import RPGInfo
 
 
 class Mainloop:
@@ -106,6 +107,20 @@ class Mainloop:
                 victory = True
 
         if victory:
-            return True
-        else:
-            return False
+            print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
+
+        if player.get_kills() == 0:
+            print("You vanquished not a single enemy during the game.")
+        elif player.get_kills() == 1:
+            print("You vanquished 1 enemy during the game.")
+        elif player.get_kills() > 1:
+            print(f"You vanquished {player.get_kills()} enemies during the game.")
+
+        print("")
+
+        if victory:
+            RPGInfo.credits()
+
+            print("")
+
+        input("[Hit enter to exit.]")

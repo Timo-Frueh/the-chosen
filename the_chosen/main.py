@@ -304,26 +304,7 @@ class Main:
 
     def main(self):
 
-        victory = Ml.mainloop(self.player)
-
-        if victory:
-            print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
-
-        if self.player.get_kills() == 0:
-            print("You vanquished not a single enemy during the game.")
-        elif self.player.get_kills() == 1:
-            print("You vanquished 1 enemy during the game.")
-        elif self.player.get_kills() > 1:
-            print(f"You vanquished {self.player.get_kills()} enemies during the game.")
-
-        print("")
-
-        if victory:
-            RPGInfo.credits()
-
-            print("")
-
-        input("[Hit enter to exit.]")
+        Ml.mainloop(self.player)
 
         clear()
 
