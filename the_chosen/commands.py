@@ -6,23 +6,23 @@
 class Commands:
 
     # make a list of all possible commands
-    commands = {"north     ": "  move north",
-                "east      ": "  move east",
-                "south     ": "  move south",
-                "west      ": "  move west",
-                "up        ": "  move up",
-                "down      ": "  move down",
-                "look      ": "  look at your surroundings",
-                "talk      ": "  talk to someone in the room",
-                "inventory ": "  show what you are carrying",
-                "fight     ": "  fight someone",
-                "take      ": "  put something into your inventory",
-                "drop      ": "  drop something in your inventory",
-                "hug       ": "  hug someone",
-                "open/close": "  open/close a door",
-                "(un-)lock  ": " lock/unlock a door",
-                "quit      ": "  quit the game -> NOTE: you will not be able to restore the game later",
-                "help      ": "  show this list"}
+    commands = {"north      ": "  move north",
+                "east       ": "  move east",
+                "south      ": "  move south",
+                "west       ": "  move west",
+                "up         ": "  move up",
+                "down       ": "  move down",
+                "look       ": "  look at your surroundings",
+                "talk       ": "  talk to someone in the room",
+                "inventory  ": "  show what you are carrying",
+                "fight      ": "  fight someone",
+                "take       ": "  put something into your inventory",
+                "drop       ": "  drop something in your inventory",
+                "hug        ": "  hug someone",
+                "open/close ": "  open/close a door",
+                "(un-)lock  ": "  lock/unlock a door",
+                "quit       ": "  quit the game -> NOTE: you will not be able to restore the game later",
+                "help       ": "  show this list"}
 
     # define the help method: print all possible commands
     @classmethod
