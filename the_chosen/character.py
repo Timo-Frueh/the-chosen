@@ -90,7 +90,7 @@ class Enemy(Character):
     def __init__(self, art, character_name):
         super().__init__(art, character_name)
         self.weaknesses = []
-        self.kill_message = None
+        self.kill_messages = {}
 
     def fight(self, weapon, player):
 
@@ -106,7 +106,7 @@ class Enemy(Character):
             weapon.print_no_req_message()
             player.die()
         else:
-            self.print_kill_message()
+            self.print_kill_message(weapon)
             player.die()
 
     def hug(self):
@@ -124,12 +124,17 @@ class Enemy(Character):
     def remove_weakness(self, weakness):
         self.weaknesses.remove(weakness)
 
-    def set_kill_message(self, message):
-        self.kill_message = message
+    def set_def_kill_message(self, message):
+        self.kill_messages["def"] = message
 
-    def print_kill_message(self):
-        if self.kill_message:
-            print(self.kill_message)
+    def set_kill_message(self, item_name, message):
+        self.kill_messages[item_name] = message
+
+    def print_kill_message(self, item):
+        if item.get_name() in self.kill_messages:
+            print(self.kill_messages[item.get_name()])
+        elif self.kill_messages["def"]:
+            print(self.kill_messages["def"])
         else:
             print(f"{self.c_the_name} lands a fatal blow. You die ...")
 
