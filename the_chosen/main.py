@@ -84,12 +84,14 @@ class Main:
         self.air_demon_kill_f = Rh.read_resource("air_demon_kill.txt")
         self.earth_demon_kill_f = Rh.read_resource("earth_demon_kill.txt")
         self.water_demon_kill_f = Rh.read_resource("water_demon_kill.txt")
+        self.water_demon_hw_kill_f = Rh.read_resource("water_demon_holy_water_kill.txt")
         self.fire_demon_kill_f = Rh.read_resource("fire_demon_kill.txt")
 
         self.longsword_kill_f = Rh.read_resource("longsword_kill.txt")
         self.crossbow_kill_f = Rh.read_resource("crossbow_kill.txt")
         self.holy_water_kill_f = Rh.read_resource("holy_water_kill.txt")
         self.fire_wand_kill_f = Rh.read_resource("fire_wand_kill.txt")
+        self.fire_wand_wd_kill_f = Rh.read_resource("fire_wand_water_demon_kill.txt")
 
         RPGInfo.author = "Timo Früh"
         RPGInfo.title = "The Chosen"
@@ -180,6 +182,7 @@ class Main:
         self.fire_wand.add_alias("fire")
         self.fire_wand.set_description(self.fire_wand_f)
         self.fire_wand.set_def_kill_message(self.fire_wand_kill_f)
+        self.fire_wand.set_kill_message("demon of water", self.fire_wand_wd_kill_f)
         self.hall.add_item(self.fire_wand)
 
         self.holy_water = Weapon(art="a", name="bottle of holy water")
@@ -219,6 +222,7 @@ class Main:
         self.water_demon.add_weakness(self.fire_wand)
         self.water_demon.add_alias("water demon")
         self.water_demon.set_def_kill_message(self.water_demon_kill_f)
+        self.water_demon.set_kill_message("bottle of holy water", self.water_demon_hw_kill_f)
         self.trophy_room.add_character(self.water_demon)
 
         self.water_demon2 = Mob(art="a", character_name="demon of water")
@@ -226,6 +230,7 @@ class Main:
         self.water_demon2.add_weakness(self.fire_wand)
         self.water_demon2.add_alias("water demon")
         self.water_demon2.set_def_kill_message(self.water_demon_kill_f)
+        self.water_demon2.set_kill_message("bottle of holy water", self.water_demon_hw_kill_f)
         self.library_entrance.add_character(self.water_demon2)
 
         self.earth_demon = Mob(art="a", character_name="demon of earth")
