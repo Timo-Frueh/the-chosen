@@ -49,10 +49,6 @@ class Character(Entity):
     def set_hug_message(self, new_hug_message):
         self.hug_message = new_hug_message
 
-    # this get_title() method doesn't do anything but is needed later for bosses
-    def get_title(self):
-        return ""
-
 
 class Stranger(Character):
 
@@ -191,35 +187,9 @@ class Endboss(Enemy):
 
     # fight the boss: returns true if the player is still alive after the fight
     def fight(self, weapon, player):
-
-        # if the used weapon is in the weaknesses list and the player has enough kills do the following
-        if weapon in self.weaknesses and weapon.req_are_met(player):
-
-            # print a message that the player has killed the boss
-            weapon.print_kill_message(self)
-
-            # remove the boss from the current room
-            player.get_current_room().remove_character(self)
-
-            # add a kill to the killcounter
-            player.add_kill()
-
-            # make the player win the game
+        super().fight(weapon, player)
+        if player.isalive():
             player.win()
-
-        elif not weapon.req_are_met(player):
-            weapon.print_no_req_message()
-            player.die()
-        # if it is not or the kills are not enough
-        else:
-
-            # display a message that the player has died
-            self.print_kill_message()
-            player.die()
-
-    # getters and setters
-    def get_title(self):
-        return self.title
 
 
 class Mob(Enemy):
