@@ -21,9 +21,8 @@ import os
 from clear_screen import clear
 
 from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
-from the_chosen.commands import Commands as Cmd
+from the_chosen.mainloop import Mainloop as Ml
 from the_chosen.direction_helper import DirectionHelper as Dh
-from the_chosen.input_interpreter import InputInterpreter
 from the_chosen.item import Artifacts, Weapon, Key
 from the_chosen.link import Door, IllusoryWall, Ladder
 from the_chosen.player import Player
@@ -303,107 +302,9 @@ class Main:
 
         self.player.get_current_room().describe()
 
-    def mainloop(self):
+    def main(self):
 
-        alive = True
-
-        victory = False
-
-        while alive and not victory:
-
-            print("")
-            user_input = input("> ")
-
-            command = user_input.lower().strip()
-
-            if command in ["commands", "help", "?"]:
-                Cmd.print_commands()
-
-            elif command in Dh.DIRECTIONS:
-                self.player.move(command)
-
-            elif command in ["look", "l"]:
-                self.player.look()
-
-            elif "talk to" in command:
-
-                talk_to_input = InputInterpreter.interpret_single(command, "talk to")
-
-                self.player.talk(talk_to_input)
-
-            elif "talk" in command:
-
-                talk_input = InputInterpreter.interpret_single(command, "talk")
-
-                self.player.talk(talk_input)
-
-            elif command in ["inventory", "i", "backpack"]:
-                self.player.show_inventory()
-
-            elif "fight" in command and self.player.get_current_room() == self.throne_room:
-
-                boss_fight_input = InputInterpreter.interpret_double(command, "fight", "with", [", "])
-
-                self.player.fight(character=boss_fight_input[0], item=boss_fight_input[1])
-
-            elif "fight" in command:
-
-                fight_input = InputInterpreter.interpret_double(command, "fight", "with", [", "])
-
-                self.player.fight(character=fight_input[0], item=fight_input[1])
-
-            elif "take" in command:
-
-                take_input = InputInterpreter.interpret_single(command, "take")
-
-                self.player.take(take_input)
-
-            elif "drop" in command:
-
-                drop_input = InputInterpreter.interpret_single(command, "drop", [])
-
-                self.player.drop(drop_input)
-
-            elif "hug" in command:
-
-                hug_input = InputInterpreter.interpret_single(command, "hug")
-
-                self.player.hug(hug_input)
-
-            elif "open" in command:
-                open_with_input = InputInterpreter.interpret_double(command, "open", "with", [" the ", " door"])
-                self.player.open_door(direction=open_with_input[0], key=open_with_input[1])
-
-            elif "close" in command:
-                close_with_input = InputInterpreter.interpret_double(command, "close", "with", [" the ", " door"])
-                self.player.close_door(direction=close_with_input[0], key=close_with_input[1])
-
-            elif "unlock" in command:
-                unlock_input = InputInterpreter.interpret_double(command, "unlock", "with", [" the ", " door"])
-                self.player.unlock_door(direction=unlock_input[0], key=unlock_input[1])
-
-            elif "lock" in command:
-                lock_input = InputInterpreter.interpret_double(command, "lock", "with", [" the ", " door"])
-                self.player.lock_door(direction=lock_input[0], key=lock_input[1])
-
-            elif command in ["quit", "exit"]:
-
-                confirm = Cmd.quit()
-
-                if confirm:
-                    alive = False
-
-            elif command == "":
-                pass
-
-            else:
-                print(f"I do not know what you meant by {user_input}.")
-
-            if not self.player.isalive():
-                alive = False
-
-            if self.player.haswon():
-                victory = True
+        victory = Ml.mainloop(self.player)
 
         if victory:
             print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
@@ -430,7 +331,7 @@ class Main:
 def main():
     game = Main()
 
-    game.mainloop()
+    game.main()
 
 
 if __name__ == "__main__":
