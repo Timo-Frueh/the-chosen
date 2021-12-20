@@ -77,7 +77,7 @@ class Door(Link):
             elif type(key).__name__ == "Key":
                 print("This key doesn't fit into the keyhole.")
             else:
-                print(f"You can't lock a door with {key.get_art_name()}.")
+                print(f"You can't unlock a door with {key.get_art_name()}.")
 
     def close_door(self):
         if not self.locked:
