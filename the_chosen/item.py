@@ -24,7 +24,7 @@ class Item(Entity):
     def print_kill_message(self, character):
         if character.get_name() in self.kill_messages:
             print(self.kill_messages[character.get_name()])
-        elif self.kill_messages["def"]:
+        elif "def" in self.kill_messages:
             print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
         else:
             print(f"You kill {character.get_the_name()} with {self.the_name}.")

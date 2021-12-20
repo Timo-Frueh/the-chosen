@@ -133,10 +133,10 @@ class Enemy(Character):
     def print_kill_message(self, item):
         if item.get_name() in self.kill_messages:
             print(self.kill_messages[item.get_name()])
-        elif self.kill_messages["def"]:
+        elif "def" in self.kill_messages:
             print(self.kill_messages["def"])
         else:
-            print(f"{self.c_the_name} lands a fatal blow. You die ...")
+            print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
 
 
 class Miniboss(Enemy):
