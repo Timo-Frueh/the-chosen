@@ -38,10 +38,12 @@ class Room:
         # print the description lines of all items in the room
         # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
-            if (type(item).__name__ in ["Artifact", "Artifacts"] and
-                    item.get_initial_room() == self):
-                item.describe_initial()
-            else:
+            try:
+                if item.get_initial_room() is self:
+                    item.describe_initial()
+                else:
+                    item.describe()
+            except AttributeError:
                 item.describe()
 
         # print all (non-hidden) links
