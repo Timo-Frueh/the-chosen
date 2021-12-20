@@ -8,8 +8,29 @@ from the_chosen.entity import Entity
 
 class Item(Entity):
 
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.kill_messages = {}
+
     def describe(self):
         print(f"{self.c_art_name} is here, {self.description}")
+
+    def set_def_kill_message(self, kill_message):
+        self.kill_messages["def"] = kill_message
+
+    def set_kill_message(self, character_name, kill_message):
+        self.kill_messages[character_name] = kill_message
+
+    def print_kill_message(self, character):
+        if character.get_name() in self.kill_messages:
+            print(self.kill_messages[character.get_name()])
+        elif self.kill_messages["def"]:
+            print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
+        else:
+            print(f"You kill {character.get_the_name()} with {self.the_name}.")
+
+    def req_are_met(self, player):
+        return True
 
 
 class Key(Item):
@@ -40,23 +61,8 @@ class Key(Item):
 class Weapon(Item):
     def __init__(self, art, name):
         super().__init__(art, name)
-        self.kill_messages = {}
         self.requirements = {"kills": 0}
         self.no_req_message = None
-    
-    def set_def_kill_message(self, kill_message):
-        self.kill_messages["def"] = kill_message
-
-    def set_kill_message(self, character_name, kill_message):
-        self.kill_messages[character_name] = kill_message
-    
-    def print_kill_message(self, character):
-        if character.get_name() in self.kill_messages:
-            print(self.kill_messages[character.get_name()])
-        elif self.kill_messages["def"]:
-            print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
-        else:
-            print(f"You kill {character.get_the_name()} with {self.the_name}.")
 
     def set_kills_req(self, kills):
         self.requirements["kills"] = kills
