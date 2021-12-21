@@ -94,6 +94,9 @@ class Main:
         self.fire_wand_wd_kill_f = Rh.read_resource("fire_wand_water_demon_kill.txt")
         self.swords_odd_kill_f = Rh.read_resource("swords_odd_kill.txt")
         self.swords_odd_dk_kill_f = Rh.read_resource("swords_odd_demon_king_kill.txt")
+        self.swords_odd_wd_kill_f = Rh.read_resource("swords_odd_water_demon_kill.txt")
+        self.swords_odd_fd_kill_f = Rh.read_resource("swords_odd_fire_demon_kill.txt")
+        self.swords_odd_ad_kill_f = Rh.read_resource("swords_odd_air_demon_kill.txt")
 
         RPGInfo.author = "Timo Früh"
         RPGInfo.title = "The Chosen"
@@ -179,6 +182,9 @@ class Main:
         self.swords_odd.set_no_req_message(self.swords_odd_req_msg_f)
         self.swords_odd.set_def_kill_message(self.swords_odd_kill_f)
         self.swords_odd.set_kill_message("An-Harat", self.swords_odd_dk_kill_f)
+        self.swords_odd.set_kill_message("demon of fire", self.swords_odd_fd_kill_f)
+        self.swords_odd.set_kill_message("demon of water", self.swords_odd_wd_kill_f)
+        self.swords_odd.set_kill_message("demon of air", self.swords_odd_ad_kill_f)
         self.hidden_room.add_item(self.swords_odd)
 
         self.fire_wand = Weapon(art="a", name="wand of fire")
