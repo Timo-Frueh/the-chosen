@@ -10,7 +10,8 @@ class Character(Entity):
 
     def __init__(self, art, character_name):
         super().__init__(art, character_name)
-        self.conversation = None
+        self.conversations = []
+        self.con_counter = 0
         self.hug_message = None
 
     def describe(self):
@@ -18,10 +19,14 @@ class Character(Entity):
 
     def talk(self):
 
-        if self.conversation:
-            print(f"[{self.name}]: {self.conversation}")
-        else:
-            print(f"{self.name} doesn't want to talk to you.")
+        if len(self.conversations) == 0:
+            print(f"{self.c_the_name} doesn't want to talk to you.")
+        elif self.con_counter < len(self.conversations):
+            print(f"[{self.c_the_name}]: {self.conversations[self.con_counter]}")
+        elif self.con_counter >= len(self.conversations):
+            print(f"[{self.c_the_name}]: {self.conversations[-1]}")
+
+        self.con_counter += 1
 
     def fight(self, weapon, player):  # pylint: disable=unused-argument
 
@@ -34,10 +39,10 @@ class Character(Entity):
             print("I doubt they'd appreciate that.")
 
     def get_conversation(self):
-        return self.conversation
+        return self.conversations
 
-    def set_conversation(self, new_conversation):
-        self.conversation = new_conversation
+    def add_conversation(self, new_conversation):
+        self.conversations.append(new_conversation)
 
     def set_hug_message(self, new_hug_message):
         self.hug_message = new_hug_message
@@ -51,13 +56,6 @@ class Stranger(Character):
 
     def describe(self):
         print(f"You see {self.art_name}, {self.description}")
-
-    def talk(self):
-
-        if self.conversation:
-            print(f"[{self.c_the_name}]: {self.conversation}")
-        else:
-            print(f"{self.c_the_name} doesn't want to talk to you.")
 
     def fight(self, weapon, player):
 
