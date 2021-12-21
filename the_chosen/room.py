@@ -6,7 +6,6 @@
 
 class Room:
 
-    # define constructor and seven object attributes
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
@@ -17,40 +16,33 @@ class Room:
         self.characters = []
         self.items = []
 
-    # print the details of the room
     def describe(self):
 
-        # print the name of the room
         print(self.name)
 
-        # print exactly as many ¯ as needed to form an underline
-        for _ in range(0, len(self.name)-1):
+        for _ in range(0, len(self.name) - 1):
             print("¯", end="")
         print("¯")
 
-        # print the rooms description
         print(self.description)
 
-        # print the description lines of all characters in the room
         for character in self.characters:
             character.describe()
 
-        # print the description lines of all items in the room
-        # and print the initial description line of artifacts if the current room is their initial room
         for item in self.items:
-            if (type(item).__name__ in ["Artifact", "Artifacts"] and
-                item.get_initial_room() == self):
-                item.describe_initial()
-            else:
+            try:
+                if item.get_initial_room() is self:
+                    item.describe_initial()
+                else:
+                    item.describe()
+            except AttributeError:
                 item.describe()
 
-        # print all (non-hidden) links
         self.print_doors()
         self.print_ladders()
 
     def print_doors(self):
 
-        # print a different message depending on how many links there actually are
         if len(self.doors) == 1:
             for direction in self.doors:
                 print(f"There is a door to the {direction}.")
@@ -72,7 +64,6 @@ class Room:
 
     def print_ladders(self):
 
-        # print a different message depending on how many links there actually are
         if len(self.ladders) == 1:
             for direction in self.ladders:
                 print(f"There is a ladder leading {direction}.")
@@ -93,7 +84,6 @@ class Room:
             if type(self.links[direction]).__name__ == "IllusoryWall":
                 self.illusory_walls[direction] = self.links[direction]
 
-    # getters and setters
     def get_desc(self):
         return self.description
 

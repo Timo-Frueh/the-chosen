@@ -38,23 +38,27 @@ This following list can also be displayed in-game by typing `help` and pressing 
 ### Command list
 
 ~~~ text
-north     :  move north
-east      :  move east
-south     :  move south
-west      :  move west
-up        :  move up
-down      :  move down
-look      :  look at your surroundings
-talk      :  talk to someone in the room
-inventory :  show what you are carrying
-fight     :  fight someone
-take      :  put something into your inventory
-drop      :  drop something in your inventory
-hug       :  hug someone
-open/close:  open/close a door
-quit      :  quit the game -> NOTE: you will not be able to restore the game later
-help      :  show this list
+north      :  move north
+east       :  move east
+south      :  move south
+west       :  move west
+up         :  move up
+down       :  move down
+look       :  look at your surroundings
+talk       :  talk to someone in the room
+inventory  :  show what you are carrying
+fight      :  fight someone
+take       :  put something into your inventory
+drop       :  drop something in your inventory
+hug        :  hug someone
+open/close :  open/close a door
+(un-)lock  :  (un-)lock a door
+quit       :  quit the game -> NOTE: you will not be able to restore the game later
+help       :  show this list
 ~~~
+
+_Note: To unlock and open (or close and lock) a door direcly, use `open {direction} with {key}` 
+(or `close {direction} with {key}`)_
 
 ### Shortcuts
 
@@ -69,7 +73,7 @@ i    : inventory
 
 There are also positional commands:
 
-`talk`, `fight`, `take`, `drop`, `hug`, `open` and `close` are positional commands.
+`talk`, `fight`, `take`, `drop`, `hug`, `open`, `close`, `lock` and `unlock` are positional commands.
 
 An example `talk` command:
 

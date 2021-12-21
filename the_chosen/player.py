@@ -8,7 +8,6 @@ from the_chosen.direction_helper import DirectionHelper as Dh
 
 class Player:
 
-    # define constructor and four object attributes
     def __init__(self, player_name, starting_room):
         self.name = player_name
         self.inventory = []
@@ -37,10 +36,8 @@ class Player:
             self.current_room = link.get_other_room(self.current_room)
             self.current_room.describe()
 
-    # look around
     def look(self):
 
-        # print the details of the current room
         self.get_current_room().describe()
 
     def talk(self, character):
@@ -256,7 +253,6 @@ class Player:
         else:
             door.lock_door(key)
 
-    # getters and setters
     def get_inventory(self):
         return self.inventory
 

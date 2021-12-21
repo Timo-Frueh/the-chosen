@@ -33,13 +33,13 @@ class Link:
     def open_door(self):
         print("This cannot be opened, because it is no door.")
 
-    def unlock_door(self, key): # pylint: disable=unused-argument
+    def unlock_door(self, key):  # pylint: disable=unused-argument
         print("This cannot be unlocked, because it is no door.")
 
     def close_door(self):
         print("This cannot be opened, because it is no door.")
 
-    def lock_door(self, key): # pylint: disable=unused-argument
+    def lock_door(self, key):  # pylint: disable=unused-argument
         print("This cannot be closed, because it is no door.")
 
     def isopen(self):
@@ -77,7 +77,7 @@ class Door(Link):
             elif type(key).__name__ == "Key":
                 print("This key doesn't fit into the keyhole.")
             else:
-                print(f"You can't lock a door with {key.get_art_name()}.")
+                print(f"You can't unlock a door with {key.get_art_name()}.")
 
     def close_door(self):
         if not self.locked:

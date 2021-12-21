@@ -26,6 +26,9 @@ class Entity:
     def get_description(self):
         return self.description
 
+    def get_name(self):
+        return self.name
+
     def set_description(self, new_description):
         self.description = new_description
 

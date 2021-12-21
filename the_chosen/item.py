@@ -8,9 +8,29 @@ from the_chosen.entity import Entity
 
 class Item(Entity):
 
-    # print a line describing the character
+    def __init__(self, art, name):
+        super().__init__(art, name)
+        self.kill_messages = {}
+
     def describe(self):
         print(f"{self.c_art_name} is here, {self.description}")
+
+    def set_def_kill_message(self, kill_message):
+        self.kill_messages["def"] = kill_message
+
+    def set_kill_message(self, character_name, kill_message):
+        self.kill_messages[character_name] = kill_message
+
+    def print_kill_message(self, character):
+        if character.get_name() in self.kill_messages:
+            print(self.kill_messages[character.get_name()])
+        elif "def" in self.kill_messages:
+            print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
+        else:
+            print(f"You kill {character.get_the_name()} with {self.the_name}.")
+
+    def req_are_met(self, player):
+        return True
 
 
 class Key(Item):
@@ -41,18 +61,8 @@ class Key(Item):
 class Weapon(Item):
     def __init__(self, art, name):
         super().__init__(art, name)
-        self.kill_message = None
         self.requirements = {"kills": 0}
         self.no_req_message = None
-    
-    def set_kill_message(self, kill_message):
-        self.kill_message = kill_message
-    
-    def print_kill_message(self, character):
-        if self.kill_message:
-            print(f"{self.kill_message}, killing {character.get_the_name()}.")
-        else:
-            print(f"You kill {character.get_the_name()} with {self.the_name}.")
 
     def set_kills_req(self, kills):
         self.requirements["kills"] = kills
@@ -77,18 +87,14 @@ class Weapon(Item):
 
 class Artifact(Weapon):
 
-    # define constructor, set the article to "the", add an initial room and a initial description
-    # (which is to be displayed if the item is lying in that initial room)
     def __init__(self, art, item_name, initial_room):
         super().__init__(art, item_name)
         self.initial_room = initial_room
         self.initial_description = None
 
-    # print a line describing the item when lying in the initial room
     def describe_initial(self):
         print(f"{self.c_art_name} is here, {self.initial_description}")
 
-    # getters and setters
     def get_initial_description(self):
         return self.initial_description
 
@@ -103,10 +109,8 @@ class Artifacts(Artifact):
     def __init__(self, item_name, initial_room):
         super().__init__("the", item_name, initial_room)
 
-    # print a line describing the items
     def describe(self):
         print(f"{self.c_the_name} are here, {self.description}")
 
-    # print a line describing the items when lying in the initial room
     def describe_initial(self):
         print(f"{self.c_the_name} are here, {self.initial_description}")
