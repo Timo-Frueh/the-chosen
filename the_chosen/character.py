@@ -262,7 +262,7 @@ class Enemy(Character):
         """
         Print the correct kill message for when a certain item is wielded.
 
-        :param item: The name of the item that the message should be printed for.
+        :param item: The item that the message should be printed for.
         :type item: Item
         """
 
