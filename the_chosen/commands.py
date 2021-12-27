@@ -1,9 +1,17 @@
 # coding=utf-8
 
+"""
+This module holds the Commands class.
+"""
+
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+
 class Commands:
+    """
+    This class is for printing all available commands.
+    """
 
     # make a list of all possible commands
     commands = {"north      ": "  move north",
@@ -27,5 +35,9 @@ class Commands:
     # define the help method: print all possible commands
     @classmethod
     def print_commands(cls):
+        """
+        Print all available commands.
+        """
+        
         for command in cls.commands:
             print(f"{command}:{cls.commands[command]}")
