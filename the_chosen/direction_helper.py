@@ -1,9 +1,17 @@
 # coding=utf-8
 
+"""
+This module holds the DirectionHelper class.
+"""
+
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+
 class DirectionHelper:
+    """
+    This class helps managing directions.
+    """
 
     NORTH = "north"
     EAST = "east"
@@ -18,6 +26,15 @@ class DirectionHelper:
 
     @classmethod
     def reverse_dir(cls, direction):
+        """
+        Return the reverse direction of the input.
+
+        :param direction: The direction the revers direction is wanted of.
+        :type direction: str
+
+        :return: The reverse direction of the input.
+        :rtype: str
+        """
         if direction == cls.NORTH:
             return cls.SOUTH
         elif direction == cls.EAST:
