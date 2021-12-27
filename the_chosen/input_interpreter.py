@@ -1,7 +1,8 @@
+# coding=utf-8
+
 """
 This file holds the InputInterpreter class.
 """
-# coding=utf-8
 
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
@@ -13,19 +14,21 @@ class InputInterpreter:
     """
 
     @staticmethod
-    def interpret_single(command: str, key: str, remove: list = None):
-
+    def interpret_single(command, key, remove=None):
         """
         Intepret a command with only one argument.
 
-        :param command: the whole command the user has typed
+        :param command: The whole command the user has typed.
         :type command: str
 
-        :param key: command key that should trigger this command, e.g. "fight"
+        :param key: Command key that should trigger this command, e.g. "fight".
         :type key: str
 
-        :param remove: a list of words (strings) to remove from the users input
+        :param remove: A list of words (strings) to remove from the users input.
         :type remove: list
+
+        :return: The interpreted command.
+        :rtype: str
         """
 
         output = command.replace(key, "")
@@ -38,25 +41,27 @@ class InputInterpreter:
 
     # define a static method to interpret a positional command with two arguments
     @staticmethod
-    def interpret_double(command: str, key: str, separator: str, remove_0: list = None, remove_1: list = None):
-
+    def interpret_double(command, key, separator, remove_0=None, remove_1=None):
         """
         Interpret a command with two arguments.
 
-        :param command: the whole command the user has typed
+        :param command: The whole command the user has typed.
         :type command: str
 
-        :param key: command key that should trigger this command, e.g. "fight"
+        :param key: Command key that should trigger this command, e.g. "fight".
         :type key: str
 
-        :param separator: command separator that is between the two arguments, e.g. "with"
+        :param separator: Command separator that is between the two arguments, e.g. "with".
         :type separator: str
 
-        :param remove_0: list of words (strings) to remove from the first argument
+        :param remove_0: List of words (strings) to remove from the first argument.
         :type remove_0: list
 
-        :param remove_1: list of words (strings) to remove from the second argument
+        :param remove_1: List of words (strings) to remove from the second argument.
         :type remove_1: list
+
+        :return: Both parts of the interpreted command in a list.
+        :rtype: list
         """
 
         without_key = command.replace(key, "")
