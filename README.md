@@ -53,6 +53,7 @@ drop       :  drop something in your inventory
 hug        :  hug someone
 open/close :  open/close a door
 (un-)lock  :  (un-)lock a door
+scream     :  scream
 quit       :  quit the game -> NOTE: you will not be able to restore the game later
 help       :  show this list
 ~~~

@@ -99,6 +99,9 @@ class Mainloop:
                 lock_input = InputInterpreter.interpret_double(command, "lock", "with", [" the ", " door"])
                 player.lock_door(direction=lock_input[0], key=lock_input[1])
 
+            elif "scream" in command or "shout" in command:
+                print("Aaaaaaaaaaaaargh!")
+
             elif command in ["quit", "exit"]:
 
                 confirm = input("Do you really whish to leave the game? (y is affermative) ").strip()

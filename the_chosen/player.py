@@ -37,7 +37,7 @@ class Player:
         if not link and move in Dh.HORIZ_DIRECTIONS:
             print("You run head first into a wall and realize: You can't go that way.")
         elif not link and move == Dh.UP:
-            print("You jump. Nothing happens. What did you expect?")
+            print("You jump. Nothing happens. Do you expect me to applaud?")
         elif not link and move == Dh.DOWN:
             print("You kneel down and examine the floor. There doesn't seem to be a way down.")
         elif not link:
