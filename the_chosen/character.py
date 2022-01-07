@@ -215,7 +215,7 @@ class Enemy(Character):
             print("You wouldn't want to hug this malicious creature.")
 
     # getters and setters
-    def get_weakness(self):
+    def get_weaknesses(self):
         """
         Return the enemy's weaknesses.
         
