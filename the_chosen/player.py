@@ -7,6 +7,9 @@ from the_chosen.direction_helper import DirectionHelper as Dh
 
 
 class Player:
+    """
+    This is the class for the player.
+    """
 
     def __init__(self, player_name, starting_room):
         self.name = player_name
@@ -17,6 +20,12 @@ class Player:
         self.victory = False
 
     def move(self, direction):
+        """
+        Move the player to a specific direction.
+
+        :param direction: The direction the player wants to move to.
+        :type direction: str
+        """
 
         move = direction.lower().strip()
         link = self.current_room.get_link(move)
@@ -37,10 +46,19 @@ class Player:
             self.current_room.describe()
 
     def look(self):
+        """
+        Print the description of the room the player is currently in.
+        """
 
         self.get_current_room().describe()
 
     def talk(self, character):
+        """
+        Talk to a character.
+
+        :param character: The character the player wants to talk to.
+        :type character: Character
+        """
 
         if character.strip() == "":
             user_input = input("Talk to whom? ")
@@ -58,6 +76,9 @@ class Player:
             character.talk()
             
     def show_inventory(self):
+        """
+        Print the player's inventory.
+        """
 
         if self.get_inventory():
             print("You are carrying:")
@@ -68,6 +89,15 @@ class Player:
             print("You are empty-handed.")
     
     def fight(self, character, item):
+        """
+        Fight a character with an item.
+
+        :param character: The character the player wants to fight.
+        :type character: Character
+
+        :param item: The item the player wants to fight with.
+        :type item: Item
+        """
 
         if character.strip() == "":
             user_input = input("Fight whom? ")
@@ -97,6 +127,12 @@ class Player:
             enemy.fight(weapon, self)
     
     def take(self, item):
+        """
+        Take an item.
+
+        :param item: The item the player wants to take.
+        :type item: Item
+        """
 
         if item.strip() == "":
             user_input = input("What do you want to take? ")
@@ -116,6 +152,12 @@ class Player:
             print("Taken.")
 
     def drop(self, item):
+        """
+        Drop an item out of the inventory.
+
+        :param item: The item the player wants to drop.
+        :type item: Item
+        """
 
         if item.strip() == "":
             user_input = input("What do you want to drop? ")
@@ -135,6 +177,12 @@ class Player:
             print("Dropped.")
     
     def hug(self, character):
+        """
+        Hug a character.
+
+        :param character: The character the player wants to hug.
+        :type character: Character
+        """
 
         if character.strip() == "":
             user_input = input("Hug whom? ")
@@ -152,6 +200,15 @@ class Player:
             character.hug()
                 
     def open_door(self, direction, key):
+        """
+        Open a door.
+
+        :param direction: The direction the desired door is to.
+        :type direction: str
+
+        :param key: The key to use to open the door.
+        :type key: Item
+        """
 
         if direction.strip() == "":
             user_input = input("Open door to which direction? ")
@@ -174,6 +231,15 @@ class Player:
             door.open_door()
 
     def unlock_door(self, direction, key):
+        """
+        Unlock a door.
+
+        :param direction: The direction the desired door is to.
+        :type direction: str
+
+        :param key: The key to use to unlock the door.
+        :type key: Item
+        """
         
         if direction.strip() == "":
             user_input = input("Unlock door to which direction? ")
@@ -203,6 +269,15 @@ class Player:
             door.unlock_door(key)
 
     def close_door(self, direction, key):
+        """
+        Close a door.
+
+        :param direction: The direction the desired door is to.
+        :type direction: str
+
+        :param key: The key to use to close the door.
+        :type key: Item
+        """
 
         if direction.strip() == "":
             user_input = input("Open door to which direction? ")
@@ -225,7 +300,16 @@ class Player:
             door.close_door()
 
     def lock_door(self, direction, key):
-        
+        """
+        Lock a door.
+
+        :param direction: The direction the desired door is to.
+        :type direction: str
+
+        :param key: The key to use to lock the door.
+        :type key: Item
+        """
+
         if direction.strip() == "":
             user_input = input("Lock door to which direction? ")
         else:
@@ -254,39 +338,117 @@ class Player:
             door.lock_door(key)
 
     def get_inventory(self):
+        """
+        Return the player's inventory.
+
+        :return: The player's inventory.
+        :rtype: list
+        """
+
         return self.inventory
 
     def get_inventory_item(self, name):
+        """
+        Return a specifit item from the inventory.
+
+        :param name: The item's name.
+        :type name: str
+
+        :return: The desired item.
+        :rtype: Item
+        """
+
         for item in self.inventory:
             if name.lower().strip() in item.get_aliases():
                 return item
 
     def add_to_inventory(self, item):
+        """
+        Add an item to the inventory.
+
+        :param item: The item to add to the inventory.
+        :type item: Item
+        """
+
         self.inventory.append(item)
 
     def remove_from_inventory(self, item):
+        """
+        Remove an item from the inventory.
+
+        :param item: The item to remove from the inventory.
+        :type item: Item
+        """
+
         self.inventory.remove(item)
 
     def get_name(self):
+        """
+        Return the player's name.
+
+        :return: The player's name.
+        :rtype: str
+        """
+
         return self.name
 
     def get_current_room(self):
+        """
+        Return the player's current room.
+
+        :return: The player's current room.
+        :rtype: Room
+        """
+
         return self.current_room
 
     def isalive(self):
+        """
+        Check whether the player is alive or not.
+
+        :return: A boolean showing whether the player is alive or not.
+        :rtype: bool
+        """
+
         return self.alive
 
     def die(self):
+        """
+        Kill the player.
+        """
+
         self.alive = False
 
     def get_kills(self):
+        """
+        Return the player's kill count.
+
+        :return: The player's kill count.
+        :rtype: int
+        """
+
         return self.kills
 
     def add_kill(self):
+        """
+        Add a kill to the player's kill count.
+        """
+
         self.kills += 1
 
     def haswon(self):
+        """
+        Check whether the player has won the game yet.
+
+        :return: A boolean showing whether the player has won the game yet.
+        :rtype: bool
+        """
+
         return self.victory
 
     def win(self):
+        """
+        Let the player win the game.
+        """
+        
         self.victory = True
