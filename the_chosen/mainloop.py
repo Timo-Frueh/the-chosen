@@ -1,5 +1,9 @@
 # coding=utf-8
 
+"""
+This module holds the Mainloop class.
+"""
+
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
