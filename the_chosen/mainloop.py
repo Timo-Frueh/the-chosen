@@ -10,8 +10,16 @@ from the_chosen.rpginfo import RPGInfo
 
 
 class Mainloop:
+    """
+    This is the class containing the mainloop function.
+    """
+
     @staticmethod
     def mainloop(player):
+        """
+        This is the mainloop method, in which the user's commands are processed over and over, until the game ends.
+        """
+
         alive = True
 
         victory = False
