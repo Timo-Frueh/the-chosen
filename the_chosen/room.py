@@ -9,6 +9,9 @@ This module holds the Room class.
 
 
 class Room:
+    """
+    This is the base class for rooms, which make up the world the player can move through.
+    """
 
     def __init__(self, room_name):
         self.name = room_name
