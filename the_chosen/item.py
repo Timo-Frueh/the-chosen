@@ -256,5 +256,5 @@ class Artifacts(Artifact):
         """
         Print the initial description.
         """
-        
+
         print(f"{self.c_the_name} are here, {self.initial_description}")

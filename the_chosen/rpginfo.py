@@ -31,7 +31,7 @@ class RPGInfo:
         """
         Print credits.
         """
-        
+
         print(f"This was {cls.title}.")
         print("Thank you for playing!")
         print(f"\nMade by {cls.author}.")

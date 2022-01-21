@@ -246,5 +246,5 @@ class Room:
         :param item: The item to remove.
         :type item: Item
         """
-        
+
         self.items.remove(item)

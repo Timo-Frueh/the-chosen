@@ -120,5 +120,5 @@ class Entity:
         :return: The entity's name with "The".
         :rtype: str
         """
-        
+
         return self.the_name

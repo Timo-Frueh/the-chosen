@@ -39,6 +39,6 @@ class Commands:
         """
         Print all available commands.
         """
-        
+
         for command in cls.commands:
             print(f"{command}:{cls.commands[command]}")

@@ -35,6 +35,7 @@ class DirectionHelper:
         :return: The reverse direction of the input.
         :rtype: str
         """
+
         if direction == cls.NORTH:
             return cls.SOUTH
         elif direction == cls.EAST:

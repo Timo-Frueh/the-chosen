@@ -454,5 +454,5 @@ class Player:
         """
         Let the player win the game.
         """
-        
+
         self.victory = True

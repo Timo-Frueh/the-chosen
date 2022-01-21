@@ -260,5 +260,5 @@ class IllusoryWall(Link):
         :param direction: The direction wall is to from the player's perspective.
         :type direction: str
         """
-        
+
         print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
