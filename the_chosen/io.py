@@ -7,8 +7,11 @@ Functions:
     cmd_input
     interpret_single
     interpret_double
+    ch_print
 """
 
+import os
+import textwrap
 
 def cmd_input():
     """
@@ -90,3 +93,19 @@ def interpret_double(command, key, separator, remove_0=None, remove_1=None):
             output[1] = output[1].replace(word, " ")
 
     return [output[0].lower().strip(), output[1].lower().strip()]
+
+
+def ch_print(string):
+    """
+    Print string but with correct text wrapping according to terminal size.
+
+    :param string: The string to print.
+    :type string: str
+    """
+
+    columns = os.get_terminal_size().columns
+
+    wrapped_str = textwrap.wrap(text=string, width=columns)
+
+    for line in wrapped_str:
+        print(line)
