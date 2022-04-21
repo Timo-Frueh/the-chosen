@@ -17,6 +17,7 @@ Classes:
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
 from the_chosen.entity import Entity
 
 
@@ -36,7 +37,7 @@ class Character(Entity):
         Describe the character.
         """
 
-        print(f"You see {self.art_name}, {self.description}")
+        io.ch_print(f"You see {self.art_name}, {self.description}")
 
     def talk(self):
         """
@@ -44,11 +45,11 @@ class Character(Entity):
         """
 
         if len(self.conversations) == 0:
-            print(f"{self.c_the_name} doesn't want to talk to you.")
+            io.ch_print(f"{self.c_the_name} doesn't want to talk to you.")
         elif self.con_counter < len(self.conversations):
-            print(f"[{self.c_the_name}]: {self.conversations[self.con_counter]}")
+            io.ch_print(f"[{self.c_the_name}]: {self.conversations[self.con_counter]}")
         elif self.con_counter >= len(self.conversations):
-            print(f"[{self.c_the_name}]: {self.conversations[-1]}")
+            io.ch_print(f"[{self.c_the_name}]: {self.conversations[-1]}")
 
         self.con_counter += 1
 
@@ -63,7 +64,7 @@ class Character(Entity):
         :type player: Player
         """
 
-        print(f"{self.name} does not want to fight you.")
+        io.ch_print(f"{self.name} does not want to fight you.")
 
     def hug(self):
         """
@@ -71,9 +72,9 @@ class Character(Entity):
         """
 
         if self.hug_message:
-            print(self.hug_message)
+            io.ch_print(self.hug_message)
         else:
-            print("I doubt they'd appreciate that.")
+            io.ch_print("I doubt they'd appreciate that.")
 
     # getters and setters
     def get_conversation(self):
@@ -128,11 +129,11 @@ class Stranger(Character):
         """
 
         if self.deadly:
-            print(f"{self.c_the_name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
+            io.ch_print(f"{self.c_the_name} didn't wish you harm. But you already started the fight. You lose ...\nYou die ...")
             player.die()
 
         else:
-            print(f"You kill {self.c_the_name}.\nThis wasn't right ... You feel sorry for {self.c_the_name}.")
+            io.ch_print(f"You kill {self.c_the_name}.\nThis wasn't right ... You feel sorry for {self.c_the_name}.")
             player.get_current_room().remove_character(self)
 
 
@@ -149,9 +150,9 @@ class Friend(Character):
         """
 
         if self.hug_message:
-            print(self.hug_message)
+            io.ch_print(self.hug_message)
         else:
-            print(f"{self.name} hugs you back.")
+            io.ch_print(f"{self.name} hugs you back.")
 
     def fight(self, weapon, player):
         """
@@ -164,7 +165,7 @@ class Friend(Character):
         :type player: Player
         """
 
-        print("You wouldn't want to hurt a friend, would you?")
+        io.ch_print("You wouldn't want to hurt a friend, would you?")
 
 
 class Enemy(Character):
@@ -210,9 +211,9 @@ class Enemy(Character):
         """
 
         if self.hug_message:
-            print(self.hug_message)
+            io.ch_print(self.hug_message)
         else:
-            print("You wouldn't want to hug this malicious creature.")
+            io.ch_print("You wouldn't want to hug this malicious creature.")
 
     # getters and setters
     def get_weaknesses(self):
@@ -267,11 +268,11 @@ class Enemy(Character):
         """
 
         if item.get_name() in self.kill_messages:
-            print(self.kill_messages[item.get_name()])
+            io.ch_print(self.kill_messages[item.get_name()])
         elif "def" in self.kill_messages:
-            print(self.kill_messages["def"])
+            io.ch_print(self.kill_messages["def"])
         else:
-            print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
+            io.ch_print(f"{self.c_the_name} lands a fatal blow.\nYou die ...")
 
 
 class Miniboss(Enemy):
@@ -305,7 +306,7 @@ class Endboss(Enemy):
         Describe the endboss.
         """
 
-        print(f"You see {self.name}, the {self.title}, {self.description}")
+        io.ch_print(f"You see {self.name}, the {self.title}, {self.description}")
 
     def fight(self, weapon, player):
         """
@@ -334,11 +335,11 @@ class Mob(Enemy):
         Describe the mob.
         """
 
-        print(f"You see {self.art_name}, looking malevolently at you.")
+        io.ch_print(f"You see {self.art_name}, looking malevolently at you.")
 
     def talk(self):
         """
         Talk to the mob.
         """
 
-        print(f"[The {self.name}]: *unintelligible bestial sounds*")
+        io.ch_print(f"[The {self.name}]: *unintelligible bestial sounds*")
