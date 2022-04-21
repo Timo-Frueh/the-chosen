@@ -31,8 +31,8 @@ class Mainloop:
         while alive and not victory:
 
             print("")
-            user_input = input("> ")
-
+            user_input = the_chosen.io.cmd_input()
+            
             command = user_input.lower().strip()
 
             if command in ["commands", "help", "?"]:
