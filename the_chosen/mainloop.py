@@ -37,22 +37,24 @@ class Mainloop:
             
             command = user_input.lower().strip()
 
+            command_key = command.split(" ")[0]
+
             if command in ["commands", "help", "?"]:
                 io.ch_print(commands_list)
 
-            elif command in Dh.DIRECTIONS:
+            elif command_key in Dh.DIRECTIONS:
                 player.move(command)
 
-            elif command in ["look", "l"]:
+            elif command_key in ["look", "l"]:
                 player.look()
 
-            elif "talk to" in command:
+            elif command_key == "talk to":
 
                 talk_to_input = io.interpret_single(command, "talk to")
 
                 player.talk(talk_to_input)
 
-            elif "talk" in command:
+            elif command_key == "talk":
 
                 talk_input = io.interpret_single(command, "talk")
 
@@ -61,47 +63,47 @@ class Mainloop:
             elif command in ["inventory", "i", "backpack"]:
                 player.show_inventory()
 
-            elif "fight" in command:
+            elif command_key == "fight":
 
                 fight_input = io.interpret_double(command, "fight", "with", [", "])
 
                 player.fight(character=fight_input[0], item=fight_input[1])
 
-            elif "take" in command:
+            elif command_key == "take":
 
                 take_input = io.interpret_single(command, "take")
 
                 player.take(take_input)
 
-            elif "drop" in command:
+            elif command_key == "drop":
 
                 drop_input = io.interpret_single(command, "drop", [])
 
                 player.drop(drop_input)
 
-            elif "hug" in command:
+            elif command_key == "hug":
 
                 hug_input = io.interpret_single(command, "hug")
 
                 player.hug(hug_input)
 
-            elif "open" in command:
+            elif command_key == "open":
                 open_with_input = io.interpret_double(command, "open", "with", [" the ", " door"])
                 player.open_door(direction=open_with_input[0], key=open_with_input[1])
 
-            elif "close" in command:
+            elif command_key == "close":
                 close_with_input = io.interpret_double(command, "close", "with", [" the ", " door"])
                 player.close_door(direction=close_with_input[0], key=close_with_input[1])
 
-            elif "unlock" in command:
+            elif command_key == "unlock":
                 unlock_input = io.interpret_double(command, "unlock", "with", [" the ", " door"])
                 player.unlock_door(direction=unlock_input[0], key=unlock_input[1])
 
-            elif "lock" in command:
+            elif command_key == "lock":
                 lock_input = io.interpret_double(command, "lock", "with", [" the ", " door"])
                 player.lock_door(direction=lock_input[0], key=lock_input[1])
 
-            elif "scream" in command or "shout" in command:
+            elif command_key in ["scream", "shout"]:
                 io.ch_print("Aaaaaaaaaaaaargh!")
 
             elif command in ["quit", "exit"]:
