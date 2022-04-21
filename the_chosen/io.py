@@ -110,9 +110,12 @@ def ch_print(string):
 
     termcolumns = os.get_terminal_size().columns
 
-    if termcolumns < 120:
-        outstring = textwrap.fill(text=string, width=termcolumns)
-    else:
-        outstring = string
+    splitstring = string.split("\n")
 
-    print(outstring)
+    outlines = []
+
+    for line in splitstring:
+        outlines.append(textwrap.fill(text=line, width=termcolumns))
+
+    for outline in outlines:
+        print(outline)
