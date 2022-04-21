@@ -13,6 +13,7 @@ Functions:
 import os
 import textwrap
 
+
 def cmd_input():
     """
     Read a command from input.
