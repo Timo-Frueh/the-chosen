@@ -206,7 +206,7 @@ class Main:
 
         RPGInfo.welcome()
 
-        self.player_name = input("What is your name? ")
+        self.player_name = io.ch_input("What is your name? ")
 
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"

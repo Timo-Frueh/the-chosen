@@ -66,7 +66,7 @@ class Player:
         """
 
         if character.strip() == "":
-            user_input = input("Talk to whom? ")
+            user_input = io.ch_input("Talk to whom? ")
         else:
             user_input = character
 
@@ -105,7 +105,7 @@ class Player:
         """
 
         if character.strip() == "":
-            user_input = input("Fight whom? ")
+            user_input = io.ch_input("Fight whom? ")
         else:
             user_input = character
         
@@ -113,7 +113,7 @@ class Player:
         enemy = self.current_room.get_character(fight)
 
         if enemy and item.strip() == "":
-            user_input_2 = input("What do you want to fight with? ")
+            user_input_2 = io.ch_input("What do you want to fight with? ")
         elif enemy and item.strip() != "":
             user_input_2 = item
         else:
@@ -140,7 +140,7 @@ class Player:
         """
 
         if item.strip() == "":
-            user_input = input("What do you want to take? ")
+            user_input = io.ch_input("What do you want to take? ")
         else:
             user_input = item
         
@@ -165,7 +165,7 @@ class Player:
         """
 
         if item.strip() == "":
-            user_input = input("What do you want to drop? ")
+            user_input = io.ch_input("What do you want to drop? ")
         else:
             user_input = item
         
@@ -190,7 +190,7 @@ class Player:
         """
 
         if character.strip() == "":
-            user_input = input("Hug whom? ")
+            user_input = io.ch_input("Hug whom? ")
         else:
             user_input = character
 
@@ -216,7 +216,7 @@ class Player:
         """
 
         if direction.strip() == "":
-            user_input = input("Open door to which direction? ")
+            user_input = io.ch_input("Open door to which direction? ")
         else:
             user_input = direction
 
@@ -247,7 +247,7 @@ class Player:
         """
         
         if direction.strip() == "":
-            user_input = input("Unlock door to which direction? ")
+            user_input = io.ch_input("Unlock door to which direction? ")
         else:
             user_input = direction
 
@@ -255,7 +255,7 @@ class Player:
         door = self.current_room.get_link(unlock_door)
 
         if door and key.strip() == "":
-            user_input_2 = input("Which key do you want to use? ")
+            user_input_2 = io.ch_input("Which key do you want to use? ")
         elif door and key.strip() != "":
             user_input_2 = key
         else:
@@ -285,7 +285,7 @@ class Player:
         """
 
         if direction.strip() == "":
-            user_input = input("Open door to which direction? ")
+            user_input = io.ch_input("Open door to which direction? ")
         else:
             user_input = direction
 
@@ -316,7 +316,7 @@ class Player:
         """
 
         if direction.strip() == "":
-            user_input = input("Lock door to which direction? ")
+            user_input = io.ch_input("Lock door to which direction? ")
         else:
             user_input = direction
 
@@ -324,7 +324,7 @@ class Player:
         door = self.current_room.get_link(lock_door)
 
         if door and key.strip() == "":
-            user_input_2 = input("Which key do you want to use? ")
+            user_input_2 = io.ch_input("Which key do you want to use? ")
         elif door and key.strip() != "":
             user_input_2 = key
         else:

@@ -108,7 +108,7 @@ class Mainloop:
 
             elif command in ["quit", "exit"]:
 
-                confirm = input("Do you really wish to leave the game? (y is affermative) ").strip()
+                confirm = io.ch_input("Do you really wish to leave the game? (y is affermative) ").strip()
 
                 if confirm in ["Y", "y"]:
                     alive = False
@@ -142,4 +142,4 @@ class Mainloop:
 
             io.ch_print("")
 
-        input("[Hit enter to exit.]")
+        io.ch_input("[Hit enter to exit.]")
