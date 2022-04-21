@@ -9,7 +9,7 @@ This module holds the Mainloop class.
 
 from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
-from the_chosen.input_interpreter import InputInterpreter
+import the_chosen.io
 from the_chosen.rpginfo import RPGInfo
 
 
@@ -46,13 +46,13 @@ class Mainloop:
 
             elif "talk to" in command:
 
-                talk_to_input = InputInterpreter.interpret_single(command, "talk to")
+                talk_to_input = the_chosen.io.interpret_single(command, "talk to")
 
                 player.talk(talk_to_input)
 
             elif "talk" in command:
 
-                talk_input = InputInterpreter.interpret_single(command, "talk")
+                talk_input = the_chosen.io.interpret_single(command, "talk")
 
                 player.talk(talk_input)
 
@@ -61,42 +61,42 @@ class Mainloop:
 
             elif "fight" in command:
 
-                fight_input = InputInterpreter.interpret_double(command, "fight", "with", [", "])
+                fight_input = the_chosen.io.interpret_double(command, "fight", "with", [", "])
 
                 player.fight(character=fight_input[0], item=fight_input[1])
 
             elif "take" in command:
 
-                take_input = InputInterpreter.interpret_single(command, "take")
+                take_input = the_chosen.io.interpret_single(command, "take")
 
                 player.take(take_input)
 
             elif "drop" in command:
 
-                drop_input = InputInterpreter.interpret_single(command, "drop", [])
+                drop_input = the_chosen.io.interpret_single(command, "drop", [])
 
                 player.drop(drop_input)
 
             elif "hug" in command:
 
-                hug_input = InputInterpreter.interpret_single(command, "hug")
+                hug_input = the_chosen.io.interpret_single(command, "hug")
 
                 player.hug(hug_input)
 
             elif "open" in command:
-                open_with_input = InputInterpreter.interpret_double(command, "open", "with", [" the ", " door"])
+                open_with_input = the_chosen.io.interpret_double(command, "open", "with", [" the ", " door"])
                 player.open_door(direction=open_with_input[0], key=open_with_input[1])
 
             elif "close" in command:
-                close_with_input = InputInterpreter.interpret_double(command, "close", "with", [" the ", " door"])
+                close_with_input = the_chosen.io.interpret_double(command, "close", "with", [" the ", " door"])
                 player.close_door(direction=close_with_input[0], key=close_with_input[1])
 
             elif "unlock" in command:
-                unlock_input = InputInterpreter.interpret_double(command, "unlock", "with", [" the ", " door"])
+                unlock_input = the_chosen.io.interpret_double(command, "unlock", "with", [" the ", " door"])
                 player.unlock_door(direction=unlock_input[0], key=unlock_input[1])
 
             elif "lock" in command:
-                lock_input = InputInterpreter.interpret_double(command, "lock", "with", [" the ", " door"])
+                lock_input = the_chosen.io.interpret_double(command, "lock", "with", [" the ", " door"])
                 player.lock_door(direction=lock_input[0], key=lock_input[1])
 
             elif "scream" in command or "shout" in command:
