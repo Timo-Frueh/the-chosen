@@ -1,6 +1,1 @@
-You are now standing in a long hall, the ceiling of which you can barely see.
-There are many torches on every wall, flooding the vast room with light. The walls
-are ornately decorated and in the middle of the room you see a long table with
-many wooden chairs to each side of it. It seems as if someone was preparing a
-feast, for the table is set with many plates and cutlery. The only thing missing
-is the food.
+You are now standing in a long hall, the ceiling of which you can barely see. There are many torches on every wall, flooding the vast room with light. The walls are ornately decorated and in the middle of the room you see a long table with many wooden chairs to each side of it. It seems as if someone was preparing afeast, for the table is set with many plates and cutlery. The only thing missing is the food.

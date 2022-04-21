@@ -1,4 +1,2 @@
-As you try to swing the Swords, they become increasingly heavy,
-compromising your balance. It seems you are not yet worthy of 
-them. You lose the fight.
+As you try to swing the Swords, they become increasingly heavy, compromising your balance. It seems you are not yet worthy of them. You lose the fight.
 You die ...

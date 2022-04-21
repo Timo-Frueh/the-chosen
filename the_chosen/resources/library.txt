@@ -1,5 +1,1 @@
-You are in a big library with a huge amount of bookshelves containing an uncountable
-amount of books. There are multiple big chandeliers hanging from the ceiling so that
-there is enough light for reading in even the remotest corner of the room.
-There is also a big desk with stacks of books packed on it, but there doesn't seem
-to be a librarian around.
+You are in a big library with a huge amount of bookshelves containing an uncountable amount of books. There are multiple big chandeliers hanging from the ceiling so that there is enough light for reading in even the remotest corner of the room. There is also a big desk with stacks of books packed on it, but there doesn't seem to be a librarian around.
