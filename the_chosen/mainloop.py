@@ -24,7 +24,7 @@ class Mainloop:
         This is the mainloop method, in which the user's commands are processed over and over, until the game ends.
         """
 
-        commands_list = Rh.read_split_resource("commands_list.txt", split="\n")
+        commands_list = Rh.read_resource("commands_list.txt")
 
         alive = True
 
@@ -38,8 +38,7 @@ class Mainloop:
             command = user_input.lower().strip()
 
             if command in ["commands", "help", "?"]:
-                for command in commands_list:
-                    io.ch_print(command)
+                io.ch_print(commands_list)
 
             elif command in Dh.DIRECTIONS:
                 player.move(command)
