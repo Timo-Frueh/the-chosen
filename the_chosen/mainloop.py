@@ -7,9 +7,9 @@ This module holds the Mainloop class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io
 from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
-import the_chosen.io
 from the_chosen.rpginfo import RPGInfo
 
 
