@@ -110,6 +110,9 @@ def ch_print(string):
 
     termcolumns = os.get_terminal_size().columns
 
+    if termcolumns > 120:
+        termcolumns = 120
+
     splitstring = string.split("\n")
 
     outlines = []
