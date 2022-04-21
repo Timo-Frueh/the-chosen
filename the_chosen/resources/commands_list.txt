@@ -1,0 +1,18 @@
+north:      move north
+east:       move east
+south:      move south
+west:       move west
+up:         move up
+down:       move down
+look:       look around
+talk:       talk to someone
+inventory:  show your inventory
+fight:      fight someone
+take:       take something
+drop:       drop something
+hug:        hug someone
+open/close: open/close a door
+(un-)lock:  (un-)lock a door
+scream:     scream
+quit:       quit the game
+help:       show this list

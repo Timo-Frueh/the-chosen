@@ -8,8 +8,8 @@ This module holds the Mainloop class.
 # Full copyright notice in main.py
 
 import the_chosen.io as io
-from the_chosen.commands import Commands as Cmd
 from the_chosen.direction_helper import DirectionHelper as Dh
+from the_chosen.resource_helper import ResourceHelper as Rh
 from the_chosen.rpginfo import RPGInfo
 
 
@@ -24,6 +24,8 @@ class Mainloop:
         This is the mainloop method, in which the user's commands are processed over and over, until the game ends.
         """
 
+        commands_list = Rh.read_split_resource("commands_list.txt", split="\n")
+
         alive = True
 
         victory = False
@@ -36,7 +38,8 @@ class Mainloop:
             command = user_input.lower().strip()
 
             if command in ["commands", "help", "?"]:
-                Cmd.print_commands()
+                for command in commands_list:
+                    io.ch_print(command)
 
             elif command in Dh.DIRECTIONS:
                 player.move(command)
