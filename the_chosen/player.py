@@ -7,6 +7,7 @@ This module holds the Player class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
 from the_chosen.direction_helper import DirectionHelper as Dh
 
 
@@ -35,15 +36,15 @@ class Player:
         link = self.current_room.get_link(move)
 
         if not link and move in Dh.HORIZ_DIRECTIONS:
-            print("You run head first into a wall and realize: You can't go that way.")
+            io.ch_print("You run head first into a wall and realize: You can't go that way.")
         elif not link and move == Dh.UP:
-            print("You jump. Nothing happens. Do you expect me to applaud?")
+            io.ch_print("You jump. Nothing happens. Do you expect me to applaud?")
         elif not link and move == Dh.DOWN:
-            print("You kneel down and examine the floor. There doesn't seem to be a way down.")
+            io.ch_print("You kneel down and examine the floor. There doesn't seem to be a way down.")
         elif not link:
-            print("You can't go that way.")
+            io.ch_print("You can't go that way.")
         elif not link.isopen():
-            print(f"The door to the {direction} is closed.")
+            io.ch_print(f"The door to the {direction} is closed.")
         else:
             link.print_message(move)
             self.current_room = link.get_other_room(self.current_room)
@@ -73,9 +74,9 @@ class Player:
         character = self.current_room.get_character(talk_to)
 
         if not self.current_room.get_characters():
-            print("There is no one here to listen to your beautiful voice.")
+            io.ch_print("There is no one here to listen to your beautiful voice.")
         elif not character:
-            print(f"There is no one called {user_input} here.")
+            io.ch_print(f"There is no one called {user_input} here.")
         else:
             character.talk()
             
@@ -85,12 +86,12 @@ class Player:
         """
 
         if self.get_inventory():
-            print("You are carrying:")
+            io.ch_print("You are carrying:")
             for item in self.get_inventory():
-                print(f"- {item.get_c_art_name()}")
+                io.ch_print(f"- {item.get_c_art_name()}")
 
         else:
-            print("You are empty-handed.")
+            io.ch_print("You are empty-handed.")
     
     def fight(self, character, item):
         """
@@ -122,11 +123,11 @@ class Player:
         weapon = self.get_inventory_item(fight_with)
 
         if not self.current_room.get_characters():
-            print("There is no one here to fight.")
+            io.ch_print("There is no one here to fight.")
         elif not enemy:
-            print(f"There is no one called {user_input} here.")
+            io.ch_print(f"There is no one called {user_input} here.")
         elif not weapon:
-            print(f"You do not have an item called {user_input_2}.")
+            io.ch_print(f"You do not have an item called {user_input_2}.")
         else:
             enemy.fight(weapon, self)
     
@@ -147,13 +148,13 @@ class Player:
         item = self.current_room.get_item(take)
 
         if not self.current_room.get_items():
-            print("There is nothing here to take.")
+            io.ch_print("There is nothing here to take.")
         elif not item:
-            print(f"There is no item called {user_input} here.")
+            io.ch_print(f"There is no item called {user_input} here.")
         else:
             self.current_room.remove_item(item)
             self.add_to_inventory(item)
-            print("Taken.")
+            io.ch_print("Taken.")
 
     def drop(self, item):
         """
@@ -172,13 +173,13 @@ class Player:
         item = self.get_inventory_item(drop)
 
         if not self.inventory:
-            print("You do not have anything to drop.")
+            io.ch_print("You do not have anything to drop.")
         elif not item:
-            print(f"You do not have an item called {user_input}.")
+            io.ch_print(f"You do not have an item called {user_input}.")
         else:
             self.remove_from_inventory(item)
             self.current_room.add_item(item)
-            print("Dropped.")
+            io.ch_print("Dropped.")
     
     def hug(self, character):
         """
@@ -197,9 +198,9 @@ class Player:
         character = self.current_room.get_character(hug)
 
         if not self.current_room.get_characters():
-            print("There is no one here to receive your comforting embrace.")
+            io.ch_print("There is no one here to receive your comforting embrace.")
         elif not character:
-            print(f"There is no one called {user_input} here.")
+            io.ch_print(f"There is no one called {user_input} here.")
         else:
             character.hug()
                 
@@ -225,9 +226,9 @@ class Player:
         key = self.get_inventory_item(open_with)
 
         if open_door not in Dh.HORIZ_DIRECTIONS:
-            print("You need to specify a direction so I know which door you mean.")
+            io.ch_print("You need to specify a direction so I know which door you mean.")
         elif not door:
-            print(f"There is no door to the {user_input}.")
+            io.ch_print(f"There is no door to the {user_input}.")
         elif key:
             door.unlock_door(key)
             door.open_door()
@@ -264,11 +265,11 @@ class Player:
         key = self.get_inventory_item(unlock_with)
         
         if unlock_door not in Dh.HORIZ_DIRECTIONS:
-            print("You need to specify a direction so I know which door you mean.")
+            io.ch_print("You need to specify a direction so I know which door you mean.")
         elif not door:
-            print(f"There is no door to the {user_input}.")
+            io.ch_print(f"There is no door to the {user_input}.")
         elif not key:
-            print(f"You do not have an item called {user_input_2}.")
+            io.ch_print(f"You do not have an item called {user_input_2}.")
         else:
             door.unlock_door(key)
 
@@ -294,9 +295,9 @@ class Player:
         key = self.get_inventory_item(close_with)
 
         if close_door not in Dh.HORIZ_DIRECTIONS:
-            print("You need to specify a direction so I know which door you mean.")
+            io.ch_print("You need to specify a direction so I know which door you mean.")
         elif not door:
-            print(f"There is no door to the {user_input}.")
+            io.ch_print(f"There is no door to the {user_input}.")
         elif key:
             door.close_door()
             door.lock_door(key)
@@ -333,11 +334,11 @@ class Player:
         key = self.get_inventory_item(lock_with)
         
         if lock_door not in Dh.HORIZ_DIRECTIONS:
-            print("You need to specify a direction so I know which door you mean.")
+            io.ch_print("You need to specify a direction so I know which door you mean.")
         elif not door:
-            print(f"There is no door to the {user_input}.")
+            io.ch_print(f"There is no door to the {user_input}.")
         elif door.islocked():
-            print(f"You do not have an item called {user_input_2}.")
+            io.ch_print(f"You do not have an item called {user_input_2}.")
         else:
             door.lock_door(key)
 

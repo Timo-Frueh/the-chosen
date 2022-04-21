@@ -20,6 +20,7 @@ import os
 
 from clear_screen import clear
 
+import the_chosen.io as io
 from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
 from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.item import Artifacts, Key, Weapon
@@ -322,8 +323,9 @@ class Main:
         self.demon_king.set_def_kill_message(self.demon_king_kill_f)
         self.throne_room.add_character(self.demon_king)
 
-        print("\nYou look around.")
-        print("")
+        io.ch_print("")
+        io.ch_print("You look around.")
+        io.ch_print("")
 
         self.player.get_current_room().describe()
 

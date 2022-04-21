@@ -7,6 +7,8 @@ This module holds the Room class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
+
 
 class Room:
     """
@@ -28,13 +30,13 @@ class Room:
         Print a long description of the room.
         """
 
-        print(self.name)
+        io.ch_print(self.name)
 
         for _ in range(0, len(self.name) - 1):
             print("¯", end="")
         print("¯")
 
-        print(self.description)
+        io.ch_print(self.description)
 
         for character in self.characters:
             character.describe()
@@ -58,22 +60,22 @@ class Room:
 
         if len(self.doors) == 1:
             for direction in self.doors:
-                print(f"There is a door to the {direction}.")
+                io.ch_print(f"There is a door to the {direction}.")
 
         elif len(self.doors) == 2:
             directions = []
             for direction in self.doors:
                 directions.append(direction)
-            print(f"There are doors to the {directions[0]} and {directions[1]}.")
+            io.ch_print(f"There are doors to the {directions[0]} and {directions[1]}.")
 
         elif len(self.doors) == 3:
             directions = []
             for direction in self.doors:
                 directions.append(direction)
-            print(f"There are doors to the {directions[0]}, {directions[1]} and {directions[2]}.")
+            io.ch_print(f"There are doors to the {directions[0]}, {directions[1]} and {directions[2]}.")
 
         elif len(self.doors) == 4:
-            print("There are doors to all directions.")
+            io.ch_print("There are doors to all directions.")
 
     def print_ladders(self):
         """
@@ -82,9 +84,9 @@ class Room:
 
         if len(self.ladders) == 1:
             for direction in self.ladders:
-                print(f"There is a ladder leading {direction}.")
+                io.ch_print(f"There is a ladder leading {direction}.")
         elif len(self.ladders) == 2:
-            print("There is a ladder leading up and down.")
+            io.ch_print("There is a ladder leading up and down.")
 
     def init_links(self):
         """

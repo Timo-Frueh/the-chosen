@@ -7,6 +7,8 @@ This module holds the RPGInfo class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
+
 
 class RPGInfo:
 
@@ -22,9 +24,9 @@ class RPGInfo:
         Print a welcome message.
         """
 
-        print(f"Welcome to {cls.title}: {cls.subtitle}")
-        print("")
-        print(cls.welcome_message)
+        io.ch_print(f"Welcome to {cls.title}: {cls.subtitle}")
+        io.ch_print("")
+        io.ch_print(cls.welcome_message)
 
     @classmethod
     def credits(cls):
@@ -32,6 +34,6 @@ class RPGInfo:
         Print credits.
         """
 
-        print(f"This was {cls.title}.")
-        print("Thank you for playing!")
-        print(f"\nMade by {cls.author}.")
+        io.ch_print(f"This was {cls.title}.")
+        io.ch_print("Thank you for playing!")
+        io.ch_print(f"\nMade by {cls.author}.")

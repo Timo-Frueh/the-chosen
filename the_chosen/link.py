@@ -13,6 +13,7 @@ Classes:
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
 from the_chosen.direction_helper import DirectionHelper as Dr
 
 
@@ -72,7 +73,7 @@ class Link:
         Prints an error message because normal links cannot be opened or closed.
         """
 
-        print("This cannot be opened, because it is no door.")
+        io.ch_print("This cannot be opened, because it is no door.")
 
     def unlock_door(self, key):  # pylint: disable=unused-argument
         """
@@ -80,7 +81,7 @@ class Link:
         Prints an error message because normal links cannot be locked or unlocked.
         """
 
-        print("This cannot be unlocked, because it is no door.")
+        io.ch_print("This cannot be unlocked, because it is no door.")
 
     def close_door(self):
         """
@@ -88,7 +89,7 @@ class Link:
         Prints an error message because normal links cannot be opened or closed.
         """
 
-        print("This cannot be opened, because it is no door.")
+        io.ch_print("This cannot be opened, because it is no door.")
 
     def lock_door(self, key):  # pylint: disable=unused-argument
         """
@@ -96,7 +97,7 @@ class Link:
         Prints an error message because normal links cannot be opened or closed.
         """
 
-        print("This cannot be closed, because it is no door.")
+        io.ch_print("This cannot be closed, because it is no door.")
 
     def isopen(self):
         """
@@ -129,9 +130,9 @@ class Door(Link):
 
         if not self.locked:
             self.open = True
-            print("You open the door.")
+            io.ch_print("You open the door.")
         else:
-            print("This door is locked.")
+            io.ch_print("This door is locked.")
 
     def unlock_door(self, key):
         """
@@ -142,19 +143,19 @@ class Door(Link):
         """
 
         if self.open:
-            print("You cannot unlock an open door.")
+            io.ch_print("You cannot unlock an open door.")
         elif not self.locked:
-            print("This door is already unlocked.")
+            io.ch_print("This door is already unlocked.")
         elif not self.keys:
-            print("This door has no lock.")
+            io.ch_print("This door has no lock.")
         else:
             if key in self.keys:
                 self.locked = False
                 key.print_unlock_message()
             elif type(key).__name__ == "Key":
-                print("This key doesn't fit into the keyhole.")
+                io.ch_print("This key doesn't fit into the keyhole.")
             else:
-                print(f"You can't unlock a door with {key.get_art_name()}.")
+                io.ch_print(f"You can't unlock a door with {key.get_art_name()}.")
 
     def close_door(self):
         """
@@ -163,7 +164,7 @@ class Door(Link):
 
         if not self.locked:
             self.open = False
-            print("You close the door.")
+            io.ch_print("You close the door.")
         else:
             raise Exception("An open door cannot be open and locked at the same time.")
 
@@ -176,19 +177,19 @@ class Door(Link):
         """
 
         if self.open:
-            print("You cannot lock an open door.")
+            io.ch_print("You cannot lock an open door.")
         elif self.locked:
-            print("This door is already locked.")
+            io.ch_print("This door is already locked.")
         elif not self.keys:
-            print("This door has no lock.")
+            io.ch_print("This door has no lock.")
         else:
             if key in self.keys:
                 self.locked = True
                 key.print_lock_message()
             elif type(key).__name__ == "Key":
-                print("This key doesn't fit into the keyhole.")
+                io.ch_print("This key doesn't fit into the keyhole.")
             else:
-                print(f"You can't lock a door with {key.get_art_name()}.")
+                io.ch_print(f"You can't lock a door with {key.get_art_name()}.")
     
     def isopen(self):
         """
@@ -244,7 +245,7 @@ class Ladder(Link):
         :type direction: str
         """
 
-        print(f"You climb {direction} the ladder.\n")
+        io.ch_print(f"You climb {direction} the ladder.\n")
 
 
 class IllusoryWall(Link):
@@ -261,4 +262,4 @@ class IllusoryWall(Link):
         :type direction: str
         """
 
-        print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")
+        io.ch_print(f"As you lay your hand upon the {direction} wall, you pass through it and emerge on the other side.\n")

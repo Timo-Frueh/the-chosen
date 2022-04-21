@@ -15,6 +15,7 @@ Classes:
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
+import the_chosen.io as io
 from the_chosen.entity import Entity
 
 
@@ -32,7 +33,7 @@ class Item(Entity):
         Describe the item.
         """
 
-        print(f"{self.c_art_name} is here, {self.description}")
+        io.ch_print(f"{self.c_art_name} is here, {self.description}")
 
     def set_def_kill_message(self, kill_message):
         """
@@ -65,11 +66,11 @@ class Item(Entity):
         """
 
         if character.get_name() in self.kill_messages:
-            print(self.kill_messages[character.get_name()])
+            io.ch_print(self.kill_messages[character.get_name()])
         elif "def" in self.kill_messages:
-            print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
+            io.ch_print(f"{self.kill_messages['def']}, killing {character.get_the_name()}.")
         else:
-            print(f"You kill {character.get_the_name()} with {self.the_name}.")
+            io.ch_print(f"You kill {character.get_the_name()} with {self.the_name}.")
 
     def req_are_met(self, player):
         """
@@ -111,9 +112,9 @@ class Key(Item):
         """
 
         if self.unlock_message:
-            print(self.unlock_message)
+            io.ch_print(self.unlock_message)
         else:
-            print("You unlock the door.")
+            io.ch_print("You unlock the door.")
 
     def set_lock_message(self, lock_message):
         """
@@ -130,9 +131,9 @@ class Key(Item):
         """
 
         if self.lock_message:
-            print(self.lock_message)
+            io.ch_print(self.lock_message)
         else:
-            print("You lock the door.")
+            io.ch_print("You lock the door.")
 
 
 class Weapon(Item):
@@ -185,9 +186,9 @@ class Weapon(Item):
         """
 
         if self.no_req_message:
-            print(self.no_req_message)
+            io.ch_print(self.no_req_message)
         else:
-            print("You do not yet meet this weapon's requirements and therefore lose the fight.\nYou die ...")
+            io.ch_print("You do not yet meet this weapon's requirements and therefore lose the fight.\nYou die ...")
 
 
 class Artifact(Weapon):
@@ -204,7 +205,7 @@ class Artifact(Weapon):
         Print the initial description.
         """
 
-        print(f"{self.c_art_name} is here, {self.initial_description}")
+        io.ch_print(f"{self.c_art_name} is here, {self.initial_description}")
 
     def get_initial_description(self):
         """
@@ -250,11 +251,11 @@ class Artifacts(Artifact):
         Print the description of the weapons.
         """
 
-        print(f"{self.c_the_name} are here, {self.description}")
+        io.ch_print(f"{self.c_the_name} are here, {self.description}")
 
     def describe_initial(self):
         """
         Print the initial description.
         """
 
-        print(f"{self.c_the_name} are here, {self.initial_description}")
+        io.ch_print(f"{self.c_the_name} are here, {self.initial_description}")

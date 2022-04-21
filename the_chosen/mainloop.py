@@ -30,7 +30,7 @@ class Mainloop:
 
         while alive and not victory:
 
-            print("")
+            io.ch_print("")
             user_input = io.cmd_input()
             
             command = user_input.lower().strip()
@@ -100,7 +100,7 @@ class Mainloop:
                 player.lock_door(direction=lock_input[0], key=lock_input[1])
 
             elif "scream" in command or "shout" in command:
-                print("Aaaaaaaaaaaaargh!")
+                io.ch_print("Aaaaaaaaaaaaargh!")
 
             elif command in ["quit", "exit"]:
 
@@ -113,7 +113,7 @@ class Mainloop:
                 pass
 
             else:
-                print(f"I do not know what you meant by {user_input}.")
+                io.ch_print(f"I do not know what you meant by {user_input}.")
 
             if not player.isalive():
                 alive = False
@@ -122,20 +122,20 @@ class Mainloop:
                 victory = True
 
         if victory:
-            print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
+            io.ch_print("\nCongratulations! You have been victorious and thereby beaten the game!\n")
 
         if player.get_kills() == 0:
-            print("You vanquished not a single enemy during the game.")
+            io.ch_print("You vanquished not a single enemy during the game.")
         elif player.get_kills() == 1:
-            print("You vanquished 1 enemy during the game.")
+            io.ch_print("You vanquished 1 enemy during the game.")
         elif player.get_kills() > 1:
-            print(f"You vanquished {player.get_kills()} enemies during the game.")
+            io.ch_print(f"You vanquished {player.get_kills()} enemies during the game.")
 
-        print("")
+        io.ch_print("")
 
         if victory:
             RPGInfo.credits()
 
-            print("")
+            io.ch_print("")
 
         input("[Hit enter to exit.]")
