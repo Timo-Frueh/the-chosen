@@ -104,21 +104,59 @@ def ch_print(string):
     :type string: str
     """
 
+    outlines = wrap(string)
+
+    for line in outlines:
+        print(line)
+
+
+def ch_input(prompt):
+    """
+    Read user input and wrap the prompt correctly.
+
+    :param prompt: The prompt to display while reading user input.
+    :type prompt: str
+    """
+
+    outlines = wrap(prompt)
+
+    for line in range(0, len(outlines) - 1):
+        print(line)
+
+    return input(outlines[-1] + " ")
+
+
+def wrap(string):
+    """
+    Wrap the input string.
+
+    :param string: The string to wrap.
+    :type string: str
+
+    :return: All the separate lines, correctly wrapped and in a list.
+    :rtype: list
+    """
+
     if string == "":
-        print("")
-        return
+        return [""]
 
-    termcolumns = os.get_terminal_size().columns
+    else:
+        termcolumns = os.get_terminal_size().columns
 
-    if termcolumns > 120:
-        termcolumns = 120
+        if termcolumns > 120:
+            termcolumns = 120
 
-    splitstring = string.split("\n")
+        splitstring = string.split("\n")
 
-    outlines = []
+        outpars = []
 
-    for line in splitstring:
-        outlines.append(textwrap.fill(text=line, width=termcolumns))
+        for line in splitstring:
+            outpars.append(textwrap.fill(text=line, width=termcolumns))
 
-    for outline in outlines:
-        print(outline)
+        outlines = []
+
+        for par in outpars:
+            for line in par:
+                outlines.append(line)
+
+        return outpars
