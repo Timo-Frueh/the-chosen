@@ -104,9 +104,15 @@ def ch_print(string):
     :type string: str
     """
 
-    columns = os.get_terminal_size().columns
+    if string == "":
+        print("")
+        return
 
-    wrapped_str = textwrap.wrap(text=string, width=columns)
+    termcolumns = os.get_terminal_size().columns
 
-    for line in wrapped_str:
-        print(line)
+    if termcolumns < 120:
+        outstring = textwrap.fill(text=string, width=termcolumns)
+    else:
+        outstring = string
+
+    print(outstring)
