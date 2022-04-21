@@ -47,9 +47,9 @@ class Character(Entity):
         if len(self.conversations) == 0:
             io.ch_print(f"{self.c_the_name} doesn't want to talk to you.")
         elif self.con_counter < len(self.conversations):
-            io.ch_print(f"[{self.c_the_name}]: {self.conversations[self.con_counter]}")
+            io.ch_print(f"[{self.c_the_name}]: \n{self.conversations[self.con_counter]}")
         elif self.con_counter >= len(self.conversations):
-            io.ch_print(f"[{self.c_the_name}]: {self.conversations[-1]}")
+            io.ch_print(f"[{self.c_the_name}]: \n{self.conversations[-1]}")
 
         self.con_counter += 1
 
@@ -342,4 +342,4 @@ class Mob(Enemy):
         Talk to the mob.
         """
 
-        io.ch_print(f"[The {self.name}]: *unintelligible bestial sounds*")
+        io.ch_print(f"[The {self.name}]: \n*unintelligible bestial sounds*")
