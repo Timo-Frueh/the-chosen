@@ -42,10 +42,10 @@ class Mainloop:
             if command in ["commands", "help", "?"]:
                 io.ch_print(commands_list)
 
-            elif command_key in Dh.DIRECTIONS:
+            elif command in Dh.DIRECTIONS:
                 player.move(command)
 
-            elif command_key in ["look", "l"]:
+            elif command in ["look", "l"]:
                 player.look()
 
             elif command_key == "talk to":
