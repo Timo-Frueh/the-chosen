@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from the_chosen.main import main
+from the_chosen.__main__ import main
 
 
 if __name__ == "__main__":
