@@ -10,6 +10,9 @@ Functions:
     ch_print
 """
 
+# The Chosen  Copyright (C) 2022  Timo Früh
+# Full copyright notice in main.py
+
 import os
 import textwrap
 

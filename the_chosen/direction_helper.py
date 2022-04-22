@@ -4,7 +4,7 @@
 This module holds the DirectionHelper class.
 """
 
-# The Chosen  Copyright (C) 2021  Timo Früh
+# The Chosen  Copyright (C) 2022  Timo Früh
 # Full copyright notice in main.py
 
 
