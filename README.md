@@ -6,29 +6,17 @@ Your objective is to find a pair of legendary swords and kill an evil king with 
 
 ## How to install
 
-### macOS, Linux
+### macOS (with Homebrew)
 
-To install directly from the latest release, use:
-~~~ shell
-sudo curl -L https://github.com/Timo-Frueh/the-chosen/releases/latest/download/the-chosen -o /usr/local/bin/the-chosen
-sudo chmod a+rx /usr/local/bin/the-chosen
-~~~
+1. Tap my brew-repo: `brew tap https://github.com/tifrueh/homebrew-mytap`
 
-Or, alternatively, with `wget`
-~~~ shell
-sudo wget https://github.com/Timo-Frueh/the-chosen/releases/latest/download/the-chosen -O /usr/local/bin/the-chosen
-sudo chmod a+rx /usr/local/bin/the-chosen
-~~~
-
-_NOTE: You need admin permissions for this._
+2. Install with `brew install the-chosen`
 
 ### Windows, macOS, Linux
 
-1. You can download the ZIP-file or tarball from the latest release and install with `setup.py` manually.
+1. You can download the ZIP-file or tarball from the latest release and install with `pip` manually.
 
 2. You can also download the ZIP-file or tarball from the latest release and run the game directly with `python` from the entry script `the-chosen.py`
-   
-_NOTE: Python 3.6 or newer is required to run the game directly._
 
 ## How to play
 
