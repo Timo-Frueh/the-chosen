@@ -1,14 +1,9 @@
-Oooh ... what a fine surprise ... the Chosen is finally here. You know
-               your task already, I suppose? Quick, quick, let me tell you something then:
-               To discover the swords you must find the three burning suns, then turn
-               south and take the daring step.
-               That doesn't help you? Well, this is all I know.
+Oooh ... what a fine surprise ... the Chosen is finally here. You know your task already, I suppose? Quick, quick, let me tell you something then:
+To discover the Swords you must find the three burning suns, then turn south and take the daring step.
+That doesn't help you? Well, this is all I know.
 ---
 You want to hear that again? Well, then, listen closely this time:
-               To discover the swords you must find the three burning suns, then turn
-               south and take the daring step.
-               Now, now ... Go and find the Swords, Chosen. It's what you came
-               here for, after all ...
+To discover the swords you must find the three burning suns, then turn south and take the daring step.
+Now, now ... Go and find the Swords, Chosen. It's what you came here for, after all ...
 ---
-Go and find the Swords, Chosen. It's what you came
-               here for, after all ...
+Go and find the Swords, Chosen. It's what you came here for, after all ...

@@ -1,26 +1,39 @@
 # coding=utf-8
 
-# The Chosen  Copyright (C) 2021  Timo Früh
-# Full copyright notice in main.py
+"""
+This module holds the RPGInfo class.
+"""
+
+# The Chosen  Copyright (C) 2022  Timo Früh
+# Full copyright notice in __main__.py
+
+import the_chosen.io as io
+
 
 class RPGInfo:
 
-    # define the class variables
+    # define some class variables
     author = None
     title = None
     subtitle = None
     welcome_message = None
 
-    # print a welcome message
     @classmethod
     def welcome(cls):
-        print(f"Welcome to {cls.title}: {cls.subtitle}")
-        print("")
-        print(cls.welcome_message)
+        """
+        Print a welcome message.
+        """
 
-    # print credits
+        io.ch_print(f"Welcome to {cls.title}: {cls.subtitle}")
+        io.ch_print("")
+        io.ch_print(cls.welcome_message)
+
     @classmethod
     def credits(cls):
-        print(f"This was {cls.title}.")
-        print("Thank you for playing!")
-        print(f"\nMade by {cls.author}.")
+        """
+        Print credits.
+        """
+
+        io.ch_print(f"This was {cls.title}.")
+        io.ch_print("Thank you for playing!")
+        io.ch_print(f"\nMade by {cls.author}.")

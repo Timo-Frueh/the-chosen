@@ -1,7 +1,7 @@
 #     coding=utf-8
 
 #     The Chosen: At Nights End: A short text-adventure
-#     Copyright (C) 2021 Timo Früh
+#     Copyright (C) 2022 Timo Früh
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -16,10 +16,11 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
+import pathlib
 
 from clear_screen import clear
 
+import the_chosen.io as io
 from the_chosen.character import Endboss, Friend, Miniboss, Mob, Stranger
 from the_chosen.direction_helper import DirectionHelper as Dh
 from the_chosen.item import Artifacts, Key, Weapon
@@ -36,8 +37,8 @@ class Main:
 
         clear()
 
-        self.file_path = os.path.dirname(os.path.abspath(__file__))
-        Rh.set_resources_path(os.path.join(self.file_path, "resources"))
+        self.file_parent = pathlib.Path(__file__).parent
+        Rh.set_resources_path(pathlib.Path(self.file_parent, "resources"))
 
         self.welcome_f = Rh.read_resource("welcome_message.txt")
         self.cellar_f = Rh.read_resource("cellar.txt")
@@ -205,7 +206,7 @@ class Main:
 
         RPGInfo.welcome()
 
-        self.player_name = input("What is your name? ")
+        self.player_name = io.ch_input("What is your name? ")
 
         if self.player_name.replace(" ", "") == "":
             self.player_name = "Stranger"
@@ -322,8 +323,9 @@ class Main:
         self.demon_king.set_def_kill_message(self.demon_king_kill_f)
         self.throne_room.add_character(self.demon_king)
 
-        print("\nYou look around.")
-        print("")
+        io.ch_print("")
+        io.ch_print("You look around.")
+        io.ch_print("")
 
         self.player.get_current_room().describe()
 
