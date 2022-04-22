@@ -5,7 +5,7 @@ This module holds the ResourceHelper class.
 """
 
 # The Chosen  Copyright (C) 2022  Timo Früh
-# Full copyright notice in main.py
+# Full copyright notice in __main__.py
 
 import pathlib
 

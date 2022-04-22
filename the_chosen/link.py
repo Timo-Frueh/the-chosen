@@ -11,7 +11,7 @@ Classes:
 """
 
 # The Chosen  Copyright (C) 2022  Timo Früh
-# Full copyright notice in main.py
+# Full copyright notice in __main__.py
 
 import the_chosen.io as io
 from the_chosen.direction_helper import DirectionHelper as Dr
