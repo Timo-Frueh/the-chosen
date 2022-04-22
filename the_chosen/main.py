@@ -16,7 +16,7 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
+import pathlib
 
 from clear_screen import clear
 
@@ -37,8 +37,8 @@ class Main:
 
         clear()
 
-        self.file_path = os.path.dirname(os.path.abspath(__file__))
-        Rh.set_resources_path(os.path.join(self.file_path, "resources"))
+        self.file_parent = pathlib.Path(__file__).parent
+        Rh.set_resources_path(pathlib.Path(self.file_parent, "resources"))
 
         self.welcome_f = Rh.read_resource("welcome_message.txt")
         self.cellar_f = Rh.read_resource("cellar.txt")

@@ -7,7 +7,6 @@ This module holds the ResourceHelper class.
 # The Chosen  Copyright (C) 2021  Timo Früh
 # Full copyright notice in main.py
 
-import os
 import pathlib
 
 
@@ -24,10 +23,10 @@ class ResourceHelper:
         Set the resources path.
 
         :param path: The resources path.
-        :type path: str
+        :type path: pathlib.Path
         """
 
-        cls.resources_path = pathlib.Path(path)
+        cls.resources_path = path
 
     @classmethod
     def read_resource(cls, resource):
