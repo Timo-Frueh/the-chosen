@@ -8,6 +8,7 @@ This module holds the ResourceHelper class.
 # Full copyright notice in main.py
 
 import os
+import pathlib
 
 
 class ResourceHelper:
@@ -26,7 +27,7 @@ class ResourceHelper:
         :type path: str
         """
 
-        cls.resources_path = path
+        cls.resources_path = pathlib.Path(path)
 
     @classmethod
     def read_resource(cls, resource):
@@ -39,7 +40,10 @@ class ResourceHelper:
         :return: The content of the file as text.
         :rtype: str
         """
-        with open(os.path.join(cls.resources_path, resource), "r", encoding="UTF-8") as file:
+
+        resource_path = pathlib.Path(cls.resources_path, resource)
+
+        with open(resource_path, "r", encoding="UTF-8") as file:
             return file.read()
 
     @classmethod
@@ -57,5 +61,7 @@ class ResourceHelper:
         :rtype: list
         """
 
-        with open(os.path.join(cls.resources_path, resource), "r", encoding="UTF-8") as file:
+        resource_path = pathlib.Path(cls.resources_path, resource)
+
+        with open(resource_path, "r", encoding="UTF-8") as file:
             return file.read().split(split)
