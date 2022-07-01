@@ -48,15 +48,9 @@ class Mainloop:
             elif command in ["look", "l"]:
                 player.look()
 
-            elif command_key == "talk to":
-
-                talk_to_input = io.interpret_single(command, "talk to")
-
-                player.talk(talk_to_input)
-
             elif command_key == "talk":
 
-                talk_input = io.interpret_single(command, "talk")
+                talk_input = io.interpret_single(command, "talk", [" to"])
 
                 player.talk(talk_input)
 
