@@ -28,7 +28,7 @@ class Entity:
             self.the_name = f"the {self.name}"
             self.c_the_name = f"The {self.name}"
 
-        self.aliases = [self.name.lower().strip(), self.art_name, self.the_name]
+        self.aliases = [self.name.lower().strip(), self.art_name.lower().strip(), self.the_name.lower().strip()]
 
         self.description = None
 
