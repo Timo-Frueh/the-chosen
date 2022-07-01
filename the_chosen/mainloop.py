@@ -50,7 +50,7 @@ class Mainloop:
 
             elif command_key == "talk":
 
-                talk_input = io.interpret_single(command, "talk", [" to"])
+                talk_input = io.interpret_single(command, "talk", [" to "])
 
                 player.talk(talk_input)
 
