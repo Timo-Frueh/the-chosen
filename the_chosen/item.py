@@ -12,7 +12,7 @@ Classes:
     Artifacts
 """
 
-# The Chosen  Copyright (C) 2022  Timo Früh
+# The Chosen  Copyright (C) 2021-2023  Timo Früh
 # Full copyright notice in __main__.py
 
 import the_chosen.io as io
